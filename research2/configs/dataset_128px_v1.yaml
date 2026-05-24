@@ -1,5 +1,5 @@
 # 128px unified visual-diversity dataset contract.
-# Source of truth: /home/jaisharma/HW8/research2/dataset_plan.md
+# Source of truth for tasks, axes, budgets, and evaluation splits.
 
 version: dataset_128px_v1
 workspace: /home/jaisharma/HW8/research2

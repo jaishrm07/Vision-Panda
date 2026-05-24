@@ -27,12 +27,6 @@ research2/
     run_bc_matrix.py             # training matrix launcher
     run_bc_eval_matrix.py        # evaluation matrix launcher
     build_results_presentation.py
-  docs/
-    data_schema.md               # dataset schema
-  analysis/
-    index.html                   # analysis landing page
-    12_presentation.html         # final project presentation
-    dataset_slides/              # public visual dataset examples
   results/
     analysis_id_ood_all_budgets/ # public aggregate metrics
     analysis_scratch_cnn/        # scratch baseline summary tables
@@ -97,7 +91,6 @@ Selected public figures are in:
 
 - [`research2/results/slide_charts/`](research2/results/slide_charts/)
 - [`research2/results/structured_analysis/`](research2/results/structured_analysis/)
-- [`research2/analysis/dataset_slides/`](research2/analysis/dataset_slides/)
 
 ## Setup
 
@@ -142,14 +135,6 @@ python3 code/train_bc.py \
   --output-dir results/bc_128px_v1
 ```
 
-Rebuild the presentation from checked-in summaries:
-
-```bash
-python3 code/build_results_presentation.py
-```
-
-Then open [`research2/analysis/12_presentation.html`](research2/analysis/12_presentation.html) in a browser.
-
 ## Paper
 
 The 7-page paper draft is available at:
@@ -163,15 +148,16 @@ The GitHub repository is intended to be public and lightweight. It tracks:
 
 - source code,
 - configs,
-- paper and presentation materials,
+- paper materials,
 - aggregate CSV/JSON summaries,
-- selected figures and visual examples.
+- selected figures.
 
 It does not track:
 
 - raw `.pkl` datasets,
 - trained `.pt` checkpoints,
 - generated logs,
+- generated analysis HTML/assets,
 - rollout videos,
 - course/private materials.
 

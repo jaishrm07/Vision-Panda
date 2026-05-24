@@ -81,14 +81,15 @@ research2/results/**
 !research2/results/slide_charts/**
 !research2/results/structured_analysis/
 !research2/results/structured_analysis/*.csv
-!research2/results/structured_analysis/*.md
 !research2/results/structured_analysis/*.png
 
-# Analysis videos are useful locally but too heavy/noisy for source control.
-research2/analysis/slide_videos/
+# Update: keep generated analysis pages and slide assets local only.
+research2/analysis/
 
-# Keep paper and slide image assets public.
+# Keep paper assets public.
 !research2/paper/
 !research2/paper/**
-!research2/analysis/dataset_slides/
-!research2/analysis/dataset_slides/**
+
+# Public repository keeps Markdown documentation to the root README only.
+*.md
+!/README.md

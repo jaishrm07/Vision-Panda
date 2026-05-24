@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Rubric Plan</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --ink: #18202b;
+      --muted: #5e6877;
+      --line: #d9dee7;
+      --accent: #156b75;
+      --accent-2: #7a4b00;
+      --good: #137548;
+      --bad: #a13232;
+      --code: #eef2f7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.52;
+      font-size: 16px;
+    }
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 26px 0 56px;
+    }
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 26px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .topnav a {
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 7px 10px;
+      border-radius: 7px;
+      font-size: 14px;
+    }
+    .topnav a.active {
+      border-color: var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+    }
+    header {
+      margin-bottom: 24px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      max-width: 980px;
+    }
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 920px;
+    }
+    h2 {
+      margin: 34px 0 12px;
+      font-size: 25px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    p {
+      margin: 0 0 12px;
+      max-width: 980px;
+    }
+    a { color: var(--accent); }
+    code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: 0.92em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 14px;
+      margin: 16px 0 24px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .card h3 { margin-top: 0; }
+    .callout {
+      background: #f1f8f8;
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      margin: 18px 0;
+      max-width: 1000px;
+    }
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid var(--accent-2);
+      padding: 14px 16px;
+      margin: 18px 0;
+      max-width: 1000px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 14px 0 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #eef2f7;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    td.num, th.num { text-align: right; }
+    tr:last-child td { border-bottom: 0; }
+    .figure {
+      margin: 18px 0 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      background: #ffffff;
+    }
+    .figure figcaption {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 14px;
+      margin: 16px 0 24px;
+    }
+    video {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #000000;
+    }
+    ul, ol { max-width: 980px; }
+    li { margin: 5px 0; }
+    .metric {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .small {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .slide-jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 16px 0 24px;
+    }
+    .slide-jump a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 5px 8px;
+      font-size: 13px;
+    }
+    .deck {
+      display: grid;
+      gap: 28px;
+    }
+    .slide {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .slide-screen {
+      min-height: 560px;
+      padding: 34px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 20px;
+      background: #ffffff;
+    }
+    .slide-kicker {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 13px;
+    }
+    .slide-title {
+      font-size: clamp(30px, 4.5vw, 48px);
+      line-height: 1.04;
+      margin: 0;
+      max-width: 980px;
+    }
+    .slide-body {
+      align-self: center;
+      display: grid;
+      gap: 16px;
+    }
+    .slide-body.two-col {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+    }
+    .slide-body img,
+    .slide-body video {
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+    .big-points {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 24px;
+      line-height: 1.24;
+    }
+    .big-points li {
+      margin: 0;
+      padding: 14px 16px;
+      background: #f6f8fb;
+      border-left: 4px solid var(--accent);
+      border-radius: 7px;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .metric-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #f6f8fb;
+    }
+    .metric-box strong {
+      display: block;
+      font-size: 30px;
+      color: var(--accent);
+      line-height: 1.05;
+    }
+    .metric-box span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .equation {
+      font-size: 23px;
+      background: #f6f8fb;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+    }
+    .transcript {
+      border-top: 1px solid var(--line);
+      background: #fbfcfe;
+      padding: 18px 22px;
+    }
+    .transcript h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+    .transcript p {
+      max-width: none;
+    }
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+    @media (max-width: 760px) {
+      .slide-screen {
+        min-height: auto;
+        padding: 22px;
+      }
+      .slide-body.two-col {
+        grid-template-columns: 1fr;
+      }
+      .big-points {
+        font-size: 19px;
+      }
+      .equation {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <nav class="topnav"><a class="" href="index.html">Overview</a>
+<a class="" href="01_proposal_to_story.html">Proposal to Story</a>
+<a class="" href="02_experiment_design.html">Experiment Design</a>
+<a class="" href="03_visual_diversity_results.html">Visual Diversity</a>
+<a class="" href="04_model_comparison.html">Model Comparison</a>
+<a class="" href="05_structured_diagnostic.html">Structured Diagnostic</a>
+<a class="" href="06_paper_story.html">Paper Story</a>
+<a class="active" href="07_video_rubric_plan.html">Video Rubric Plan</a>
+<a class="" href="08_video_slides.html">Video Slides</a>
+<a class="" href="09_video_case_studies.html">Video Case Studies</a>
+<a class="" href="10_rubric_execution_plan.html">Rubric Execution</a></nav>
+    <header>
+      <h1>Video Rubric Plan</h1>
+      <p class="subtitle">A 10-minute submission outline mapped directly to the HRI project video rubric.</p>
+    </header>
+    
+<div class="callout">
+  <p><strong>Rubric source.</strong> The submission video is 10 minutes. It must explain the problem, solution method, results, class connection, and difficulty. The plan below maps directly to the point allocation in <code>project_video_rubric.pdf</code>.</p>
+</div>
+
+<h2>Rubric Mapping</h2>
+<div class="table-wrap"><table><thead><tr><th class="">Category</th><th class="num">Points</th><th class="">What must be shown</th><th class="">Where in video</th></tr></thead><tbody><tr><td class="">Problem Statement</td><td class="num">20</td><td class="">Clearly explain the human and robot components, motivation, existing approaches, missing gap, and key formulation.</td><td class="">Minutes 0:00-2:00. Use the BC objective and closed-loop OOD failure formulation.</td></tr>
+<tr><td class="">Method</td><td class="num">30</td><td class="">Explain the proposed benchmark, data collection, model families, metrics, algorithms, strengths, and weaknesses.</td><td class="">Minutes 2:00-4:45. Show visual axes, tasks, policy inputs, and evaluation protocol.</td></tr>
+<tr><td class="">Results</td><td class="num">20</td><td class="">Include experiments, baselines, motivated comparisons, data analysis, nuances, and surprising outcomes.</td><td class="">Minutes 4:45-8:15. Show axis ranking, model comparison, structured diagnostic, ablations, and videos.</td></tr>
+<tr><td class="">Connection to Class</td><td class="num">10</td><td class="">Explicitly list class concepts and explain how the project goes beyond lecture.</td><td class="">Minutes 8:15-9:10. Tie to imitation learning, covariate shift, closed-loop evaluation, and HRI data collection.</td></tr>
+<tr><td class="">Level of Difficulty</td><td class="num">20</td><td class="">Show how challenging the project was and how far it went beyond class/homeworks.</td><td class="">Minutes 9:10-10:00. Emphasize full benchmark, 128px datasets, GPU sweeps, ID/OOD evals, and diagnostic extension.</td></tr></tbody></table></div>
+
+<h2>10-Minute Timeline</h2>
+<div class="table-wrap"><table><thead><tr><th class="">Time</th><th class="">Section</th><th class="">Content</th><th class="">Asset</th></tr></thead><tbody><tr><td class="">0:00-0:30</td><td class="">Hook</td><td class="">Show a visual-only obstacle-aware failure video first. State the practical question: which visual diversity should a human collect when training a robot from demonstrations?</td><td class="">visual_only_scratch_ood_failure.mp4</td></tr>
+<tr><td class="">0:30-2:00</td><td class="">Problem</td><td class="">Define human demonstrator/data designer, robot learner, pixel BC, distribution shift, and why closed-loop rollout metrics matter.</td><td class="">BC objective and success metric equations</td></tr>
+<tr><td class="">2:00-3:15</td><td class="">Benchmark</td><td class="">Explain reach and obstacle-aware reach, dual 128px RGB views, fixed budgets, seeds, ID/OOD splits, and visual diversity axes.</td><td class="">dataset preview contact sheet</td></tr>
+<tr><td class="">3:15-4:45</td><td class="">Methods</td><td class="">Compare Scratch CNN, Frozen ResNet-18, Partial ResNet-18, and the phase+geometry diagnostic model.</td><td class="">model/input diagram or compact table</td></tr>
+<tr><td class="">4:45-6:15</td><td class="">Visual-only results</td><td class="">Show that spatial distribution is the hardest OOD axis and that S@5cm hides precision instability.</td><td class="">03_visual_diversity_results.html tables</td></tr>
+<tr><td class="">6:15-7:15</td><td class="">Encoder results</td><td class="">Explain why pretrained ResNet was mixed: frozen helps loose robustness in some cases, partial fine-tuning is unstable, scratch often wins precision.</td><td class="">spatial performance PNG and model comparison table</td></tr>
+<tr><td class="">7:15-8:15</td><td class="">Diagnostic result</td><td class="">Show edge-balanced visual-only failure, phase+geometry improvement, ablations, and the success/failure videos.</td><td class="">main_comparison.png, scratch_structured_ablation.png, structured videos</td></tr>
+<tr><td class="">8:15-9:10</td><td class="">Class connection</td><td class="">Connect to imitation learning, behavior cloning, covariate shift, closed-loop control, generalization, and human data collection choices.</td><td class="">concept checklist slide</td></tr>
+<tr><td class="">9:10-10:00</td><td class="">Difficulty and conclusion</td><td class="">Summarize scale, automation, GPU evaluation, precision metrics, and the final takeaway: diversity matters, but obstacle-aware BC also needs phase/geometric representation.</td><td class="">one-slide takeaway</td></tr></tbody></table></div>
+
+<h2>Equations and Formulations to Show</h2>
+<p>The rubric explicitly asks for key equations/formulations. These are enough for the video without making it overly theoretical.</p>
+<div class="table-wrap"><table><thead><tr><th class="">Name</th><th class="">Formula</th><th class="">Purpose</th></tr></thead><tbody><tr><td class="">Behavior cloning objective</td><td class=""><code>min_theta sum_t || pi_theta(o_t, q_t) - a*_t ||_2^2</code></td><td class="">Shows the supervised learning problem: match expert actions from observations and robot state.</td></tr>
+<tr><td class="">Closed-loop rollout</td><td class=""><code>s_{t+1} = f(s_t, pi_theta(o_t, q_t))</code></td><td class="">Shows why small action errors compound after the policy controls the robot.</td></tr>
+<tr><td class="">Precision success</td><td class=""><code>success@epsilon = 1[min_t ||p_ee,t - p_target||_2 &lt;= epsilon]</code></td><td class="">Defines S@0.5cm, S@1cm, S@2cm, and S@5cm from closest distance reached.</td></tr>
+<tr><td class="">Final stability</td><td class=""><code>final_distance = ||p_ee,T - p_target||_2</code></td><td class="">Separates reaching near the target from staying near the target at the end of rollout.</td></tr></tbody></table></div>
+
+<h2>Result Assets to Use</h2>
+<div class="table-wrap"><table><thead><tr><th class="">Asset</th><th class="">Path</th><th class="">Use in video</th></tr></thead><tbody><tr><td class="">Dataset previews</td><td class=""><a href="../results/previews_128px_v1/preview_contact_sheet_seed000.png">../results/previews_128px_v1/preview_contact_sheet_seed000.png</a></td><td class="">Use early when explaining what the robot sees.</td></tr>
+<tr><td class="">Main structured comparison</td><td class=""><a href="../results/structured_analysis/main_comparison.png">../results/structured_analysis/main_comparison.png</a></td><td class="">Use for the strongest result slide.</td></tr>
+<tr><td class="">Scratch ablation</td><td class=""><a href="../results/structured_analysis/scratch_structured_ablation.png">../results/structured_analysis/scratch_structured_ablation.png</a></td><td class="">Use to prove phase alone is insufficient and geometry matters.</td></tr>
+<tr><td class="">Spatial bucket groups</td><td class=""><a href="../results/structured_analysis/spatial_bucket_groups.png">../results/structured_analysis/spatial_bucket_groups.png</a></td><td class="">Use to discuss nuance: corners improve most, edges/interior still fail sometimes.</td></tr>
+<tr><td class="">Visual-only failure video</td><td class=""><a href="../results/structured_analysis/videos/visual_only_scratch_ood_failure.mp4">../results/structured_analysis/videos/visual_only_scratch_ood_failure.mp4</a></td><td class="">Use as opening hook or result contrast.</td></tr>
+<tr><td class="">Structured success video</td><td class=""><a href="../results/structured_analysis/videos/structured_scratch_ood_success.mp4">../results/structured_analysis/videos/structured_scratch_ood_success.mp4</a></td><td class="">Use immediately after the diagnostic result.</td></tr></tbody></table></div>
+
+<h2>Class Concepts to Name Explicitly</h2>
+<div class="table-wrap"><table><thead><tr><th class="">Class concept</th><th class="">Project connection</th></tr></thead><tbody><tr><td class="">Behavior cloning</td><td class="">The policy is trained by supervised imitation of scripted expert actions.</td></tr>
+<tr><td class="">Covariate shift</td><td class="">Closed-loop errors move the robot into states different from demonstrations.</td></tr>
+<tr><td class="">Closed-loop evaluation</td><td class="">The project evaluates rollouts, not just train/validation loss.</td></tr>
+<tr><td class="">Generalization</td><td class="">ID/OOD splits isolate color, spatial, camera, and lighting shifts.</td></tr>
+<tr><td class="">Human-robot interaction</td><td class="">A human data designer decides what demonstrations and diversity to collect so the robot behaves robustly.</td></tr></tbody></table></div>
+
+<h2>Suggested Closing Slide</h2>
+<div class="warning">
+  <p><strong>Takeaway.</strong> Visual diversity matters, but obstacle-aware robot imitation is not solved by collecting more varied images alone. The hardest failures come from spatial, phase, and geometry inference under closed-loop control. Precision metrics reveal this, and the phase+geometry diagnostic shows what information the visual policy was missing.</p>
+</div>
+
+    <footer>
+      Source artifacts are local to <code>research2/results</code>. Generated by <code>research2/code/build_html_analysis.py</code>.
+    </footer>
+  </main>
+</body>
+</html>

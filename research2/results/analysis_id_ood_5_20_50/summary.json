@@ -1,0 +1,20 @@
+{
+  "metric_rows": 864,
+  "families": [
+    "Scratch CNN",
+    "Frozen ResNet",
+    "Partial ResNet"
+  ],
+  "budgets": [
+    5,
+    20,
+    50
+  ],
+  "splits": [
+    "id",
+    "ood"
+  ],
+  "rollouts_per_metric": [
+    150
+  ]
+}

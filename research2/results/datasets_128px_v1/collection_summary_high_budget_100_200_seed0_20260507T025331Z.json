@@ -1,0 +1,4459 @@
+{
+  "version": "dataset_128px_v1",
+  "created_at": "2026-05-07T04:51:00.747318+00:00",
+  "config_path": "configs/dataset_128px_v1.yaml",
+  "output_dir": "results/datasets_128px_v1",
+  "expected_dataset_count": 32,
+  "completed_dataset_count": 176,
+  "missing_dataset_count": 0,
+  "unexpected_dataset_count": 144,
+  "budgets": [
+    100,
+    200
+  ],
+  "seeds": [
+    0
+  ],
+  "train_configs": [
+    "color_red_only",
+    "color_multi",
+    "avoid_color_red_only",
+    "avoid_color_multi",
+    "spatial_narrow",
+    "spatial_wide",
+    "avoid_spatial_narrow",
+    "avoid_spatial_wide",
+    "camera_fixed",
+    "camera_multi_pose",
+    "avoid_camera_fixed",
+    "avoid_camera_multi_pose",
+    "lighting_fixed",
+    "lighting_diverse",
+    "avoid_lighting_fixed",
+    "avoid_lighting_diverse"
+  ],
+  "total_samples": 947429,
+  "all_quality_checks_passed": true,
+  "all_success_rates_are_one": true,
+  "missing": [],
+  "unexpected": [
+    [
+      "avoid_camera_fixed",
+      5,
+      0
+    ],
+    [
+      "avoid_camera_fixed",
+      5,
+      1
+    ],
+    [
+      "avoid_camera_fixed",
+      5,
+      2
+    ],
+    [
+      "avoid_camera_fixed",
+      20,
+      0
+    ],
+    [
+      "avoid_camera_fixed",
+      20,
+      1
+    ],
+    [
+      "avoid_camera_fixed",
+      20,
+      2
+    ],
+    [
+      "avoid_camera_fixed",
+      50,
+      0
+    ],
+    [
+      "avoid_camera_fixed",
+      50,
+      1
+    ],
+    [
+      "avoid_camera_fixed",
+      50,
+      2
+    ],
+    [
+      "avoid_camera_multi_pose",
+      5,
+      0
+    ],
+    [
+      "avoid_camera_multi_pose",
+      5,
+      1
+    ],
+    [
+      "avoid_camera_multi_pose",
+      5,
+      2
+    ],
+    [
+      "avoid_camera_multi_pose",
+      20,
+      0
+    ],
+    [
+      "avoid_camera_multi_pose",
+      20,
+      1
+    ],
+    [
+      "avoid_camera_multi_pose",
+      20,
+      2
+    ],
+    [
+      "avoid_camera_multi_pose",
+      50,
+      0
+    ],
+    [
+      "avoid_camera_multi_pose",
+      50,
+      1
+    ],
+    [
+      "avoid_camera_multi_pose",
+      50,
+      2
+    ],
+    [
+      "avoid_color_multi",
+      5,
+      0
+    ],
+    [
+      "avoid_color_multi",
+      5,
+      1
+    ],
+    [
+      "avoid_color_multi",
+      5,
+      2
+    ],
+    [
+      "avoid_color_multi",
+      20,
+      0
+    ],
+    [
+      "avoid_color_multi",
+      20,
+      1
+    ],
+    [
+      "avoid_color_multi",
+      20,
+      2
+    ],
+    [
+      "avoid_color_multi",
+      50,
+      0
+    ],
+    [
+      "avoid_color_multi",
+      50,
+      1
+    ],
+    [
+      "avoid_color_multi",
+      50,
+      2
+    ],
+    [
+      "avoid_color_red_only",
+      5,
+      0
+    ],
+    [
+      "avoid_color_red_only",
+      5,
+      1
+    ],
+    [
+      "avoid_color_red_only",
+      5,
+      2
+    ],
+    [
+      "avoid_color_red_only",
+      20,
+      0
+    ],
+    [
+      "avoid_color_red_only",
+      20,
+      1
+    ],
+    [
+      "avoid_color_red_only",
+      20,
+      2
+    ],
+    [
+      "avoid_color_red_only",
+      50,
+      0
+    ],
+    [
+      "avoid_color_red_only",
+      50,
+      1
+    ],
+    [
+      "avoid_color_red_only",
+      50,
+      2
+    ],
+    [
+      "avoid_lighting_diverse",
+      5,
+      0
+    ],
+    [
+      "avoid_lighting_diverse",
+      5,
+      1
+    ],
+    [
+      "avoid_lighting_diverse",
+      5,
+      2
+    ],
+    [
+      "avoid_lighting_diverse",
+      20,
+      0
+    ],
+    [
+      "avoid_lighting_diverse",
+      20,
+      1
+    ],
+    [
+      "avoid_lighting_diverse",
+      20,
+      2
+    ],
+    [
+      "avoid_lighting_diverse",
+      50,
+      0
+    ],
+    [
+      "avoid_lighting_diverse",
+      50,
+      1
+    ],
+    [
+      "avoid_lighting_diverse",
+      50,
+      2
+    ],
+    [
+      "avoid_lighting_fixed",
+      5,
+      0
+    ],
+    [
+      "avoid_lighting_fixed",
+      5,
+      1
+    ],
+    [
+      "avoid_lighting_fixed",
+      5,
+      2
+    ],
+    [
+      "avoid_lighting_fixed",
+      20,
+      0
+    ],
+    [
+      "avoid_lighting_fixed",
+      20,
+      1
+    ],
+    [
+      "avoid_lighting_fixed",
+      20,
+      2
+    ],
+    [
+      "avoid_lighting_fixed",
+      50,
+      0
+    ],
+    [
+      "avoid_lighting_fixed",
+      50,
+      1
+    ],
+    [
+      "avoid_lighting_fixed",
+      50,
+      2
+    ],
+    [
+      "avoid_spatial_narrow",
+      5,
+      0
+    ],
+    [
+      "avoid_spatial_narrow",
+      5,
+      1
+    ],
+    [
+      "avoid_spatial_narrow",
+      5,
+      2
+    ],
+    [
+      "avoid_spatial_narrow",
+      20,
+      0
+    ],
+    [
+      "avoid_spatial_narrow",
+      20,
+      1
+    ],
+    [
+      "avoid_spatial_narrow",
+      20,
+      2
+    ],
+    [
+      "avoid_spatial_narrow",
+      50,
+      0
+    ],
+    [
+      "avoid_spatial_narrow",
+      50,
+      1
+    ],
+    [
+      "avoid_spatial_narrow",
+      50,
+      2
+    ],
+    [
+      "avoid_spatial_wide",
+      5,
+      0
+    ],
+    [
+      "avoid_spatial_wide",
+      5,
+      1
+    ],
+    [
+      "avoid_spatial_wide",
+      5,
+      2
+    ],
+    [
+      "avoid_spatial_wide",
+      20,
+      0
+    ],
+    [
+      "avoid_spatial_wide",
+      20,
+      1
+    ],
+    [
+      "avoid_spatial_wide",
+      20,
+      2
+    ],
+    [
+      "avoid_spatial_wide",
+      50,
+      0
+    ],
+    [
+      "avoid_spatial_wide",
+      50,
+      1
+    ],
+    [
+      "avoid_spatial_wide",
+      50,
+      2
+    ],
+    [
+      "camera_fixed",
+      5,
+      0
+    ],
+    [
+      "camera_fixed",
+      5,
+      1
+    ],
+    [
+      "camera_fixed",
+      5,
+      2
+    ],
+    [
+      "camera_fixed",
+      20,
+      0
+    ],
+    [
+      "camera_fixed",
+      20,
+      1
+    ],
+    [
+      "camera_fixed",
+      20,
+      2
+    ],
+    [
+      "camera_fixed",
+      50,
+      0
+    ],
+    [
+      "camera_fixed",
+      50,
+      1
+    ],
+    [
+      "camera_fixed",
+      50,
+      2
+    ],
+    [
+      "camera_multi_pose",
+      5,
+      0
+    ],
+    [
+      "camera_multi_pose",
+      5,
+      1
+    ],
+    [
+      "camera_multi_pose",
+      5,
+      2
+    ],
+    [
+      "camera_multi_pose",
+      20,
+      0
+    ],
+    [
+      "camera_multi_pose",
+      20,
+      1
+    ],
+    [
+      "camera_multi_pose",
+      20,
+      2
+    ],
+    [
+      "camera_multi_pose",
+      50,
+      0
+    ],
+    [
+      "camera_multi_pose",
+      50,
+      1
+    ],
+    [
+      "camera_multi_pose",
+      50,
+      2
+    ],
+    [
+      "color_multi",
+      5,
+      0
+    ],
+    [
+      "color_multi",
+      5,
+      1
+    ],
+    [
+      "color_multi",
+      5,
+      2
+    ],
+    [
+      "color_multi",
+      20,
+      0
+    ],
+    [
+      "color_multi",
+      20,
+      1
+    ],
+    [
+      "color_multi",
+      20,
+      2
+    ],
+    [
+      "color_multi",
+      50,
+      0
+    ],
+    [
+      "color_multi",
+      50,
+      1
+    ],
+    [
+      "color_multi",
+      50,
+      2
+    ],
+    [
+      "color_red_only",
+      5,
+      0
+    ],
+    [
+      "color_red_only",
+      5,
+      1
+    ],
+    [
+      "color_red_only",
+      5,
+      2
+    ],
+    [
+      "color_red_only",
+      20,
+      0
+    ],
+    [
+      "color_red_only",
+      20,
+      1
+    ],
+    [
+      "color_red_only",
+      20,
+      2
+    ],
+    [
+      "color_red_only",
+      50,
+      0
+    ],
+    [
+      "color_red_only",
+      50,
+      1
+    ],
+    [
+      "color_red_only",
+      50,
+      2
+    ],
+    [
+      "lighting_diverse",
+      5,
+      0
+    ],
+    [
+      "lighting_diverse",
+      5,
+      1
+    ],
+    [
+      "lighting_diverse",
+      5,
+      2
+    ],
+    [
+      "lighting_diverse",
+      20,
+      0
+    ],
+    [
+      "lighting_diverse",
+      20,
+      1
+    ],
+    [
+      "lighting_diverse",
+      20,
+      2
+    ],
+    [
+      "lighting_diverse",
+      50,
+      0
+    ],
+    [
+      "lighting_diverse",
+      50,
+      1
+    ],
+    [
+      "lighting_diverse",
+      50,
+      2
+    ],
+    [
+      "lighting_fixed",
+      5,
+      0
+    ],
+    [
+      "lighting_fixed",
+      5,
+      1
+    ],
+    [
+      "lighting_fixed",
+      5,
+      2
+    ],
+    [
+      "lighting_fixed",
+      20,
+      0
+    ],
+    [
+      "lighting_fixed",
+      20,
+      1
+    ],
+    [
+      "lighting_fixed",
+      20,
+      2
+    ],
+    [
+      "lighting_fixed",
+      50,
+      0
+    ],
+    [
+      "lighting_fixed",
+      50,
+      1
+    ],
+    [
+      "lighting_fixed",
+      50,
+      2
+    ],
+    [
+      "spatial_narrow",
+      5,
+      0
+    ],
+    [
+      "spatial_narrow",
+      5,
+      1
+    ],
+    [
+      "spatial_narrow",
+      5,
+      2
+    ],
+    [
+      "spatial_narrow",
+      20,
+      0
+    ],
+    [
+      "spatial_narrow",
+      20,
+      1
+    ],
+    [
+      "spatial_narrow",
+      20,
+      2
+    ],
+    [
+      "spatial_narrow",
+      50,
+      0
+    ],
+    [
+      "spatial_narrow",
+      50,
+      1
+    ],
+    [
+      "spatial_narrow",
+      50,
+      2
+    ],
+    [
+      "spatial_wide",
+      5,
+      0
+    ],
+    [
+      "spatial_wide",
+      5,
+      1
+    ],
+    [
+      "spatial_wide",
+      5,
+      2
+    ],
+    [
+      "spatial_wide",
+      20,
+      0
+    ],
+    [
+      "spatial_wide",
+      20,
+      1
+    ],
+    [
+      "spatial_wide",
+      20,
+      2
+    ],
+    [
+      "spatial_wide",
+      50,
+      0
+    ],
+    [
+      "spatial_wide",
+      50,
+      1
+    ],
+    [
+      "spatial_wide",
+      50,
+      2
+    ]
+  ],
+  "records": [
+    {
+      "train_config": "color_red_only",
+      "task": "reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_red_only__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_red_only__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_red_only",
+      "task": "reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_red_only__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_red_only__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_red_only",
+      "task": "reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_red_only__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_red_only__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_red_only",
+      "task": "reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_red_only__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_red_only__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_red_only",
+      "task": "reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_red_only__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_red_only__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_red_only",
+      "task": "reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_red_only__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_red_only__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_red_only",
+      "task": "reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_red_only__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_red_only__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_red_only",
+      "task": "reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_red_only__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_red_only__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_red_only",
+      "task": "reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_red_only__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_red_only__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_red_only",
+      "task": "reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 7900,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_red_only__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_red_only__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_red_only",
+      "task": "reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 15800,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_red_only__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_red_only__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_multi",
+      "task": "reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_multi__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_multi__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_multi",
+      "task": "reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_multi__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_multi__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_multi",
+      "task": "reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_multi__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_multi__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_multi",
+      "task": "reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_multi__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_multi__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_multi",
+      "task": "reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_multi__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_multi__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_multi",
+      "task": "reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_multi__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_multi__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_multi",
+      "task": "reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_multi__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_multi__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_multi",
+      "task": "reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_multi__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_multi__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_multi",
+      "task": "reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_multi__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_multi__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_multi",
+      "task": "reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 7900,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_multi__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_multi__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_multi",
+      "task": "reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 15800,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__color_multi__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__color_multi__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_red_only",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_red_only",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_red_only",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_red_only",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_red_only",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_red_only",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_red_only",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_red_only",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_red_only",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_red_only",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 14800,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_red_only",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "fixed_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 29600,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_red_only__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_multi",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_multi",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_multi",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_multi",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_multi",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_multi",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_multi",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_multi",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_multi",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_multi",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 14800,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_multi",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "diverse_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 29600,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_color_multi__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_narrow",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 394,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_narrow",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 394,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_narrow",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 396,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_narrow",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 1575,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_narrow",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 1573,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_narrow",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 1579,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_narrow",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 3940,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_narrow",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 3941,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_narrow",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_narrow",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 7894,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_narrow",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 15785,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_narrow__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_wide",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 394,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_wide__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_wide__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_wide",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 394,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_wide__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_wide__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_wide",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 402,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_wide__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_wide__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_wide",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 1605,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_wide__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_wide__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_wide",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 1603,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_wide__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_wide__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_wide",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 1610,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_wide__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_wide__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_wide",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 3997,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_wide__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_wide__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_wide",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 3987,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_wide__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_wide__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_wide",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 4032,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_wide__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_wide__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_wide",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 7980,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_wide__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_wide__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_wide",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 15933,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__spatial_wide__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__spatial_wide__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_narrow",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 731,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_narrow",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 729,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_narrow",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 738,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_narrow",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 2951,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_narrow",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 2913,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_narrow",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 2978,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_narrow",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 7244,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_narrow",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 7293,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_narrow",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 7314,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_narrow",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 14568,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_narrow",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "narrow_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 29089,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_narrow__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_wide",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 695,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_wide",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 640,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_wide",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 674,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_wide",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 2851,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_wide",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 2631,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_wide",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 2747,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_wide",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 7081,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_wide",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 6798,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_wide",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 6807,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_wide",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 13926,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_wide",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "wide_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 27623,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_spatial_wide__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_fixed",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_fixed__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_fixed__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_fixed",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_fixed__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_fixed__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_fixed",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_fixed__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_fixed__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_fixed",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_fixed__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_fixed__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_fixed",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_fixed__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_fixed__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_fixed",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_fixed__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_fixed__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_fixed",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_fixed__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_fixed__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_fixed",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_fixed__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_fixed__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_fixed",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_fixed__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_fixed__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_fixed",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 7900,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_fixed__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_fixed__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_fixed",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 15800,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_fixed__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_fixed__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_multi_pose",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_multi_pose",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_multi_pose",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_multi_pose",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_multi_pose",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_multi_pose",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_multi_pose",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_multi_pose",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_multi_pose",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_multi_pose",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 7900,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_multi_pose",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 15800,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__camera_multi_pose__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_fixed",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_fixed",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_fixed",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_fixed",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_fixed",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_fixed",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_fixed",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_fixed",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_fixed",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_fixed",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 14800,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_fixed",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "fixed_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 29600,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_fixed__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_multi_pose",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_multi_pose",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_multi_pose",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_multi_pose",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_multi_pose",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_multi_pose",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_multi_pose",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_multi_pose",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_multi_pose",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_multi_pose",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 14800,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_multi_pose",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "diverse_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 29600,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_camera_multi_pose__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_fixed",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_fixed",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_fixed",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_fixed",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_fixed",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_fixed",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_fixed",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_fixed",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_fixed",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_fixed",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 7900,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_fixed",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 15800,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_fixed__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_diverse",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_diverse",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_diverse",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 395,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_diverse",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_diverse",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_diverse",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 1580,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_diverse",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_diverse",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_diverse",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_diverse",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 7900,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_diverse",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 15800,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__lighting_diverse__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_fixed",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_fixed",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_fixed",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_fixed",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_fixed",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_fixed",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_fixed",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_fixed",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_fixed",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_fixed",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 14800,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_fixed",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "fixed_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 29600,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_fixed__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_diverse",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 0,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget005__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget005__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_diverse",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 1,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget005__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget005__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_diverse",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 5,
+      "seed": 2,
+      "num_samples": 740,
+      "num_episodes": 5,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget005__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget005__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_diverse",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 0,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget020__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget020__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_diverse",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 1,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget020__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget020__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_diverse",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 20,
+      "seed": 2,
+      "num_samples": 2960,
+      "num_episodes": 20,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget020__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget020__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_diverse",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 0,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget050__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget050__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_diverse",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 1,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget050__seed001.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget050__seed001.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_diverse",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 50,
+      "seed": 2,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget050__seed002.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget050__seed002.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_diverse",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 100,
+      "seed": 0,
+      "num_samples": 14800,
+      "num_episodes": 100,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget100__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget100__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_diverse",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "diverse_train",
+      "budget": 200,
+      "seed": 0,
+      "num_samples": 29600,
+      "num_episodes": 200,
+      "success_rate": 1.0,
+      "sample_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget200__seed000.pkl",
+      "metadata_file": "results/datasets_128px_v1/dataset__avoid_lighting_diverse__budget200__seed000.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    }
+  ]
+}

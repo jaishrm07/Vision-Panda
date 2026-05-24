@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Model Comparison</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --ink: #18202b;
+      --muted: #5e6877;
+      --line: #d9dee7;
+      --accent: #156b75;
+      --accent-2: #7a4b00;
+      --good: #137548;
+      --bad: #a13232;
+      --code: #eef2f7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.52;
+      font-size: 16px;
+    }
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 26px 0 56px;
+    }
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 26px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .topnav a {
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 7px 10px;
+      border-radius: 7px;
+      font-size: 14px;
+    }
+    .topnav a.active {
+      border-color: var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+    }
+    header {
+      margin-bottom: 24px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      max-width: 980px;
+    }
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 920px;
+    }
+    h2 {
+      margin: 34px 0 12px;
+      font-size: 25px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    p {
+      margin: 0 0 12px;
+      max-width: 980px;
+    }
+    a { color: var(--accent); }
+    code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: 0.92em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 14px;
+      margin: 16px 0 24px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .card h3 { margin-top: 0; }
+    .callout {
+      background: #f1f8f8;
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      margin: 18px 0;
+      max-width: 1000px;
+    }
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid var(--accent-2);
+      padding: 14px 16px;
+      margin: 18px 0;
+      max-width: 1000px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 14px 0 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #eef2f7;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    td.num, th.num { text-align: right; }
+    tr:last-child td { border-bottom: 0; }
+    .figure {
+      margin: 18px 0 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      background: #ffffff;
+    }
+    .figure figcaption {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 14px;
+      margin: 16px 0 24px;
+    }
+    video {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #000000;
+    }
+    ul, ol { max-width: 980px; }
+    li { margin: 5px 0; }
+    .metric {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .small {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .slide-jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 16px 0 24px;
+    }
+    .slide-jump a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 5px 8px;
+      font-size: 13px;
+    }
+    .deck {
+      display: grid;
+      gap: 28px;
+    }
+    .slide {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .slide-screen {
+      min-height: 560px;
+      padding: 34px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 20px;
+      background: #ffffff;
+    }
+    .slide-kicker {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 13px;
+    }
+    .slide-title {
+      font-size: clamp(30px, 4.5vw, 48px);
+      line-height: 1.04;
+      margin: 0;
+      max-width: 980px;
+    }
+    .slide-body {
+      align-self: center;
+      display: grid;
+      gap: 16px;
+    }
+    .slide-body.two-col {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+    }
+    .slide-body img,
+    .slide-body video {
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+    .big-points {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 24px;
+      line-height: 1.24;
+    }
+    .big-points li {
+      margin: 0;
+      padding: 14px 16px;
+      background: #f6f8fb;
+      border-left: 4px solid var(--accent);
+      border-radius: 7px;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .metric-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #f6f8fb;
+    }
+    .metric-box strong {
+      display: block;
+      font-size: 30px;
+      color: var(--accent);
+      line-height: 1.05;
+    }
+    .metric-box span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .equation {
+      font-size: 23px;
+      background: #f6f8fb;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+    }
+    .transcript {
+      border-top: 1px solid var(--line);
+      background: #fbfcfe;
+      padding: 18px 22px;
+    }
+    .transcript h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+    .transcript p {
+      max-width: none;
+    }
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+    @media (max-width: 760px) {
+      .slide-screen {
+        min-height: auto;
+        padding: 22px;
+      }
+      .slide-body.two-col {
+        grid-template-columns: 1fr;
+      }
+      .big-points {
+        font-size: 19px;
+      }
+      .equation {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <nav class="topnav"><a class="" href="index.html">Overview</a>
+<a class="" href="01_proposal_to_story.html">Proposal to Story</a>
+<a class="" href="02_experiment_design.html">Experiment Design</a>
+<a class="" href="03_visual_diversity_results.html">Visual Diversity</a>
+<a class="active" href="04_model_comparison.html">Model Comparison</a>
+<a class="" href="05_structured_diagnostic.html">Structured Diagnostic</a>
+<a class="" href="06_paper_story.html">Paper Story</a>
+<a class="" href="07_video_rubric_plan.html">Video Rubric Plan</a>
+<a class="" href="08_video_slides.html">Video Slides</a>
+<a class="" href="09_video_case_studies.html">Video Case Studies</a>
+<a class="" href="10_rubric_execution_plan.html">Rubric Execution</a></nav>
+    <header>
+      <h1>Model Comparison</h1>
+      <p class="subtitle">Scratch CNN, frozen ResNet-18, and partially fine-tuned ResNet-18 under ID/OOD evaluation.</p>
+    </header>
+    
+<div class="callout">
+  <p><strong>Encoder takeaway.</strong> Pretrained ResNet features are not automatically better in this simulated manipulation setting. Scratch CNN is often the strongest precision model; frozen ResNet is sometimes stronger at loose thresholds; partial fine-tuning is inconsistent and can be unstable.</p>
+</div>
+
+<h2>Overall Budget 50 and 200 Comparison</h2>
+<p>Budget 50 is multi-seed. Budget 200 is seed-0 only, but it is useful for seeing whether more demonstrations rescue each model family.</p>
+<div class="table-wrap"><table><thead><tr><th class="num">Budget</th><th class="">Split</th><th class="">Model</th><th class="num">Rollouts</th><th class="num">S@1cm</th><th class="num">S@2cm</th><th class="num">S@5cm</th><th class="num">Best cm</th><th class="num">Final cm</th></tr></thead><tbody><tr><td class="num">50</td><td class="">ID</td><td class="">Frozen ResNet-18</td><td class="num">7,200</td><td class="num">19.4%</td><td class="num">50.2%</td><td class="num">95.1%</td><td class="num">2.7</td><td class="num">22.1</td></tr>
+<tr><td class="num">50</td><td class="">ID</td><td class="">Partial ResNet-18</td><td class="num">7,200</td><td class="num">5.4%</td><td class="num">17.9%</td><td class="num">61.0%</td><td class="num">4.6</td><td class="num">26.0</td></tr>
+<tr><td class="num">50</td><td class="">ID</td><td class="">Scratch CNN</td><td class="num">7,200</td><td class="num">39.4%</td><td class="num">64.3%</td><td class="num">87.1%</td><td class="num">2.7</td><td class="num">39.5</td></tr>
+<tr><td class="num">50</td><td class="">OOD</td><td class="">Frozen ResNet-18</td><td class="num">7,200</td><td class="num">8.5%</td><td class="num">26.7%</td><td class="num">73.6%</td><td class="num">4.8</td><td class="num">23.8</td></tr>
+<tr><td class="num">50</td><td class="">OOD</td><td class="">Partial ResNet-18</td><td class="num">7,200</td><td class="num">4.6%</td><td class="num">14.8%</td><td class="num">51.9%</td><td class="num">6.2</td><td class="num">26.5</td></tr>
+<tr><td class="num">50</td><td class="">OOD</td><td class="">Scratch CNN</td><td class="num">7,200</td><td class="num">30.6%</td><td class="num">54.7%</td><td class="num">78.5%</td><td class="num">4.4</td><td class="num">40.4</td></tr>
+<tr><td class="num">200</td><td class="">ID</td><td class="">Frozen ResNet-18</td><td class="num">2,400</td><td class="num">45.5%</td><td class="num">52.0%</td><td class="num">94.4%</td><td class="num">2.4</td><td class="num">21.3</td></tr>
+<tr><td class="num">200</td><td class="">ID</td><td class="">Partial ResNet-18</td><td class="num">2,400</td><td class="num">35.2%</td><td class="num">54.8%</td><td class="num">66.9%</td><td class="num">5.7</td><td class="num">29.7</td></tr>
+<tr><td class="num">200</td><td class="">ID</td><td class="">Scratch CNN</td><td class="num">2,400</td><td class="num">43.0%</td><td class="num">77.0%</td><td class="num">96.2%</td><td class="num">1.5</td><td class="num">35.6</td></tr>
+<tr><td class="num">200</td><td class="">OOD</td><td class="">Frozen ResNet-18</td><td class="num">2,400</td><td class="num">13.8%</td><td class="num">31.5%</td><td class="num">80.4%</td><td class="num">4.2</td><td class="num">23.0</td></tr>
+<tr><td class="num">200</td><td class="">OOD</td><td class="">Partial ResNet-18</td><td class="num">2,400</td><td class="num">19.0%</td><td class="num">35.0%</td><td class="num">55.8%</td><td class="num">7.6</td><td class="num">26.5</td></tr>
+<tr><td class="num">200</td><td class="">OOD</td><td class="">Scratch CNN</td><td class="num">2,400</td><td class="num">43.5%</td><td class="num">63.7%</td><td class="num">86.6%</td><td class="num">3.0</td><td class="num">37.3</td></tr></tbody></table></div>
+
+<h2>OOD Budget Curves by Model</h2>
+<p>The scratch curve improves the most at high budget, but final distance remains large. Frozen ResNet has reasonable loose success but lower precision. Partial ResNet does not provide a stable monotonic improvement.</p>
+<div class="table-wrap"><table><thead><tr><th class="">Model</th><th class="num">Budget</th><th class="num">Rollouts</th><th class="num">S@1cm</th><th class="num">S@2cm</th><th class="num">S@5cm</th><th class="num">Best cm</th><th class="num">Final cm</th></tr></thead><tbody><tr><td class="">Frozen ResNet-18</td><td class="num">5</td><td class="num">7,200</td><td class="num">7.7%</td><td class="num">22.6%</td><td class="num">58.5%</td><td class="num">6.5</td><td class="num">25.7</td></tr>
+<tr><td class="">Frozen ResNet-18</td><td class="num">20</td><td class="num">7,200</td><td class="num">4.8%</td><td class="num">23.7%</td><td class="num">64.8%</td><td class="num">6.3</td><td class="num">26.4</td></tr>
+<tr><td class="">Frozen ResNet-18</td><td class="num">50</td><td class="num">7,200</td><td class="num">8.5%</td><td class="num">26.7%</td><td class="num">73.6%</td><td class="num">4.8</td><td class="num">23.8</td></tr>
+<tr><td class="">Frozen ResNet-18</td><td class="num">100</td><td class="num">2,400</td><td class="num">12.9%</td><td class="num">24.6%</td><td class="num">78.1%</td><td class="num">4.8</td><td class="num">23.1</td></tr>
+<tr><td class="">Frozen ResNet-18</td><td class="num">200</td><td class="num">2,400</td><td class="num">13.8%</td><td class="num">31.5%</td><td class="num">80.4%</td><td class="num">4.2</td><td class="num">23.0</td></tr>
+<tr><td class="">Partial ResNet-18</td><td class="num">5</td><td class="num">7,200</td><td class="num">0.4%</td><td class="num">3.4%</td><td class="num">22.5%</td><td class="num">10.8</td><td class="num">30.5</td></tr>
+<tr><td class="">Partial ResNet-18</td><td class="num">20</td><td class="num">7,200</td><td class="num">1.3%</td><td class="num">5.2%</td><td class="num">33.0%</td><td class="num">9.3</td><td class="num">27.9</td></tr>
+<tr><td class="">Partial ResNet-18</td><td class="num">50</td><td class="num">7,200</td><td class="num">4.6%</td><td class="num">14.8%</td><td class="num">51.9%</td><td class="num">6.2</td><td class="num">26.5</td></tr>
+<tr><td class="">Partial ResNet-18</td><td class="num">100</td><td class="num">2,400</td><td class="num">8.7%</td><td class="num">22.3%</td><td class="num">61.5%</td><td class="num">5.7</td><td class="num">28.0</td></tr>
+<tr><td class="">Partial ResNet-18</td><td class="num">200</td><td class="num">2,400</td><td class="num">19.0%</td><td class="num">35.0%</td><td class="num">55.8%</td><td class="num">7.6</td><td class="num">26.5</td></tr>
+<tr><td class="">Scratch CNN</td><td class="num">5</td><td class="num">7,200</td><td class="num">21.6%</td><td class="num">51.3%</td><td class="num">79.4%</td><td class="num">4.5</td><td class="num">39.5</td></tr>
+<tr><td class="">Scratch CNN</td><td class="num">20</td><td class="num">7,200</td><td class="num">26.1%</td><td class="num">58.0%</td><td class="num">80.0%</td><td class="num">4.2</td><td class="num">46.4</td></tr>
+<tr><td class="">Scratch CNN</td><td class="num">50</td><td class="num">7,200</td><td class="num">30.6%</td><td class="num">54.7%</td><td class="num">78.5%</td><td class="num">4.4</td><td class="num">40.4</td></tr>
+<tr><td class="">Scratch CNN</td><td class="num">100</td><td class="num">2,400</td><td class="num">31.5%</td><td class="num">59.0%</td><td class="num">77.8%</td><td class="num">4.1</td><td class="num">41.0</td></tr>
+<tr><td class="">Scratch CNN</td><td class="num">200</td><td class="num">2,400</td><td class="num">43.5%</td><td class="num">63.7%</td><td class="num">86.6%</td><td class="num">3.0</td><td class="num">37.3</td></tr></tbody></table></div>
+
+<h2>Spatial Performance Snapshot</h2>
+<figure class="figure">
+  <img src="../results/analysis_spatial_performance/spatial_performance_table_phase_precise_budget200.png" alt="Budget 200 spatial performance comparison across Scratch CNN, Frozen ResNet-18, and Partial ResNet-18.">
+  <figcaption>Budget 200 spatial performance comparison across Scratch CNN, Frozen ResNet-18, and Partial ResNet-18.</figcaption>
+</figure>
+
+<h2>Interpretation</h2>
+<ul>
+  <li><strong>Scratch CNN.</strong> Best overall precision in many visual-only settings and strongest high-budget OOD curve, but spatial obstacle-aware behavior remains weak.</li>
+  <li><strong>Frozen ResNet-18.</strong> Helps some loose success rates and is less catastrophic than partial fine-tuning in the edge-balanced visual-only setting, but precision remains limited.</li>
+  <li><strong>Partial ResNet-18.</strong> The most unstable family. In this simulated setting, fine-tuning later blocks did not reliably solve the mismatch between visual features and control-relevant geometry.</li>
+</ul>
+
+    <footer>
+      Source artifacts are local to <code>research2/results</code>. Generated by <code>research2/code/build_html_analysis.py</code>.
+    </footer>
+  </main>
+</body>
+</html>

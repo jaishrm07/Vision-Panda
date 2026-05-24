@@ -1,0 +1,160 @@
+Dataset Audit Summary
+generated_at: 2026-05-06T21:08:41.261975+00:00
+dataset_dir: results/datasets_128px_v1
+
+dataset files: 144 / 144
+metadata files: 144
+total samples: 406031
+total episodes: 3600
+all success rates are 1.0: True
+flagged datasets: 0
+
+Sample Count Per Dataset:
+{
+  "count": 144,
+  "mean": 2819.659722222222,
+  "std": 2358.995543550011,
+  "min": 394.0,
+  "max": 7400.0,
+  "p0": 394.0,
+  "p5": 395.0,
+  "p25": 740.0,
+  "p50": 2120.5,
+  "p75": 3950.0,
+  "p95": 7400.0,
+  "p100": 7400.0
+}
+
+By Axis:
+{
+  "camera_location_viewpoint": {
+    "dataset_count": 36,
+    "total_samples": 102150,
+    "total_episodes": 900,
+    "success_rate_min": 1.0,
+    "success_rate_max": 1.0,
+    "sample_count": {
+      "count": 36,
+      "mean": 2837.5,
+      "std": 2381.025251861055,
+      "min": 395.0,
+      "max": 7400.0,
+      "p0": 395.0,
+      "p5": 395.0,
+      "p25": 740.0,
+      "p50": 2270.0,
+      "p75": 3950.0,
+      "p95": 7400.0,
+      "p100": 7400.0
+    }
+  },
+  "color": {
+    "dataset_count": 36,
+    "total_samples": 102150,
+    "total_episodes": 900,
+    "success_rate_min": 1.0,
+    "success_rate_max": 1.0,
+    "sample_count": {
+      "count": 36,
+      "mean": 2837.5,
+      "std": 2381.025251861055,
+      "min": 395.0,
+      "max": 7400.0,
+      "p0": 395.0,
+      "p5": 395.0,
+      "p25": 740.0,
+      "p50": 2270.0,
+      "p75": 3950.0,
+      "p95": 7400.0,
+      "p100": 7400.0
+    }
+  },
+  "lighting_direction_intensity": {
+    "dataset_count": 36,
+    "total_samples": 102150,
+    "total_episodes": 900,
+    "success_rate_min": 1.0,
+    "success_rate_max": 1.0,
+    "sample_count": {
+      "count": 36,
+      "mean": 2837.5,
+      "std": 2381.025251861055,
+      "min": 395.0,
+      "max": 7400.0,
+      "p0": 395.0,
+      "p5": 395.0,
+      "p25": 740.0,
+      "p50": 2270.0,
+      "p75": 3950.0,
+      "p95": 7400.0,
+      "p100": 7400.0
+    }
+  },
+  "spatial_distribution": {
+    "dataset_count": 36,
+    "total_samples": 99581,
+    "total_episodes": 900,
+    "success_rate_min": 1.0,
+    "success_rate_max": 1.0,
+    "sample_count": {
+      "count": 36,
+      "mean": 2766.1388888888887,
+      "std": 2290.8026632211227,
+      "min": 394.0,
+      "max": 7314.0,
+      "p0": 394.0,
+      "p5": 394.0,
+      "p25": 720.5,
+      "p50": 2120.5,
+      "p75": 3959.25,
+      "p95": 7256.25,
+      "p100": 7314.0
+    }
+  }
+}
+
+By Task:
+{
+  "avoid_reach": {
+    "dataset_count": 72,
+    "total_samples": 263615,
+    "total_episodes": 1800,
+    "success_rate_min": 1.0,
+    "success_rate_max": 1.0,
+    "sample_count": {
+      "count": 72,
+      "mean": 3661.3194444444443,
+      "std": 2742.4888373437816,
+      "min": 640.0,
+      "max": 7400.0,
+      "p0": 640.0,
+      "p5": 730.1,
+      "p25": 740.0,
+      "p50": 2960.0,
+      "p75": 7335.5,
+      "p95": 7400.0,
+      "p100": 7400.0
+    }
+  },
+  "reach": {
+    "dataset_count": 72,
+    "total_samples": 142416,
+    "total_episodes": 1800,
+    "success_rate_min": 1.0,
+    "success_rate_max": 1.0,
+    "sample_count": {
+      "count": 72,
+      "mean": 1978.0,
+      "std": 1480.4366754441069,
+      "min": 394.0,
+      "max": 4032.0,
+      "p0": 394.0,
+      "p5": 394.55,
+      "p25": 395.0,
+      "p50": 1580.0,
+      "p75": 3950.0,
+      "p95": 3950.0,
+      "p100": 4032.0
+    }
+  }
+}

@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Slides — 12-slide Locked Deck</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --ink: #18202b;
+      --muted: #5e6877;
+      --line: #d9dee7;
+      --accent: #156b75;
+      --accent-2: #7a4b00;
+      --good: #137548;
+      --bad: #a13232;
+      --code: #eef2f7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.52;
+      font-size: 16px;
+    }
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 26px 0 56px;
+    }
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 26px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .topnav a {
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 7px 10px;
+      border-radius: 7px;
+      font-size: 14px;
+    }
+    .topnav a.active {
+      border-color: var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+    }
+    header { margin-bottom: 24px; }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.02;
+      max-width: 980px;
+    }
+    .subtitle { margin: 0; color: var(--muted); font-size: 18px; max-width: 920px; }
+    h2 { margin: 34px 0 12px; font-size: 25px; line-height: 1.18; }
+    h3 { margin: 22px 0 8px; font-size: 18px; }
+    p { margin: 0 0 12px; max-width: 980px; }
+    a { color: var(--accent); }
+    code { background: var(--code); padding: 2px 5px; border-radius: 5px; font-size: 0.92em; }
+    .callout { background: #f1f8f8; border-left: 4px solid var(--accent); padding: 14px 16px; margin: 18px 0; max-width: 1000px; }
+    .small { color: var(--muted); font-size: 14px; }
+    .slide-jump { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 24px; }
+    .slide-jump a { text-decoration: none; border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 6px; padding: 5px 8px; font-size: 13px; }
+    .deck { display: grid; gap: 28px; }
+    .slide { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .slide-screen {
+      min-height: 560px;
+      padding: 34px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 20px;
+      background: #ffffff;
+    }
+    .slide-kicker {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 13px;
+    }
+    .slide-title { font-size: clamp(28px, 4vw, 42px); line-height: 1.06; margin: 6px 0 0; max-width: 1000px; }
+    .slide-body { align-self: center; display: grid; gap: 16px; }
+    .slide-body.two-col { grid-template-columns: minmax(0,1fr) minmax(0,1fr); align-items: center; gap: 22px; }
+    .slide-body img,
+    .slide-body video {
+      width: 100%;
+      max-height: 380px;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+    .big-points { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; font-size: 21px; line-height: 1.26; }
+    .big-points li { margin: 0; padding: 12px 14px; background: #f6f8fb; border-left: 4px solid var(--accent); border-radius: 7px; }
+    .big-points li.bad { border-left-color: var(--bad); }
+    .big-points li.good { border-left-color: var(--good); }
+    .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+    .metric-box { border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: #f6f8fb; }
+    .metric-box strong { display: block; font-size: 26px; color: var(--accent); line-height: 1.05; }
+    .metric-box.bad strong { color: var(--bad); }
+    .metric-box.good strong { color: var(--good); }
+    .metric-box span { color: var(--muted); font-size: 13px; }
+    .equation { font-size: 18px; background: #f6f8fb; border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow-x: auto; }
+    .equation .label { color: var(--muted); font-size: 12px; display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .takeaway { background: #fdf6e3; border: 1px solid #e8dca8; border-left: 4px solid #c9a73b; padding: 14px 18px; border-radius: 8px; font-size: 19px; }
+    .takeaway strong { color: #7d5e10; }
+    .transcript { border-top: 1px solid var(--line); background: #fbfcfe; padding: 18px 22px; }
+    .transcript h3 { margin-top: 0; color: var(--accent); font-size: 14px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .transcript p { max-width: none; font-size: 15px; }
+    .slide-footer { display: flex; justify-content: space-between; color: var(--muted); font-size: 13px; }
+    .stack { display: grid; gap: 10px; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pill { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; background: #eef2f7; color: var(--ink); }
+    .pill.cite { background: #f4f1ea; color: var(--muted); font-weight: 500; }
+    footer { margin-top: 36px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 14px; }
+    @media (max-width: 760px) {
+      .slide-screen { min-height: auto; padding: 22px; }
+      .slide-body.two-col { grid-template-columns: 1fr; }
+      .big-points { font-size: 17px; }
+      .equation { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+<main class="shell">
+  <nav class="topnav">
+    <a class="" href="index.html">Overview</a>
+    <a class="" href="01_proposal_to_story.html">Proposal to Story</a>
+    <a class="" href="02_experiment_design.html">Experiment Design</a>
+    <a class="" href="03_visual_diversity_results.html">Visual Diversity</a>
+    <a class="" href="04_model_comparison.html">Model Comparison</a>
+    <a class="" href="05_structured_diagnostic.html">Structured Diagnostic</a>
+    <a class="" href="06_paper_story.html">Paper Story</a>
+    <a class="" href="07_video_rubric_plan.html">Video Rubric Plan</a>
+    <a class="active" href="08_video_slides.html">Video Slides</a>
+    <a class="" href="09_video_case_studies.html">Video Case Studies</a>
+    <a class="" href="10_rubric_execution_plan.html">Rubric Execution</a>
+    <a class="" href="11_video_content_finalization.html">Content Finalization</a>
+  </nav>
+  <header>
+    <h1>Video Slides &mdash; 12&#8209;slide locked deck</h1>
+    <p class="subtitle">Recording-ready slides with timed speaker transcripts. Total budget: 10:00. See <a href="11_video_content_finalization.html">11_video_content_finalization.html</a> for the locked plan and rubric mapping.</p>
+  </header>
+
+  <div class="callout">
+    <p><strong>Pacing target.</strong> Average 50s/slide, ~135&ndash;145 wpm narration. Each transcript is sized to the slot. Two protections built in: the formulation slide can drop one equation under pressure; the ablation slide can fold into Result D if rehearsal runs over.</p>
+  </div>
+
+  <div class="slide-jump">
+    <a href="#slide-1">1</a><a href="#slide-2">2</a><a href="#slide-3">3</a><a href="#slide-4">4</a><a href="#slide-5">5</a><a href="#slide-6">6</a><a href="#slide-7">7</a><a href="#slide-8">8</a><a href="#slide-9">9</a><a href="#slide-10">10</a><a href="#slide-11">11</a><a href="#slide-12">12</a>
+  </div>
+
+  <div class="deck">
+
+  <!-- SLIDE 1 -->
+  <section class="slide" id="slide-1">
+    <div class="slide-screen">
+      <div>
+        <div class="slide-kicker">Title &amp; hook</div>
+        <h2 class="slide-title">What Visual Diversity Matters for Closed&#8209;Loop Behavior Cloning?</h2>
+      </div>
+      <div class="slide-body two-col">
+        <ul class="big-points">
+          <li>If demonstration collection is expensive, <strong>which visual diversity should we collect first?</strong></li>
+          <li>Controlled PyBullet Panda study: 2 tasks, 4 visual axes, 144 datasets.</li>
+          <li>Headline: visual diversity helps appearance &mdash; but obstacle&#8209;aware reaching is bottlenecked elsewhere.</li>
+        </ul>
+        <video autoplay muted loop playsinline preload="metadata"
+               src="../results/structured_analysis/videos/visual_only_scratch_ood_failure.mp4"></video>
+      </div>
+      <div class="slide-footer"><span>Slide 1 &middot; 0:00&ndash;0:25</span><span>What Visual Diversity Matters for Pixel BC</span></div>
+    </div>
+    <aside class="transcript">
+      <h3>Transcript &middot; target 25s</h3>
+      <p>This is a controlled study of visual imitation learning on a Panda manipulation benchmark. The driving question: when demonstration collection is expensive, which visual diversity should we collect first? We compare three model families across four visual axes and a hundred forty-four datasets, and the headline is sharper than just "diversity helps."</p>
+    </aside>
+  </section>
+
+  <!-- SLIDE 2 -->
+  <section class="slide" id="slide-2">
+    <div class="slide-screen">
+      <div>
+        <div class="slide-kicker">Problem statement</div>
+        <h2 class="slide-title">Pixel BC Breaks Under Closed&#8209;Loop Visual Shift</h2>
+      </div>
+      <div class="slide-body stack">
+        <div class="metric-grid">
+          <div class="metric-box"><strong>Human</strong><span>chooses what demonstrations and visual diversity to collect</span></div>
+          <div class="metric-box"><strong>Robot</strong><span>learns a pixel policy from RGB observations and joint state</span></div>
+          <div class="metric-box bad"><strong>Gap</strong><span>existing datasets entangle camera, color, lighting, layout, task &mdash; can&rsquo;t isolate which one matters</span></div>
+        </div>
+        <ul class="big-points">
+          <li>Closed&#8209;loop pixel BC is brittle: prediction errors compound when the policy controls the next observation.</li>
+        </ul>
+        <div class="pill-row">
+          <span class="pill">Existing approaches:</span>
+          <span class="pill cite">BridgeData V2</span>
+          <span class="pill cite">MimicLabs</span>
+          <span class="pill cite">R3M (pretrained encoders)</span>
+          <span class="pill cite">DAgger (covariate shift)</span>
+        </div>
+      </div>
+      <div class="slide-footer"><span>Slide 2 &middot; 0:25&ndash;1:10</span><span>What Visual Diversity Matters for Pixel BC</span></div>
+    </div>
+    <aside class="transcript">
+      <h3>Transcript &middot; target 45s</h3>
+      <p>The human-robot interaction component is the data collection decision: a human chooses what demonstrations the robot sees, and that choice determines whether the robot acts robustly. Pixel behavior cloning is appealing because it&rsquo;s simple, but it&rsquo;s brittle: small errors compound under closed-loop control. Existing large datasets like BridgeData and MimicLabs scale up by varying many factors at once, so it&rsquo;s hard to know which kind of diversity actually drove generalization. R3M and similar work argue pretrained encoders help. DAgger formalized the covariate shift we run into in closed loop.</p>
+    </aside>
+  </section>
+
+  <!-- SLIDE 3 -->
+  <section class="slide" id="slide-3">
+    <div class="slide-screen">
+      <div>
+        <div class="slide-kicker">Equations</div>
+        <h2 class="slide-title">Formulation: Imitation + Closed&#8209;Loop Evaluation</h2>
+      </div>
+      <div class="slide-body stack">
+        <div class="equation"><span class="label">BC loss &mdash; from Lecture 8 &middot; sum over expert state-action pairs (s, a<sub>h</sub>) &isin; D</span>
+          <code>&#x1d4db;(&theta;) &nbsp;=&nbsp; (1/N) &nbsp; &Sigma;<sub>(s, a<sub>h</sub>)&isin;D</sub> &nbsp; || a<sub>h</sub> &minus; &pi;<sub>&theta;</sub>(s) ||<sup>2</sup></code>
+        </div>
+        <div class="equation"><span class="label">Closed&#8209;loop dynamics &mdash; from Lecture 9 MDP framing &middot; why prediction errors compound</span>
+          <code>s<sup>t+1</sup> &nbsp;&sim;&nbsp; f(s<sup>t+1</sup> | s<sup>t</sup>, &nbsp; &pi;<sub>&theta;</sub>(s<sup>t</sup>))</code>
+        </div>
+        <div class="equation"><span class="label">Multi&#8209;threshold precision success &mdash; <em>our addition</em>; from <em>nearest</em> distance reached</span>
+          <code>S@&epsilon; &nbsp;=&nbsp; <strong>1</strong>[ min<sub>t</sub> || p<sub>ee,t</sub> &minus; p<sub>tgt</sub> ||<sub>2</sub> &le; &epsilon; ] &nbsp;&middot;&nbsp; &epsilon; &isin; {0.5, 1, 2, 5} cm</code>
+        </div>
+        <ul class="big-points">
+          <li>Plus end&#8209;distance <code>||p<sub>ee,T</sub>&minus;p<sub>tgt</sub>||</code> to separate <em>reaching</em> the target from <em>staying</em> there.</li>
+        </ul>
+      </div>
+      <div class="slide-footer"><span>Slide 3 &middot; 1:10&ndash;2:00</span><span>What Visual Diversity Matters for Pixel BC</span></div>
+    </div>
+    <aside class="transcript">
+      <h3>Transcript &middot; target 50s</h3>
+      <p>The training objective is the behavior cloning loss from Lecture 8: minimize one-over-N times the sum of squared errors between the expert action a-sub-h and the policy output pi-theta of s, over the expert dataset D. The closed-loop dynamics from the MDP framing in Lecture 9 explain why errors compound: once the robot acts, its own action shifts the next state. So we evaluate closed-loop rollouts, not just training loss. For success we compute whether the end effector ever gets within an epsilon of the target — at four thresholds from half a centimeter to five — and we also report the final distance, because a policy can pass near the target and then drift away.</p>
+    </aside>
+  </section>
+
+  <!-- SLIDE 4 -->
+  <section class="slide" id="slide-4">
+    <div class="slide-screen">
+      <div>
+        <div class="slide-kicker">Experimental setup</div>
+        <h2 class="slide-title">V&#8209;BCOOD: Two Tasks, Four Visual Axes, 144 Datasets</h2>
+      </div>
+      <div class="slide-body two-col">
+        <ul class="big-points">
+          <li><strong>Tasks:</strong> direct reach &middot; obstacle&#8209;aware reach (route around blocking obstacle).</li>
+          <li><strong>Visual axes:</strong> color, spatial distribution, camera viewpoint, lighting direction&amp;intensity.</li>
+          <li><strong>16 train configs</strong> = each axis × narrow/diverse × 2 tasks.</li>
+          <li><strong>Budgets:</strong> 5 / 20 / 50 demos × 3 seeds, plus 100 / 200 (1 seed, directional).</li>
+          <li><strong>ID + OOD splits</strong> per axis: matched train condition vs. held&#8209;out variant.</li>
+          <li><strong>Observations:</strong> 128&times;128 RGB &mdash; external camera + wrist camera.</li>
+        </ul>
+        <img src="../results/previews_128px_v1/preview_contact_sheet_seed000.png"
+             alt="Dataset preview contact sheet across all train configs">
+      </div>
+      <div class="slide-footer"><span>Slide 4 &middot; 2:00&ndash;3:15</span><span>What Visual Diversity Matters for Pixel BC</span></div>
+    </div>
+    <aside class="transcript">
+      <h3>Transcript &middot; target 75s</h3>
+      <p>The benchmark has two tasks: direct reaching to a cube, and obstacle-aware reaching, where the arm has to route around a blocking obstacle before reaching the same target. We use 128 by 128 RGB observations from an external camera and a wrist camera. The four visual diversity axes are color, spatial target distribution, camera viewpoint, and lighting direction and intensity. For each axis we define a narrow and a diverse training condition, on each of the two tasks &mdash; sixteen train configurations total. We collect demonstration budgets of five, twenty, and fifty with three seeds, plus one hundred and two hundred at seed zero for directional trends. Every train config has matched in-distribution and held-out out-of-distribution evaluation on its visual axis. The total is one hundred forty-four datasets, and the comparison is interpretable because we vary one factor at a time.</p>
+    </aside>
+  </section>
+
+  <!-- SLIDE 5 -->
+  <section class="slide" id="slide-5">
+    <div class="slide-screen">
+      <div>
+        <div class="slide-kicker">Methods</div>
+        <h2 class="slide-title">Three Visual Policies + One Diagnostic</h2>
+      </div>
+      <div class="slide-body stack">
+        <div class="metric-grid">
+          <div class="metric-box"><strong>Scratch CNN</strong><span>End&#8209;to&#8209;end pixel BC. Small CNN encoder + MLP policy head. The simplest baseline.</span></div>
+          <div class="metric-box"><strong>Frozen ResNet&#8209;18</strong><span>ImageNet encoder frozen. Train projection + policy head only. Tests sim&#8209;to&#8209;sim transfer of pretrained features.</span></div>
+          <div class="metric-box"><strong>Partial ResNet&#8209;18</strong><span>Later residual blocks fine&#8209;tuned. Tests whether adaptation closes the sim&#8209;feature gap.</span></div>
+          <div class="metric-box good"><strong>Phase + geometry</strong><span><em>Diagnostic</em>: same RGB + one&#8209;hot task stage + obstacle/target geometry. <strong>Privileged input by design.</strong></span></div>
+        </div>
+        <ul class="big-points">
+          <li>Same BC loss, action space, and 400&#8209;step rollout horizon for all four. The diagnostic isolates <em>what information</em> visual policies are missing.</li>
+        </ul>
+      </div>
+      <div class="slide-footer"><span>Slide 5 &middot; 3:15&ndash;4:30</span><span>What Visual Diversity Matters for Pixel BC</span></div>
+    </div>
+    <aside class="transcript">
+      <h3>Transcript &middot; target 75s</h3>
+      <p>We compare three visual policies plus one diagnostic. The scratch CNN is a small end-to-end network trained directly on pixels. The frozen ResNet-18 takes the ImageNet pretrained encoder, freezes it, and trains a projection plus policy head. The partial ResNet-18 unfreezes the later residual blocks. All three share the same loss, action space, and rollout horizon. After we saw that visual diversity alone did not solve the obstacle-aware spatial OOD case, we added a diagnostic: same RGB inputs, plus one-hot task stage and explicit obstacle and target geometry. This is privileged input by design. It is not a method we are proposing for deployment. Its job is to identify what information the visual policies failed to extract from pixels alone.</p>
+    </aside>
+  </section>
+
+  <!-- SLIDE 6 -->
+  <section class="slide" id="slide-6">
+    <div class="slide-screen">
+      <div>
+        <div class="slide-kicker">Result A &middot; visual axis ranking</div>
+        <h2 class="slide-title">Spatial Distribution Is the Hardest Visual Axis</h2>
+      </div>
+      <div class="slide-body two-col">
+        <img src="../results/slide_charts/axis_grouped_bars.png"
+             alt="OOD success at 1cm by visual axis, three model families, budget 50">
+        <div class="stack">
+          <div class="metric-grid">
+            <div class="metric-box"><strong>57.9%</strong><span>Scratch CNN OOD camera @1cm</span></div>
+            <div class="metric-box"><strong>41.1%</strong><span>Scratch CNN OOD color @1cm</span></div>
+            <div class="metric-box"><strong>20.6%</strong><span>Scratch CNN OOD lighting @1cm</span></div>
+            <div class="metric-box bad"><strong>2.9%</strong><span>Scratch CNN OOD <em>spatial</em> @1cm</span></div>
+          </div>
+          <ul class="big-points">
+            <li>Spatial OOD stays in single digits across <em>all three</em> families &mdash; even at budget 200.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer"><span>Slide 6 &middot; 4:30&ndash;5:25</span><span>What Visual Diversity Matters for Pixel BC</span></div>
+    </div>
+    <aside class="transcript">
+      <h3>Transcript &middot; target 55s</h3>
+      <p>Result one: at budget fifty, with three training seeds, the scratch CNN handles camera and color shifts much better than expected. Out-of-distribution camera success at one centimeter is fifty seven point nine percent. Color is forty one. Lighting is twenty. Spatial distribution is the clear failure: only two point nine percent. This pattern holds across every model family &mdash; spatial OOD never escapes single digits, even at budget two hundred. Notice that on spatial, the frozen ResNet actually edges out scratch CNN. The takeaway is not that scratch is uniformly best &mdash; it is that spatial shift is uniquely brutal.</p>
+    </aside>
+  </section>
+
+  <!-- SLIDE 7 -->
+  <section class="slide" id="slide-7">
+    <div class="slide-screen">
+      <div>
+        <div class="slide-kicker">Result B &middot; metrics matter</div>
+        <h2 class="slide-title">Loose Thresholds Hide Precision Failure</h2>
+      </div>
+      <div class="slide-body two-col">
+        <img src="../results/slide_charts/threshold_sweep.png"
+             alt="OOD success vs precision threshold for three families, budget 200">
+        <div class="stack">
+          <div class="metric-grid">
+            <div class="metric-box"><strong>86.6%</strong><span>Scratch CNN OOD @5cm, budget 200</span></div>
+            <div class="metric-box bad"><strong>43.5%</strong><span>same model, same data, OOD @1cm</span></div>
+            <div class="metric-box"><strong>3.0 cm</strong><span>mean nearest distance reached</span></div>
+            <div class="metric-box bad"><strong>37.3 cm</strong><span>mean <em>final</em> distance &mdash; the policy drifts</span></div>
+          </div>
+          <ul class="big-points">
+            <li>Same trajectories. The 5cm threshold inflates apparent success by ~2&times;.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer"><span>Slide 7 &middot; 5:25&ndash;6:05</span><span>What Visual Diversity Matters for Pixel BC</span></div>
+    </div>
+    <aside class="transcript">
+      <h3>Transcript &middot; target 40s</h3>
+      <p>Result two is about how we measure success. At budget two hundred, scratch CNN out-of-distribution success looks great at five centimeters: eighty six percent. But at one centimeter it drops to forty three. Mean nearest distance is three centimeters, while final distance is thirty seven. That gap means many rollouts brush past the target and then drift. Loose success makes failed precision look like success.</p>
+    </aside>
+  </section>
+
+  <!-- SLIDE 8 -->
+  <section class="slide" id="slide-8">
+    <div class="slide-screen">
+      <div>
+        <div class="slide-kicker">Result C &middot; model comparison</div>
+        <h2 class="slide-title">Pretrained Encoders Are Not a Free Win in Simulation</h2>
+      </div>
+      <div class="slide-body two-col">
+        <img src="../results/slide_charts/family_precision_end.png"
+             alt="Precision vs end distance, three families, OOD at budget 200">
+        <div class="stack">
+          <ul class="big-points">
+            <li>Scratch CNN beats Frozen ResNet&#8209;18 by <strong>~30pp on OOD@1cm</strong>.</li>
+            <li>Frozen ResNet ends closer to the target on average (smoother), but <em>less precise</em>.</li>
+            <li>Partial fine&#8209;tuning is unstable across axes &mdash; not a clean win over either.</li>
+          </ul>
+          <div class="takeaway"><strong>Why:</strong> ImageNet features were not built for sim&#8209;image control geometry. Representation quality only helps when it captures what the controller needs.</div>
+        </div>
+      </div>
+      <div class="slide-footer"><span>Slide 8 &middot; 6:05&ndash;6:50</span><span>What Visual Diversity Matters for Pixel BC</span></div>
+    </div>
+    <aside class="transcript">
+      <h3>Transcript &middot; target 45s</h3>
+      <p>Result three answers the pretrained-encoder question. Frozen ResNet-18 reaches only thirteen point eight percent precision at one centimeter on out-of-distribution rollouts at budget two hundred &mdash; about thirty points below scratch CNN&rsquo;s forty three point five. Partial fine-tuning sits in between but is unstable. The nuance: frozen ResNet has lower end distance, around twenty three centimeters versus thirty seven, so the policy is smoother but less precise. Pretrained natural-image features are not a guaranteed win for sim-image pixel control.</p>
+    </aside>
+  </section>
+
+  <!-- SLIDE 9 -->
+  <section class="slide" id="slide-9">
+    <div class="slide-screen">
+      <div>
+        <div class="slide-kicker">Result D &middot; main discovery</div>
+        <h2 class="slide-title">Phase + Geometry: Information, Not Appearance</h2>
+      </div>
+      <div class="slide-body stack">
+        <div class="slide-body two-col">
+          <video controls preload="metadata"
+                 src="../results/structured_analysis/videos/visual_only_scratch_ood_failure.mp4"></video>
+          <video controls preload="metadata"
+                 src="../results/structured_analysis/videos/structured_scratch_ood_success.mp4"></video>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-box bad"><strong>1.3%</strong><span>visual&#8209;only Scratch OOD S@1cm</span></div>
+          <div class="metric-box good"><strong>53.3%</strong><span>phase+geometry Scratch OOD S@1cm</span></div>
+          <div class="metric-box bad"><strong>19.3 cm</strong><span>visual&#8209;only final distance</span></div>
+          <div class="metric-box good"><strong>4.2 cm</strong><span>phase+geometry final distance</span></div>
+        </div>
+        <ul class="big-points">
+          <li><strong>Same RGB. Same architecture. Same data.</strong> The only change is adding task stage + obstacle/target geometry as input.</li>
+        </ul>
+      </div>
+      <div class="slide-footer"><span>Slide 9 &middot; 6:50&ndash;8:10</span><span>What Visual Diversity Matters for Pixel BC</span></div>
+    </div>
+    <aside class="transcript">
+      <h3>Transcript &middot; target 80s</h3>
+      <p>This is the headline result. After spatial remained weak, we collected an edge-balanced obstacle-aware dataset that covers corners, edges, and interior target regions evenly. Visual-only training still failed: scratch CNN reached only one point three percent at one centimeter on out-of-distribution rollouts. We then ran the diagnostic: same RGB images, same architecture, but with one-hot task stage and explicit target and obstacle geometry as additional inputs. The scratch model jumped to fifty three point three percent precision. Final distance dropped from nineteen point three to four point two centimeters. This is the punchline: the obstacle-aware spatial OOD failure is not a visual diversity problem. The visual encoder was not extracting enough phase and spatial information from pixels alone, even with the same data. The left video is visual-only failure; the right is phase-plus-geometry success at the same target locations.</p>
+    </aside>
+  </section>
+
+  <!-- SLIDE 10 -->
+  <section class="slide" id="slide-10">
+    <div class="slide-screen">
+      <div>
+        <div class="slide-kicker">Result E &middot; ablation</div>
+        <h2 class="slide-title">Geometry Does Most of the Work</h2>
+      </div>
+      <div class="slide-body two-col">
+        <img src="../results/structured_analysis/scratch_structured_ablation.png"
+             alt="Scratch CNN ablation: phase only vs target geometry vs full geometry vs phase+geometry">
+        <div class="stack">
+          <div class="metric-grid">
+            <div class="metric-box bad"><strong>0.0%</strong><span>Phase only OOD @1cm</span></div>
+            <div class="metric-box"><strong>6.7%</strong><span>Target geometry only</span></div>
+            <div class="metric-box"><strong>21.3%</strong><span>Full geometry (target + obstacle)</span></div>
+            <div class="metric-box good"><strong>53.3%</strong><span>Phase + geometry (full diagnostic)</span></div>
+          </div>
+          <ul class="big-points">
+            <li>Phase alone fails &mdash; doesn&rsquo;t locate target or obstacle. Geometry carries the load. Phase compounds it.</li>
+            <li>Bucket detail: corners 0&rarr;<strong>82%</strong>, edges 1.6&rarr;<strong>62%</strong>, interior 1.4&rarr;<strong>38%</strong>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer"><span>Slide 10 &middot; 8:10&ndash;8:50</span><span>What Visual Diversity Matters for Pixel BC</span></div>
+    </div>
+    <aside class="transcript">
+      <h3>Transcript &middot; target 40s</h3>
+      <p>The ablation makes the diagnostic defensible. Phase alone fails at zero percent &mdash; knowing the task stage doesn&rsquo;t tell you where the target or obstacle is. Target geometry alone gives seven percent. Full geometry &mdash; target plus obstacle &mdash; gives twenty one. Phase plus geometry together gives fifty three. So geometry does most of the work, and the phase signal compounds it. Bucket-level: corner targets jump from zero to eighty two percent. This is information, not appearance.</p>
+    </aside>
+  </section>
+
+  <!-- SLIDE 11 -->
+  <section class="slide" id="slide-11">
+    <div class="slide-screen">
+      <div>
+        <div class="slide-kicker">Connection to class</div>
+        <h2 class="slide-title">Class Concepts &amp; Beyond&#8209;Lecture Work</h2>
+      </div>
+      <div class="slide-body stack">
+        <div class="metric-grid">
+          <div class="metric-box"><strong>Lec 8 &middot; BC</strong><span>π<sub>θ</sub>(s) → a, trained on D = {(s, a<sub>h</sub>)} with loss <code>(1/N) Σ ‖a<sub>h</sub> − π<sub>θ</sub>(s)‖²</code></span></div>
+          <div class="metric-box"><strong>Lec 8 &middot; Match + Extrapolate</strong><span>our ID splits test "match"; OOD splits test "extrapolate to new states"</span></div>
+          <div class="metric-box"><strong>Lec 8 &middot; OOD failure</strong><span>the failure mode that motivated DAgger; we measure it without online intervention</span></div>
+          <div class="metric-box"><strong>Lec 9 &middot; Foundation + freeze/fine-tune</strong><span>Frozen ResNet-18 = freeze; Partial = post-training; Scratch = no pretraining</span></div>
+          <div class="metric-box"><strong>Lec 9 &middot; Vision → action</strong><span>"state is image" trend &mdash; our s = 128×128 dual-camera RGB</span></div>
+          <div class="metric-box good"><strong>Beyond lecture</strong><span>multi-threshold S@{0.5,1,2,5}cm + nearest/end distance &middot; axis-isolated diversity benchmark &middot; privileged-input diagnostic as counterfactual</span></div>
+        </div>
+        <div class="takeaway"><strong>Honest framing:</strong> the original proposal asked which axis to prioritize. The analysis pushed us to a stronger claim &mdash; for obstacle-aware reaching, no amount of visual diversity is enough.</div>
+      </div>
+      <div class="slide-footer"><span>Slide 11 &middot; 8:50&ndash;9:25</span><span>What Visual Diversity Matters for Pixel BC</span></div>
+    </div>
+    <aside class="transcript">
+      <h3>Transcript &middot; target 35s</h3>
+      <p>From Lecture 8, we use behavior cloning directly: the policy pi-theta of s, trained on a dataset of state-action pairs with the squared-error BC loss. Our ID splits test "match seen states"; our OOD splits test "extrapolate to new states" — the exact problem framing from class. The OOD failure mode that motivated DAgger is what we study, but without online intervention. From Lecture 9's trends, we use foundation-model encoders with freeze and fine-tune — that's our Frozen and Partial ResNet baselines. Beyond lecture: the multi-threshold precision metric, the axis-isolated diversity benchmark, and the privileged-input diagnostic.</p>
+    </aside>
+  </section>
+
+  <!-- SLIDE 12 -->
+  <section class="slide" id="slide-12">
+    <div class="slide-screen">
+      <div>
+        <div class="slide-kicker">Difficulty &amp; closing</div>
+        <h2 class="slide-title">Scope Built &amp; Final Takeaway</h2>
+      </div>
+      <div class="slide-body stack">
+        <div class="metric-grid">
+          <div class="metric-box"><strong>144</strong><span>datasets at 128px dual&#8209;camera RGB</span></div>
+          <div class="metric-box"><strong>500+</strong><span>trained policies (3 families &times; 16 configs &times; 5 budgets &times; seeds)</span></div>
+          <div class="metric-box"><strong>150k+</strong><span>closed&#8209;loop rollouts evaluated</span></div>
+          <div class="metric-box"><strong>2 GPU clusters</strong><span>ARC + role&#8209;lab sweeps</span></div>
+        </div>
+        <div class="takeaway" style="font-size:21px">
+          <strong>Takeaway.</strong> Visual diversity helps appearance shifts. <strong>Obstacle&#8209;aware reaching is bottlenecked by phase and geometry inference, not appearance.</strong> Pretrained encoders are not a free win in simulation.
+        </div>
+      </div>
+      <div class="slide-footer"><span>Slide 12 &middot; 9:25&ndash;10:00</span><span>Thank you</span></div>
+    </div>
+    <aside class="transcript">
+      <h3>Transcript &middot; target 35s</h3>
+      <p>On scope: one hundred forty-four datasets at 128 pixels with dual cameras, over five hundred trained policies across three model families, more than a hundred and fifty thousand closed-loop evaluation rollouts &mdash; all sweeping on the ARC and role-lab GPU clusters. The final takeaway in one line: visual diversity helps appearance shifts, obstacle-aware reaching is bottlenecked by phase and geometry inference rather than appearance, and pretrained encoders are not a free win in simulation. Thank you.</p>
+    </aside>
+  </section>
+
+  </div>
+
+  <footer>
+    Source artifacts are local to <code>research2/results</code>. Companion pages: <a href="11_video_content_finalization.html">content finalization</a>, <a href="07_video_rubric_plan.html">rubric mapping</a>, <a href="10_rubric_execution_plan.html">point-by-point execution plan</a>.
+  </footer>
+</main>
+</body>
+</html>

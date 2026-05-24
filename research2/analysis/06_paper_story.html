@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper Story</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --ink: #18202b;
+      --muted: #5e6877;
+      --line: #d9dee7;
+      --accent: #156b75;
+      --accent-2: #7a4b00;
+      --good: #137548;
+      --bad: #a13232;
+      --code: #eef2f7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.52;
+      font-size: 16px;
+    }
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 26px 0 56px;
+    }
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 26px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .topnav a {
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 7px 10px;
+      border-radius: 7px;
+      font-size: 14px;
+    }
+    .topnav a.active {
+      border-color: var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+    }
+    header {
+      margin-bottom: 24px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      max-width: 980px;
+    }
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 920px;
+    }
+    h2 {
+      margin: 34px 0 12px;
+      font-size: 25px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    p {
+      margin: 0 0 12px;
+      max-width: 980px;
+    }
+    a { color: var(--accent); }
+    code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: 0.92em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 14px;
+      margin: 16px 0 24px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .card h3 { margin-top: 0; }
+    .callout {
+      background: #f1f8f8;
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      margin: 18px 0;
+      max-width: 1000px;
+    }
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid var(--accent-2);
+      padding: 14px 16px;
+      margin: 18px 0;
+      max-width: 1000px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 14px 0 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #eef2f7;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    td.num, th.num { text-align: right; }
+    tr:last-child td { border-bottom: 0; }
+    .figure {
+      margin: 18px 0 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      background: #ffffff;
+    }
+    .figure figcaption {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 14px;
+      margin: 16px 0 24px;
+    }
+    video {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #000000;
+    }
+    ul, ol { max-width: 980px; }
+    li { margin: 5px 0; }
+    .metric {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .small {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .slide-jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 16px 0 24px;
+    }
+    .slide-jump a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 5px 8px;
+      font-size: 13px;
+    }
+    .deck {
+      display: grid;
+      gap: 28px;
+    }
+    .slide {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .slide-screen {
+      min-height: 560px;
+      padding: 34px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 20px;
+      background: #ffffff;
+    }
+    .slide-kicker {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 13px;
+    }
+    .slide-title {
+      font-size: clamp(30px, 4.5vw, 48px);
+      line-height: 1.04;
+      margin: 0;
+      max-width: 980px;
+    }
+    .slide-body {
+      align-self: center;
+      display: grid;
+      gap: 16px;
+    }
+    .slide-body.two-col {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+    }
+    .slide-body img,
+    .slide-body video {
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+    .big-points {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 24px;
+      line-height: 1.24;
+    }
+    .big-points li {
+      margin: 0;
+      padding: 14px 16px;
+      background: #f6f8fb;
+      border-left: 4px solid var(--accent);
+      border-radius: 7px;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .metric-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #f6f8fb;
+    }
+    .metric-box strong {
+      display: block;
+      font-size: 30px;
+      color: var(--accent);
+      line-height: 1.05;
+    }
+    .metric-box span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .equation {
+      font-size: 23px;
+      background: #f6f8fb;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+    }
+    .transcript {
+      border-top: 1px solid var(--line);
+      background: #fbfcfe;
+      padding: 18px 22px;
+    }
+    .transcript h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+    .transcript p {
+      max-width: none;
+    }
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+    @media (max-width: 760px) {
+      .slide-screen {
+        min-height: auto;
+        padding: 22px;
+      }
+      .slide-body.two-col {
+        grid-template-columns: 1fr;
+      }
+      .big-points {
+        font-size: 19px;
+      }
+      .equation {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <nav class="topnav"><a class="" href="index.html">Overview</a>
+<a class="" href="01_proposal_to_story.html">Proposal to Story</a>
+<a class="" href="02_experiment_design.html">Experiment Design</a>
+<a class="" href="03_visual_diversity_results.html">Visual Diversity</a>
+<a class="" href="04_model_comparison.html">Model Comparison</a>
+<a class="" href="05_structured_diagnostic.html">Structured Diagnostic</a>
+<a class="active" href="06_paper_story.html">Paper Story</a>
+<a class="" href="07_video_rubric_plan.html">Video Rubric Plan</a>
+<a class="" href="08_video_slides.html">Video Slides</a>
+<a class="" href="09_video_case_studies.html">Video Case Studies</a>
+<a class="" href="10_rubric_execution_plan.html">Rubric Execution</a></nav>
+    <header>
+      <h1>Paper Story</h1>
+      <p class="subtitle">Claims, paper structure, figure plan, limitations, and abstract draft.</p>
+    </header>
+    
+<h2>Recommended One-Sentence Story</h2>
+<div class="callout">
+  <p>In controlled pixel-based robot BC, appearance and viewpoint diversity are not the main obstacle; spatial obstacle-aware generalization fails because image-only policies struggle to infer task phase and geometry, and multi-threshold closed-loop evaluation exposes that failure.</p>
+</div>
+
+<h2>Defensible Claims</h2>
+<div class="table-wrap"><table><thead><tr><th class="">Claim</th><th class="">Evidence</th></tr></thead><tbody><tr><td class="">Controlled visual diversity matters, but not equally.</td><td class="">Scratch CNN OOD at budget 50: camera 57.9% S@1cm, color 41.1%, lighting 20.6%, spatial 2.9%.</td></tr>
+<tr><td class="">Pretrained encoders are not a guaranteed solution in simulation.</td><td class="">Frozen and partial ResNet-18 do not consistently beat scratch CNN precision; partial fine-tuning is often unstable.</td></tr>
+<tr><td class="">Obstacle-aware spatial OOD is a phase/geometry problem, not only an image augmentation problem.</td><td class="">Edge-balanced visual-only scratch OOD S@1cm is 1.3%; phase+geometry scratch OOD S@1cm is 53.3%.</td></tr>
+<tr><td class="">Precision metrics change the conclusion.</td><td class="">S@5cm can look acceptable while S@1cm and final distance reveal drift, oscillation, or unstable stopping.</td></tr></tbody></table></div>
+
+<h2>Suggested Paper Structure</h2>
+<ol>
+  <li><strong>Introduction.</strong> Start from the practical data-collection question: when demos are expensive, which visual diversity is worth collecting?</li>
+  <li><strong>Benchmark.</strong> Present the controlled PyBullet setup, reach and obstacle-aware reach, four diversity axes, budgets, seeds, and ID/OOD splits.</li>
+  <li><strong>Visual-only results.</strong> Show that spatial distribution dominates the failure modes, while color/camera/lighting are easier for scratch CNNs.</li>
+  <li><strong>Representation results.</strong> Show that frozen and partial ResNet-18 do not reliably solve the simulated control problem.</li>
+  <li><strong>Diagnostic extension.</strong> Introduce phase+geometry-conditioned visual BC to test what image-only policies fail to infer.</li>
+  <li><strong>Discussion.</strong> Argue that future policies need better spatial/temporal/geometric representations, not only more appearance diversity.</li>
+</ol>
+
+<h2>Figure Plan</h2>
+<div class="table-wrap"><table><thead><tr><th class="">Slot</th><th class="">Content</th></tr></thead><tbody><tr><td class="">Figure 1</td><td class="">Benchmark diagram: two tasks, four diversity axes, ID/OOD splits, 128px dual RGB observations.</td></tr>
+<tr><td class="">Figure 2</td><td class="">OOD axis ranking by model at budget 50 and 200.</td></tr>
+<tr><td class="">Figure 3</td><td class="">Budget scaling for Scratch CNN, Frozen ResNet-18, and Partial ResNet-18.</td></tr>
+<tr><td class="">Figure 4</td><td class="">Structured diagnostic main comparison and ablation.</td></tr>
+<tr><td class="">Figure 5</td><td class="">Spatial bucket breakdown plus representative rollout frames or video stills.</td></tr></tbody></table></div>
+
+<h2>Limitations to State Explicitly</h2>
+<div class="table-wrap"><table><thead><tr><th class="">Limitation</th><th class="">How to handle it</th></tr></thead><tbody><tr><td class="">Simulation-only images</td><td class="">Frame as a controlled diagnostic study, not a direct sim-to-real claim.</td></tr>
+<tr><td class="">High budgets use one seed</td><td class="">Treat budget 100/200 as directional; rely on budget 50 for full multi-seed visual-axis conclusions.</td></tr>
+<tr><td class="">Structured phase+geometry uses privileged information</td><td class="">Call it a diagnostic extension that identifies missing information, not a deployment baseline.</td></tr>
+<tr><td class="">Obstacle-aware task is still simple manipulation</td><td class="">Emphasize controlled interpretability over task-suite breadth.</td></tr></tbody></table></div>
+
+<h2>Suggested Abstract Draft</h2>
+<p>Behavior cloning from pixels is appealing for robot manipulation, but its robustness depends strongly on what variation appears in the demonstrations. We study this question in a controlled PyBullet Panda benchmark with 128px dual-camera observations, two reaching tasks, four visual diversity axes, and closed-loop ID/OOD evaluation. Across scratch CNN, frozen ResNet-18, and partially fine-tuned ResNet-18 policies, spatial distribution is the most difficult OOD axis, while color, camera, and lighting shifts are often easier than expected. Loose success thresholds obscure this result: policies frequently reach near the target but fail to stabilize precisely. In the obstacle-aware task, additional edge-balanced data does not solve the hardest spatial failures. A phase- and geometry-conditioned diagnostic sharply improves precision, indicating that the image-only policies fail to infer hidden task stage and obstacle-target geometry reliably. These results suggest that data diversity alone is insufficient for obstacle-aware visual imitation; closed-loop robustness also requires representations that expose control-relevant spatial and phase structure.</p>
+
+    <footer>
+      Source artifacts are local to <code>research2/results</code>. Generated by <code>research2/code/build_html_analysis.py</code>.
+    </footer>
+  </main>
+</body>
+</html>

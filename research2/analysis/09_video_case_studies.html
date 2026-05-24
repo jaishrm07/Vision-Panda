@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Case Studies</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --ink: #18202b;
+      --muted: #5e6877;
+      --line: #d9dee7;
+      --accent: #156b75;
+      --accent-2: #7a4b00;
+      --good: #137548;
+      --bad: #a13232;
+      --code: #eef2f7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.52;
+      font-size: 16px;
+    }
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 26px 0 56px;
+    }
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 26px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .topnav a {
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 7px 10px;
+      border-radius: 7px;
+      font-size: 14px;
+    }
+    .topnav a.active {
+      border-color: var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+    }
+    header {
+      margin-bottom: 24px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      max-width: 980px;
+    }
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 920px;
+    }
+    h2 {
+      margin: 34px 0 12px;
+      font-size: 25px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    p {
+      margin: 0 0 12px;
+      max-width: 980px;
+    }
+    a { color: var(--accent); }
+    code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: 0.92em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 14px;
+      margin: 16px 0 24px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .card h3 { margin-top: 0; }
+    .callout {
+      background: #f1f8f8;
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      margin: 18px 0;
+      max-width: 1000px;
+    }
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid var(--accent-2);
+      padding: 14px 16px;
+      margin: 18px 0;
+      max-width: 1000px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 14px 0 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #eef2f7;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    td.num, th.num { text-align: right; }
+    tr:last-child td { border-bottom: 0; }
+    .figure {
+      margin: 18px 0 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      background: #ffffff;
+    }
+    .figure figcaption {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 14px;
+      margin: 16px 0 24px;
+    }
+    video {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #000000;
+    }
+    ul, ol { max-width: 980px; }
+    li { margin: 5px 0; }
+    .metric {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .small {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .slide-jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 16px 0 24px;
+    }
+    .slide-jump a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 5px 8px;
+      font-size: 13px;
+    }
+    .deck {
+      display: grid;
+      gap: 28px;
+    }
+    .slide {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .slide-screen {
+      min-height: 560px;
+      padding: 34px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 20px;
+      background: #ffffff;
+    }
+    .slide-kicker {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 13px;
+    }
+    .slide-title {
+      font-size: clamp(30px, 4.5vw, 48px);
+      line-height: 1.04;
+      margin: 0;
+      max-width: 980px;
+    }
+    .slide-body {
+      align-self: center;
+      display: grid;
+      gap: 16px;
+    }
+    .slide-body.two-col {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+    }
+    .slide-body img,
+    .slide-body video {
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+    .big-points {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 24px;
+      line-height: 1.24;
+    }
+    .big-points li {
+      margin: 0;
+      padding: 14px 16px;
+      background: #f6f8fb;
+      border-left: 4px solid var(--accent);
+      border-radius: 7px;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .metric-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #f6f8fb;
+    }
+    .metric-box strong {
+      display: block;
+      font-size: 30px;
+      color: var(--accent);
+      line-height: 1.05;
+    }
+    .metric-box span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .equation {
+      font-size: 23px;
+      background: #f6f8fb;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+    }
+    .transcript {
+      border-top: 1px solid var(--line);
+      background: #fbfcfe;
+      padding: 18px 22px;
+    }
+    .transcript h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+    .transcript p {
+      max-width: none;
+    }
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+    @media (max-width: 760px) {
+      .slide-screen {
+        min-height: auto;
+        padding: 22px;
+      }
+      .slide-body.two-col {
+        grid-template-columns: 1fr;
+      }
+      .big-points {
+        font-size: 19px;
+      }
+      .equation {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <nav class="topnav"><a class="" href="index.html">Overview</a>
+<a class="" href="01_proposal_to_story.html">Proposal to Story</a>
+<a class="" href="02_experiment_design.html">Experiment Design</a>
+<a class="" href="03_visual_diversity_results.html">Visual Diversity</a>
+<a class="" href="04_model_comparison.html">Model Comparison</a>
+<a class="" href="05_structured_diagnostic.html">Structured Diagnostic</a>
+<a class="" href="06_paper_story.html">Paper Story</a>
+<a class="" href="07_video_rubric_plan.html">Video Rubric Plan</a>
+<a class="" href="08_video_slides.html">Video Slides</a>
+<a class="active" href="09_video_case_studies.html">Video Case Studies</a>
+<a class="" href="10_rubric_execution_plan.html">Rubric Execution</a></nav>
+    <header>
+      <h1>Video Case Studies</h1>
+      <p class="subtitle">Best and worst rollout video library for visual diversity axes, tasks, and improvement diagnostics.</p>
+    </header>
+    
+<div class="callout">
+  <p><strong>Video library.</strong> This page indexes the generated rollout case studies. The full standalone gallery is <a href="../results/video_case_studies_480p_contrast_dual/index.html">results/video_case_studies_480p_contrast_dual/index.html</a>, and the machine-readable manifest is <a href="../results/video_case_studies_480p_contrast_dual/recording_manifest.csv">recording_manifest.csv</a>. The preferred set is 854x480, slower playback, a closer external camera view, wrist/end-effector camera inset, and contrast-aware labels: flat cases are representative instead of fake best/worst.</p>
+</div>
+
+<h2>Recording Summary</h2>
+<div class="table-wrap"><table><thead><tr><th class="">Item</th><th class="num">Count</th><th class="">Meaning</th></tr></thead><tbody><tr><td class="">Total videos</td><td class="num">66</td><td class="">All generated best/worst rollout clips.</td></tr>
+<tr><td class="">Available MP4s</td><td class="num">66</td><td class="">Video files present on disk and linked by the manifest.</td></tr>
+<tr><td class="">Visual-axis videos</td><td class="num">36</td><td class="">4 axes x 2 tasks x best/worst x 3 clips.</td></tr>
+<tr><td class="">Improvement videos</td><td class="num">30</td><td class="">Diagnostic before/after and ablation clips.</td></tr>
+<tr><td class="">Best clips</td><td class="num">27</td><td class="">Lowest best-distance rollouts within each case.</td></tr>
+<tr><td class="">Worst clips</td><td class="num">27</td><td class="">Highest best-distance rollouts within each case.</td></tr>
+<tr><td class="">Recorder status ok/skipped</td><td class="num">66</td><td class="">Ok means recorded in that pass; skipped means the verified MP4 already existed.</td></tr></tbody></table></div>
+
+<h2>Featured Clips</h2>
+<div class="video-grid">
+  <div class="card">
+  <video controls preload="metadata" src="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/edge_balanced_visual_only_scratch/worst/01__seed101__ep034__best23p5cm__final37p1cm.mp4"></video>
+  <p class="small">improvements / avoid_reach / spatial_distribution / edge_balanced_visual_only_scratch / worst rank 1 | best 23.491 cm | final 37.149 cm</p>
+</div><div class="card">
+  <video controls preload="metadata" src="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/phase_geometry_scratch/best/01__seed102__ep020__best0p2cm__final0p3cm.mp4"></video>
+  <p class="small">improvements / avoid_reach / spatial_distribution / phase_geometry_scratch / best rank 1 | best 0.172 cm | final 0.307 cm</p>
+</div><div class="card">
+  <video controls preload="metadata" src="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/phase_geometry_scratch/worst/01__seed101__ep025__best14p2cm__final14p2cm.mp4"></video>
+  <p class="small">improvements / avoid_reach / spatial_distribution / phase_geometry_scratch / worst rank 1 | best 14.248 cm | final 14.248 cm</p>
+</div><div class="card">
+  <video controls preload="metadata" src="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/phase_only_ablation/worst/01__seed102__ep031__best34p9cm__final34p9cm.mp4"></video>
+  <p class="small">improvements / avoid_reach / spatial_distribution / phase_only_ablation / worst rank 1 | best 34.895 cm | final 34.895 cm</p>
+</div><div class="card">
+  <video controls preload="metadata" src="../results/video_case_studies_480p_contrast_dual/visual_axes/avoid_reach/spatial_distribution/avoid_spatial_wide/worst/01__seed101__ep040__best33p3cm__final50p8cm.mp4"></video>
+  <p class="small">visual_axes / avoid_reach / spatial_distribution / avoid_spatial_wide / worst rank 1 | best 33.317 cm | final 50.847 cm</p>
+</div><div class="card">
+  <video controls preload="metadata" src="../results/video_case_studies_480p_contrast_dual/visual_axes/reach/spatial_distribution/reach_spatial_wide/worst/01__seed102__ep031__best5p4cm__final99p0cm.mp4"></video>
+  <p class="small">visual_axes / reach / spatial_distribution / reach_spatial_wide / worst rank 1 | best 5.374 cm | final 98.962 cm</p>
+</div>
+</div>
+
+<h2>All Cases</h2>
+<div class="table-wrap"><table><thead><tr><th class="">Group</th><th class="">Task</th><th class="">Axis</th><th class="">Case</th><th class="">Type</th><th class="num">Videos</th><th class="num">Best cm range</th><th class="num">Final cm range</th><th class="">First clip</th></tr></thead><tbody><tr><td class="">improvements</td><td class="">avoid_reach</td><td class="">spatial_distribution</td><td class="">edge_balanced_visual_only_scratch</td><td class="">best</td><td class="num">3</td><td class="num">0.8-1.0</td><td class="num">1.3-3.4</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/edge_balanced_visual_only_scratch/best/01__seed102__ep008__best0p8cm__final3p4cm.mp4">open</a></td></tr>
+<tr><td class="">improvements</td><td class="">avoid_reach</td><td class="">spatial_distribution</td><td class="">edge_balanced_visual_only_scratch</td><td class="">worst</td><td class="num">3</td><td class="num">21.8-23.5</td><td class="num">36.0-37.1</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/edge_balanced_visual_only_scratch/worst/02__seed101__ep000__best23p0cm__final36p6cm.mp4">open</a></td></tr>
+<tr><td class="">improvements</td><td class="">avoid_reach</td><td class="">spatial_distribution</td><td class="">full_geometry_only_ablation</td><td class="">best</td><td class="num">3</td><td class="num">0.3-0.4</td><td class="num">2.6-5.0</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/full_geometry_only_ablation/best/02__seed102__ep031__best0p3cm__final2p6cm.mp4">open</a></td></tr>
+<tr><td class="">improvements</td><td class="">avoid_reach</td><td class="">spatial_distribution</td><td class="">full_geometry_only_ablation</td><td class="">worst</td><td class="num">3</td><td class="num">2.1-2.1</td><td class="num">5.5-5.9</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/full_geometry_only_ablation/worst/01__seed102__ep027__best2p1cm__final5p9cm.mp4">open</a></td></tr>
+<tr><td class="">improvements</td><td class="">avoid_reach</td><td class="">spatial_distribution</td><td class="">phase_geometry_scratch</td><td class="">best</td><td class="num">3</td><td class="num">0.2-0.2</td><td class="num">0.3-0.5</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/phase_geometry_scratch/best/01__seed102__ep020__best0p2cm__final0p3cm.mp4">open</a></td></tr>
+<tr><td class="">improvements</td><td class="">avoid_reach</td><td class="">spatial_distribution</td><td class="">phase_geometry_scratch</td><td class="">worst</td><td class="num">3</td><td class="num">14.1-14.2</td><td class="num">14.1-14.2</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/phase_geometry_scratch/worst/01__seed101__ep025__best14p2cm__final14p2cm.mp4">open</a></td></tr>
+<tr><td class="">improvements</td><td class="">avoid_reach</td><td class="">spatial_distribution</td><td class="">phase_only_ablation</td><td class="">best</td><td class="num">3</td><td class="num">1.7-2.0</td><td class="num">5.9-13.1</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/phase_only_ablation/best/01__seed101__ep006__best1p7cm__final7p1cm.mp4">open</a></td></tr>
+<tr><td class="">improvements</td><td class="">avoid_reach</td><td class="">spatial_distribution</td><td class="">phase_only_ablation</td><td class="">worst</td><td class="num">3</td><td class="num">28.8-34.9</td><td class="num">34.7-34.9</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/phase_only_ablation/worst/01__seed102__ep031__best34p9cm__final34p9cm.mp4">open</a></td></tr>
+<tr><td class="">improvements</td><td class="">avoid_reach</td><td class="">spatial_distribution</td><td class="">target_geometry_only_ablation</td><td class="">best</td><td class="num">3</td><td class="num">0.4-0.9</td><td class="num">3.4-4.9</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/target_geometry_only_ablation/best/02__seed101__ep023__best0p8cm__final4p9cm.mp4">open</a></td></tr>
+<tr><td class="">improvements</td><td class="">avoid_reach</td><td class="">spatial_distribution</td><td class="">target_geometry_only_ablation</td><td class="">worst</td><td class="num">3</td><td class="num">2.1-2.2</td><td class="num">3.3-3.6</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/improvements/avoid_reach/spatial_distribution/target_geometry_only_ablation/worst/01__seed100__ep004__best2p1cm__final3p6cm.mp4">open</a></td></tr>
+<tr><td class="">visual_axes</td><td class="">avoid_reach</td><td class="">camera_viewpoint</td><td class="">avoid_camera_multi_pose</td><td class="">representative</td><td class="num">3</td><td class="num">1.6-1.6</td><td class="num">1.6-1.6</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/visual_axes/avoid_reach/camera_viewpoint/avoid_camera_multi_pose/representative/02__seed101__ep024__best1p6cm__final1p6cm.mp4">open</a></td></tr>
+<tr><td class="">visual_axes</td><td class="">avoid_reach</td><td class="">color</td><td class="">avoid_color_multi</td><td class="">best</td><td class="num">3</td><td class="num">0.6-0.6</td><td class="num">2.1-2.1</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/visual_axes/avoid_reach/color/avoid_color_multi/best/02__seed100__ep013__best0p6cm__final2p1cm.mp4">open</a></td></tr>
+<tr><td class="">visual_axes</td><td class="">avoid_reach</td><td class="">color</td><td class="">avoid_color_multi</td><td class="">worst</td><td class="num">3</td><td class="num">1.4-1.4</td><td class="num">8.9-8.9</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/visual_axes/avoid_reach/color/avoid_color_multi/worst/01__seed100__ep003__best1p4cm__final8p9cm.mp4">open</a></td></tr>
+<tr><td class="">visual_axes</td><td class="">avoid_reach</td><td class="">lighting_direction_intensity</td><td class="">avoid_lighting_diverse</td><td class="">best</td><td class="num">3</td><td class="num">0.1-0.1</td><td class="num">0.1-0.1</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/visual_axes/avoid_reach/lighting_direction_intensity/avoid_lighting_diverse/best/01__seed100__ep003__best0p1cm__final0p1cm.mp4">open</a></td></tr>
+<tr><td class="">visual_axes</td><td class="">avoid_reach</td><td class="">lighting_direction_intensity</td><td class="">avoid_lighting_diverse</td><td class="">worst</td><td class="num">3</td><td class="num">0.3-0.3</td><td class="num">2.6-2.6</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/visual_axes/avoid_reach/lighting_direction_intensity/avoid_lighting_diverse/worst/01__seed100__ep002__best0p3cm__final2p6cm.mp4">open</a></td></tr>
+<tr><td class="">visual_axes</td><td class="">avoid_reach</td><td class="">spatial_distribution</td><td class="">avoid_spatial_wide</td><td class="">best</td><td class="num">3</td><td class="num">0.1-0.3</td><td class="num">0.6-1.5</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/visual_axes/avoid_reach/spatial_distribution/avoid_spatial_wide/best/01__seed101__ep008__best0p1cm__final1p3cm.mp4">open</a></td></tr>
+<tr><td class="">visual_axes</td><td class="">avoid_reach</td><td class="">spatial_distribution</td><td class="">avoid_spatial_wide</td><td class="">worst</td><td class="num">3</td><td class="num">31.8-33.9</td><td class="num">45.6-50.8</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/visual_axes/avoid_reach/spatial_distribution/avoid_spatial_wide/worst/01__seed101__ep040__best33p3cm__final50p8cm.mp4">open</a></td></tr>
+<tr><td class="">visual_axes</td><td class="">reach</td><td class="">camera_viewpoint</td><td class="">reach_camera_multi_pose</td><td class="">representative</td><td class="num">3</td><td class="num">0.5-0.5</td><td class="num">1.6-1.6</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/visual_axes/reach/camera_viewpoint/reach_camera_multi_pose/representative/03__seed102__ep022__best0p5cm__final1p6cm.mp4">open</a></td></tr>
+<tr><td class="">visual_axes</td><td class="">reach</td><td class="">color</td><td class="">reach_color_multi</td><td class="">representative</td><td class="num">3</td><td class="num">0.1-0.2</td><td class="num">0.1-1.6</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/visual_axes/reach/color/reach_color_multi/representative/01__seed100__ep002__best0p1cm__final0p1cm.mp4">open</a></td></tr>
+<tr><td class="">visual_axes</td><td class="">reach</td><td class="">lighting_direction_intensity</td><td class="">reach_lighting_diverse</td><td class="">representative</td><td class="num">3</td><td class="num">0.5-0.5</td><td class="num">9.8-10.9</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/visual_axes/reach/lighting_direction_intensity/reach_lighting_diverse/representative/02__seed100__ep043__best0p5cm__final10p2cm.mp4">open</a></td></tr>
+<tr><td class="">visual_axes</td><td class="">reach</td><td class="">spatial_distribution</td><td class="">reach_spatial_wide</td><td class="">best</td><td class="num">3</td><td class="num">0.3-0.6</td><td class="num">2.4-13.1</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/visual_axes/reach/spatial_distribution/reach_spatial_wide/best/03__seed100__ep005__best0p6cm__final2p4cm.mp4">open</a></td></tr>
+<tr><td class="">visual_axes</td><td class="">reach</td><td class="">spatial_distribution</td><td class="">reach_spatial_wide</td><td class="">worst</td><td class="num">3</td><td class="num">5.0-5.7</td><td class="num">92.9-99.0</td><td class=""><a href="../results/video_case_studies_480p_contrast_dual/visual_axes/reach/spatial_distribution/reach_spatial_wide/worst/01__seed102__ep031__best5p4cm__final99p0cm.mp4">open</a></td></tr></tbody></table></div>
+
+    <footer>
+      Source artifacts are local to <code>research2/results</code>. Generated by <code>research2/code/build_html_analysis.py</code>.
+    </footer>
+  </main>
+</body>
+</html>

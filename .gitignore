@@ -1,0 +1,94 @@
+# OS/editor noise
+.DS_Store
+.idea/
+.vscode/
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# LaTeX build products
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+
+# Large/generated ML artifacts
+*.pkl
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.npy
+*.npz
+*.mov
+*.mp4
+*.avi
+*.mkv
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Local/course/private materials
+final-plan.md
+project_video_rubric.pdf
+contribution_statements/
+homework_archive/
+research/
+research2/08-imitation-learning-1.pdf
+research2/09-imitation-learning-2.pdf
+research2/WORK_LOG.md
+research2/final_project_video.*
+research2/logs/
+
+# Generated local HTML/video case studies and bulky experiment outputs.
+research2/results/**
+!research2/results/
+!research2/results/analysis_id_ood_5_20_50/
+!research2/results/analysis_id_ood_5_20_50/**
+!research2/results/analysis_id_ood_all_budgets/
+!research2/results/analysis_id_ood_all_budgets/**
+!research2/results/analysis_scratch_cnn/
+!research2/results/analysis_scratch_cnn/**
+!research2/results/analysis_spatial_performance/
+!research2/results/analysis_spatial_performance/*.png
+!research2/results/dataset_audit_128px_v1/
+!research2/results/dataset_audit_128px_v1/**
+!research2/results/datasets_128px_v1/
+!research2/results/datasets_128px_v1/*.json
+!research2/results/eval_id_128px_v1/
+!research2/results/eval_id_128px_v1/*.json
+!research2/results/eval_ood_128px_v1/
+!research2/results/eval_ood_128px_v1/*.json
+!research2/results/eval_id_audit_128px_v1/
+!research2/results/eval_id_audit_128px_v1/**
+!research2/results/eval_ood_audit_128px_v1/
+!research2/results/eval_ood_audit_128px_v1/**
+!research2/results/slide_charts/
+!research2/results/slide_charts/**
+!research2/results/structured_analysis/
+!research2/results/structured_analysis/*.csv
+!research2/results/structured_analysis/*.md
+!research2/results/structured_analysis/*.png
+
+# Analysis videos are useful locally but too heavy/noisy for source control.
+research2/analysis/slide_videos/
+
+# Keep paper and slide image assets public.
+!research2/paper/
+!research2/paper/**
+!research2/analysis/dataset_slides/
+!research2/analysis/dataset_slides/**

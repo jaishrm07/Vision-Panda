@@ -1,0 +1,14 @@
+{
+  "model_family": "scratch_bc_128",
+  "included_budgets": [
+    5,
+    20,
+    50
+  ],
+  "metric_rows": 288,
+  "id_metric_files": 144,
+  "ood_metric_files": 144,
+  "rollouts_per_metric": [
+    150
+  ]
+}

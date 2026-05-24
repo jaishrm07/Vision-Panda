@@ -1,0 +1,3844 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>V-BCOOD Results Presentation</title>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+
+:root {
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --ink: #121721;
+  --muted: #606a78;
+  --line: #dde3ec;
+  --line-strong: #c5cfdd;
+  --accent: #1f6f8b;
+  --scratch: #2c4669;
+  --frozen: #345d3e;
+  --partial: #864524;
+  --danger: #a8332b;
+  --success: #345d3e;
+  --warn-bg: #fff7e6;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+.deck { position: fixed; inset: 0; }
+.slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  padding: 38px 54px 58px;
+  background: var(--bg);
+}
+.slide.active { display: flex; }
+.kicker {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 0;
+  max-width: 1220px;
+  font-size: clamp(30px, 3.2vw, 56px);
+  line-height: 1.04;
+  letter-spacing: 0;
+  font-weight: 780;
+}
+.slide-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.title-slide h1 { font-size: clamp(34px, 4.1vw, 68px); }
+.title-slide {
+  justify-content: center;
+}
+.title-slide .kicker {
+  font-size: 14px;
+}
+.simple-title {
+  flex: 0 0 auto;
+  max-width: 1180px;
+  display: grid;
+  gap: 40px;
+}
+.subtitle {
+  margin: 0;
+  max-width: 980px;
+  color: var(--muted);
+  font-size: clamp(22px, 2.15vw, 36px);
+  line-height: 1.24;
+}
+.title-meta {
+  display: grid;
+  grid-template-columns: 1.5fr 0.9fr;
+  gap: 18px;
+}
+.title-meta div {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 8px;
+  padding: 18px 20px;
+  display: grid;
+  gap: 8px;
+}
+.title-meta span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.title-meta strong {
+  color: #172033;
+  font-size: clamp(16px, 1.35vw, 23px);
+  line-height: 1.3;
+}
+.hero-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1.04fr 0.96fr;
+  gap: 28px;
+  align-items: stretch;
+}
+.lede {
+  max-width: 940px;
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: clamp(17px, 1.45vw, 24px);
+  line-height: 1.42;
+}
+.authors {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 15px;
+}
+.two-col {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+.two-col.wide { grid-template-columns: 1.12fr 0.88fr; }
+.single-figure { flex: 1; min-height: 0; }
+.three-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.metric-grid {
+  display: grid;
+  gap: 12px;
+}
+.metric-grid.two { grid-template-columns: repeat(2, 1fr); }
+.metric-grid.four { grid-template-columns: repeat(4, 1fr); }
+.composition-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  gap: 14px;
+}
+.composition-cards {
+  min-height: 0;
+}
+.composition-cards .metric {
+  min-height: 0;
+  padding: 13px 15px;
+}
+.composition-cards .metric-value {
+  font-size: clamp(25px, 2.55vw, 42px);
+}
+.collection-pipeline {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.pipeline-title {
+  color: #334155;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-bottom: 9px;
+  text-transform: uppercase;
+}
+.pipeline-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.pipeline-step {
+  position: relative;
+  min-height: 94px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 11px 10px 42px;
+  background: #f8fafc;
+}
+.pipeline-num {
+  position: absolute;
+  left: 11px;
+  top: 11px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+}
+.pipeline-step strong {
+  display: block;
+  color: #172033;
+  font-size: clamp(14px, 1vw, 17px);
+  margin-bottom: 4px;
+}
+.pipeline-step span {
+  display: block;
+  color: var(--muted);
+  font-size: clamp(12px, 0.85vw, 14px);
+  line-height: 1.27;
+}
+.composition-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.metric {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 15px 16px;
+  min-height: 126px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.metric.scratch { border-top: 4px solid var(--scratch); }
+.metric.frozen { border-top: 4px solid var(--frozen); }
+.metric.partial { border-top: 4px solid var(--partial); }
+.metric.danger { border-top: 4px solid var(--danger); }
+.metric-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.metric-value {
+  color: var(--accent);
+  font-size: clamp(28px, 3vw, 50px);
+  line-height: 1;
+  font-weight: 780;
+  font-variant-numeric: tabular-nums;
+}
+.metric.scratch .metric-value { color: var(--scratch); }
+.metric.frozen .metric-value { color: var(--frozen); }
+.metric.partial .metric-value { color: var(--partial); }
+.metric.danger .metric-value { color: var(--danger); }
+.metric-caption {
+  color: #2d3541;
+  font-size: 14px;
+  line-height: 1.32;
+}
+.callout {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 8px;
+  padding: 14px 17px;
+  color: #25303c;
+  font-size: clamp(15px, 1.18vw, 19px);
+  line-height: 1.42;
+}
+.callout.strong {
+  border-left-color: var(--danger);
+  background: #fff4f2;
+}
+.chart-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px 4px;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+}
+.small-multiple-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  gap: 13px;
+}
+.small-multiple-grid.four {
+  grid-template-columns: repeat(2, 1fr);
+}
+.small-multiple-grid.three {
+  grid-template-columns: repeat(3, 1fr);
+}
+.small-chart-card {
+  min-width: 0;
+  min-height: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px;
+}
+.small-chart-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 225px;
+}
+.chart-svg { width: 100%; height: 100%; min-height: 330px; }
+.chart-title {
+  font-size: 19px;
+  font-weight: 800;
+  fill: var(--ink);
+}
+.chart-subtitle {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--muted);
+}
+.chart-note, .axis-tick, .legend, .x-label {
+  font-size: 13px;
+  fill: var(--muted);
+}
+.x-label { font-weight: 700; fill: #384454; }
+.bar-label {
+  font-size: 12px;
+  font-weight: 800;
+  fill: #263241;
+}
+.grid { stroke: #e6ebf2; stroke-width: 1; }
+.axis { stroke: var(--line-strong); stroke-width: 1.4; }
+.media-panel {
+  margin: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.media-panel img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  background: #fff;
+}
+.caption {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.25;
+}
+.raw-slide {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+.raw-dataset-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.raw-axis-row {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 12px;
+}
+.raw-axis-label {
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--axis-color);
+  background: var(--panel);
+  border-radius: 8px;
+  padding: 12px 13px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.raw-axis-label strong {
+  color: var(--axis-color);
+  font-size: clamp(17px, 1.35vw, 23px);
+  line-height: 1.02;
+}
+.raw-axis-label span {
+  color: var(--muted);
+  font-size: clamp(12px, 0.92vw, 15px);
+  line-height: 1.28;
+}
+.raw-strip {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  gap: 9px;
+}
+.raw-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.raw-cols-8 { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+.raw-card {
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--axis-color);
+  border-radius: 8px;
+  background: var(--panel);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+}
+.raw-card img {
+  width: 100%;
+  min-height: 0;
+  flex: 1 1 auto;
+  object-fit: contain;
+  image-rendering: auto;
+  background: #fff;
+  border: 1px solid #d7e0ec;
+}
+.raw-card figcaption {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  color: var(--muted);
+  font-size: clamp(10px, 0.8vw, 12px);
+  line-height: 1.2;
+  padding-top: 5px;
+  font-variant-numeric: tabular-nums;
+}
+.raw-card figcaption strong {
+  color: #273241;
+  font-weight: 800;
+}
+.raw-card figcaption span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.policy-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.policy-card {
+  min-height: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 7px solid var(--accent);
+  border-radius: 8px;
+  padding: 20px 21px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.policy-card.scratch { border-top-color: var(--scratch); }
+.policy-card.frozen { border-top-color: var(--frozen); }
+.policy-card.partial { border-top-color: var(--partial); }
+.policy-kicker {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.policy-card.scratch .policy-kicker { color: var(--scratch); }
+.policy-card.frozen .policy-kicker { color: var(--frozen); }
+.policy-card.partial .policy-kicker { color: var(--partial); }
+.policy-card h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(21px, 1.9vw, 31px);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+.policy-card p {
+  margin: 0;
+  color: #334155;
+  font-size: clamp(14px, 1.05vw, 17px);
+  line-height: 1.38;
+}
+.policy-card ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: clamp(13px, 0.98vw, 16px);
+  line-height: 1.34;
+  display: grid;
+  gap: 7px;
+}
+.policy-common {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.policy-common div {
+  background: #edf5f7;
+  border: 1px solid #c7dce4;
+  border-left: 5px solid var(--accent);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #22313c;
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.34;
+}
+.method-grid {
+  flex: 0 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-content: start;
+  align-items: start;
+}
+.method-card {
+  min-height: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 7px solid var(--accent);
+  border-radius: 8px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.method-card.problem { border-top-color: var(--danger); }
+.method-kicker {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.method-card.problem .method-kicker { color: var(--danger); }
+.method-card h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(17px, 1.18vw, 22px);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+.method-card ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #334155;
+  font-size: clamp(11px, 0.82vw, 14px);
+  line-height: 1.22;
+  display: grid;
+  gap: 4px;
+}
+.method-card code {
+  background: #eef3f8;
+  border: 1px solid #d7e0ec;
+  border-radius: 5px;
+  padding: 1px 4px;
+  color: #172033;
+  font-size: 0.92em;
+}
+.method-footer {
+  background: #edf5f7;
+  border: 1px solid #c7dce4;
+  border-left: 5px solid var(--accent);
+  border-radius: 8px;
+  padding: 13px 15px;
+  display: grid;
+  grid-template-columns: 0.8fr 1.35fr 1.35fr;
+  gap: 12px;
+  color: #22313c;
+}
+.method-footer div {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+.method-footer strong {
+  color: #172033;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.method-footer code,
+.method-footer span {
+  color: #25303c;
+  font-size: clamp(12px, 0.9vw, 15px);
+  line-height: 1.25;
+}
+.method-footer code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.eval-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+.eval-card {
+  min-height: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 7px solid var(--accent);
+  border-radius: 8px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.problem-statement .eval-card.human { border-top-color: var(--scratch); }
+.problem-statement .eval-card.missing { border-top-color: var(--danger); }
+.problem-statement .eval-card.question { border-top-color: var(--partial); }
+.problem-statement .eval-card.human .eval-kicker { color: var(--scratch); }
+.problem-statement .eval-card.missing .eval-kicker { color: var(--danger); }
+.problem-statement .eval-card.question .eval-kicker { color: var(--partial); }
+.eval-kicker {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.eval-card h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(20px, 1.55vw, 29px);
+  line-height: 1.08;
+}
+.eval-card ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #334155;
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.32;
+  display: grid;
+  gap: 7px;
+}
+.eval-formula {
+  background: #edf5f7;
+  border: 1px solid #c7dce4;
+  border-left: 5px solid var(--accent);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: 1fr 1.45fr;
+  gap: 14px;
+}
+.eval-formula code {
+  color: #172033;
+  font-size: clamp(15px, 1.2vw, 20px);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+.problem-formula {
+  grid-template-columns: 1.2fr 0.95fr;
+  align-items: center;
+}
+.problem-formula .math-block {
+  font-size: clamp(12px, 0.98vw, 18px);
+}
+.axis-video-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.axis-video-grid .video-panel {
+  min-height: 0;
+}
+.axis-video-grid .video-label {
+  font-size: 11px;
+}
+.equations-slide h1 {
+  max-width: 1320px;
+  font-size: clamp(29px, 2.9vw, 50px);
+}
+.equation-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: 16px;
+  align-items: stretch;
+}
+.equation-panel,
+.rubric-panel {
+  min-height: 0;
+  display: grid;
+  gap: 10px;
+}
+.equation-panel {
+  grid-template-rows: auto repeat(4, minmax(0, 1fr));
+}
+.rubric-panel {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+.eq-group,
+.rubric-card {
+  min-height: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.eq-group {
+  border-left: 5px solid var(--accent);
+  display: grid;
+  gap: 4px;
+}
+.rubric-card {
+  border-top: 6px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.rubric-card.taught { border-top-color: var(--scratch); }
+.rubric-card.applied { border-top-color: var(--frozen); }
+.rubric-card.beyond { border-top-color: var(--partial); }
+.equation-kicker {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.rubric-card.taught .equation-kicker { color: var(--scratch); }
+.rubric-card.applied .equation-kicker { color: var(--frozen); }
+.rubric-card.beyond .equation-kicker { color: var(--partial); }
+.eq-group h2 {
+  margin: 0;
+  color: #172033;
+  font-size: clamp(14px, 1.02vw, 19px);
+  line-height: 1.08;
+}
+.eq-group p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(10px, 0.8vw, 13px);
+  line-height: 1.22;
+}
+.math-block {
+  color: #172033;
+  font-size: clamp(12px, 0.95vw, 17px);
+  line-height: 1.1;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.math-block mjx-container {
+  margin: 0 !important;
+}
+.rubric-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #334155;
+  font-size: clamp(10.5px, 0.84vw, 14px);
+  line-height: 1.22;
+  display: grid;
+  gap: 4px;
+}
+.rubric-card li::marker {
+  color: var(--accent);
+}
+.video-panel {
+  position: relative;
+  margin: 0;
+  height: 100%;
+  min-height: 0;
+  background: #0e1218;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.video-panel video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #111;
+}
+.video-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  border-radius: 6px;
+  padding: 5px 9px;
+  background: rgba(20, 25, 32, 0.78);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.video-panel.danger .video-label { background: rgba(199, 67, 67, 0.9); }
+.video-panel.success .video-label { background: rgba(38, 132, 90, 0.9); }
+.table-wrap {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: clamp(15px, 1.25vw, 21px);
+}
+.result-table th, .result-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 14px 16px;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+.result-table th {
+  background: #edf2f7;
+  color: #334155;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.compact-table .result-table { font-size: clamp(11px, 0.9vw, 14px); }
+.compact-table .result-table th, .compact-table .result-table td { padding: 10px 8px; }
+.result-table tr:last-child td { border-bottom: 0; }
+.claim-list {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.claim {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+.claim span {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+}
+.claim p {
+  margin: 0;
+  font-size: clamp(17px, 1.45vw, 24px);
+  line-height: 1.38;
+}
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  z-index: 20;
+  background: transparent;
+}
+.progress div {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width 160ms ease;
+}
+.controls {
+  position: fixed;
+  right: 18px;
+  bottom: 14px;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.controls button {
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 5px 9px;
+  font: inherit;
+  cursor: pointer;
+}
+.controls button:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.counter { min-width: 62px; text-align: center; font-variant-numeric: tabular-nums; }
+.hint {
+  position: fixed;
+  left: 18px;
+  bottom: 14px;
+  z-index: 25;
+  color: var(--muted);
+  font-size: 12px;
+}
+.hint kbd {
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  border-radius: 4px;
+  padding: 1px 5px;
+  margin: 0 2px;
+}
+.transcript {
+  display: none;
+  position: absolute;
+  right: 54px;
+  bottom: 58px;
+  max-width: 520px;
+  max-height: 180px;
+  overflow: auto;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #263241;
+  font-size: 13px;
+  line-height: 1.38;
+  box-shadow: 0 12px 34px rgba(25, 35, 50, 0.16);
+}
+body.show-notes .slide.active .transcript { display: block; }
+@media (max-width: 900px) {
+  .slide { padding: 28px 22px 58px; overflow: auto; }
+  .hero-layout, .two-col, .two-col.wide, .three-grid, .claim-list, .composition-bottom, .pipeline-steps, .small-multiple-grid.four, .small-multiple-grid.three, .policy-layout, .policy-common, .method-grid, .method-footer, .eval-layout, .eval-formula, .axis-video-grid, .equation-layout { grid-template-columns: 1fr; }
+  .metric-grid.four { grid-template-columns: repeat(2, 1fr); }
+  .chart-svg { min-height: 300px; }
+  html, body { overflow: auto; }
+}
+@media print {
+  html, body { overflow: visible; height: auto; }
+  .slide { position: relative; display: flex !important; page-break-after: always; height: 100vh; }
+  .controls, .hint, .progress { display: none; }
+  .transcript { display: none !important; }
+}
+
+/* =========================================================================
+   THEME D: Editorial paper (Stripe Press / FT Weekend / The Atlantic)
+   Cream paper bg, charcoal ink, dark teal accent. Serif headlines on a
+   sans body. Cards become warm cream tiles, no borders. Italic serif
+   captions. Family colors re-toned to a paper-friendly palette.
+   ========================================================================= */
+:root {
+  --bg: #ffffff;
+  --paper: #ffffff;
+  --tile: #f5f6f8;
+  --tile-2: #ebedf1;
+  --panel: #f5f6f8;
+  --ink: #0f1318;
+  --ink-soft: #2a2f37;
+  --muted: #6a7280;
+  --line: #e7e9ee;
+  --line-strong: #cfd3da;
+  --accent: #0e5a55;
+  --accent-soft: #d6e7e3;
+  --scratch: #2c4669;
+  --frozen: #345d3e;
+  --partial: #864524;
+  --danger: #a8332b;
+  --success: #345d3e;
+  --serif: "Iowan Old Style", "Charter", "Source Serif Pro", "Newsreader", Georgia, "Times New Roman", serif;
+}
+
+html, body { background: var(--paper); color: var(--ink); }
+
+.slide {
+  background: var(--paper);
+  padding: 50px 76px 64px;
+  gap: 22px;
+}
+
+/* ===== Type: serif headlines on a sans body ===== */
+h1 {
+  font-family: var(--serif);
+  color: var(--ink);
+  font-size: clamp(36px, 4vw, 72px);
+  font-weight: 620;
+  letter-spacing: -0.01em;
+  line-height: 1.06;
+}
+.title-slide h1 {
+  font-family: var(--serif);
+  font-weight: 660;
+  font-size: clamp(46px, 5vw, 92px);
+}
+.subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: clamp(20px, 2vw, 32px);
+  line-height: 1.32;
+}
+.kicker {
+  color: var(--accent);
+  font-family: Inter, -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+}
+.lede { color: var(--ink-soft); }
+.authors { color: var(--muted); font-family: var(--serif); font-style: italic; }
+
+/* ===== Cards → warm cream tiles, no borders ===== */
+.metric,
+.method-card,
+.policy-card,
+.eval-card,
+.eq-group,
+.rubric-card,
+.claim,
+.title-meta div,
+.chart-card,
+.small-chart-card,
+.media-panel,
+.raw-card,
+.raw-axis-label,
+.video-panel,
+.policy-common div,
+.collection-pipeline,
+.pipeline-step {
+  background: var(--tile);
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+.table-wrap   { background: transparent; border: none; border-radius: 0; }
+
+/* Bigger padding inside tiles for premium feel */
+.method-card, .policy-card, .eval-card { padding: 20px 22px; }
+
+/* Top accent strips: re-toned editorial palette */
+.metric { border-top: 2px solid var(--line-strong); padding-top: 14px; }
+.metric.scratch { border-top: 3px solid var(--scratch); }
+.metric.frozen  { border-top: 3px solid var(--frozen); }
+.metric.partial { border-top: 3px solid var(--partial); }
+.metric.danger  { border-top: 3px solid var(--danger); }
+.policy-card { border-top: 3px solid var(--accent); }
+.policy-card.scratch { border-top-color: var(--scratch); }
+.policy-card.frozen  { border-top-color: var(--frozen); }
+.policy-card.partial { border-top-color: var(--partial); }
+.eval-card   { border-top: 3px solid var(--accent); }
+.method-card { border-top: 3px solid var(--accent); }
+.method-card.problem { border-top-color: var(--danger); }
+.rubric-card { border-top: 3px solid var(--accent); }
+.rubric-card.taught   { border-top-color: var(--scratch); }
+.rubric-card.applied  { border-top-color: var(--frozen); }
+.rubric-card.beyond   { border-top-color: var(--partial); }
+
+/* Metric typography: editorial numbers */
+.metric-value { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+.metric.scratch .metric-value { color: var(--scratch); }
+.metric.frozen  .metric-value { color: var(--frozen); }
+.metric.partial .metric-value { color: var(--partial); }
+.metric.danger  .metric-value { color: var(--danger); }
+.metric-label { color: var(--muted); letter-spacing: 0.1em; }
+.metric-caption { color: var(--ink-soft); }
+
+/* Kickers in editorial palette */
+.equation-kicker, .policy-kicker, .method-kicker, .eval-kicker {
+  font-family: Inter, sans-serif;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  color: var(--accent);
+}
+.method-card.problem .method-kicker { color: var(--danger); }
+.rubric-card.taught   .equation-kicker { color: var(--scratch); }
+.rubric-card.applied  .equation-kicker { color: var(--frozen); }
+.rubric-card.beyond   .equation-kicker { color: var(--partial); }
+.policy-card.scratch  .policy-kicker { color: var(--scratch); }
+.policy-card.frozen   .policy-kicker { color: var(--frozen); }
+.policy-card.partial  .policy-kicker { color: var(--partial); }
+
+/* Sub-headings inside cards: serif */
+.policy-card h2,
+.eval-card h2,
+.method-card h2,
+.eq-group h2 {
+  font-family: var(--serif);
+  font-weight: 620;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+.method-card ul,
+.policy-card ul,
+.policy-card p,
+.eval-card ul,
+.rubric-card ul,
+.eq-group p { color: var(--ink-soft); }
+.method-card code { background: var(--tile-2); border: none; color: var(--ink); }
+
+/* ===== Callouts → pull-quote left rule on cream tile ===== */
+.callout {
+  background: var(--tile);
+  border: none;
+  border-left: 4px solid var(--accent);
+  border-radius: 4px;
+  padding: 14px 18px;
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.18vw, 20px);
+  line-height: 1.42;
+  color: var(--ink);
+}
+.callout.strong {
+  background: #fde8e6;
+  border-left-color: var(--danger);
+}
+.eval-formula  { background: var(--tile-2); border: none; border-radius: 6px; padding: 14px 16px; }
+.eval-formula code { font-family: "JetBrains Mono", "SF Mono", Menlo, monospace; color: var(--ink); }
+.method-footer { background: var(--tile-2); border: none; border-radius: 6px; padding: 13px 15px; color: var(--ink-soft); }
+.method-footer strong { color: var(--ink); }
+.method-footer code, .method-footer span { color: var(--ink-soft); }
+.eq-group { border-left: 4px solid var(--accent); border-radius: 4px; padding: 10px 14px; background: var(--tile); }
+.policy-common div { background: var(--tile-2); border-left: 4px solid var(--accent); border: none; border-left: 4px solid var(--accent); color: var(--ink-soft); padding: 10px 14px; border-radius: 4px; }
+
+/* ===== Title slide meta blocks ===== */
+.title-meta div {
+  background: var(--tile);
+  border: none;
+  border-left: 4px solid var(--accent);
+  border-radius: 4px;
+  padding: 14px 18px;
+}
+.title-meta span { color: var(--muted); font-family: Inter, sans-serif; }
+.title-meta strong { font-family: var(--serif); font-weight: 620; color: var(--ink); }
+
+/* ===== Pipeline / claim badges ===== */
+.collection-pipeline { background: var(--tile); padding: 14px; }
+.pipeline-step { background: var(--tile-2); padding: 11px 11px 10px 42px; }
+.pipeline-num { background: var(--ink); color: #ffffff; }
+.pipeline-step strong { color: var(--ink); }
+.pipeline-step span { color: var(--ink-soft); }
+.pipeline-title { color: var(--muted); }
+
+.claim { background: var(--tile); padding: 18px 20px; border-radius: 6px; }
+.claim span { background: var(--ink); color: #ffffff; }
+.claim p { color: var(--ink); font-family: var(--serif); }
+
+/* ===== Tables: editorial style ===== */
+.result-table {
+  font-family: Inter, sans-serif;
+  background: transparent;
+}
+.result-table th {
+  background: transparent;
+  color: var(--muted);
+  border-bottom: 2px solid var(--ink);
+  font-family: Inter, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  font-size: 12px;
+}
+.result-table td {
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+
+/* ===== Charts: sit on a darker tile, italic-serif captions ===== */
+.chart-card, .small-chart-card { background: var(--tile); padding: 14px 16px; }
+.chart-svg, .small-chart-svg { background: transparent; }
+.grid    { stroke: var(--line-strong); }
+.axis    { stroke: var(--ink); }
+.chart-title    { fill: var(--ink); font-family: var(--serif); font-weight: 620; }
+.chart-subtitle { fill: var(--muted); font-style: italic; }
+.chart-note     { fill: var(--muted); font-style: italic; }
+.axis-tick      { fill: var(--ink-soft); }
+.x-label        { fill: var(--ink); }
+.bar-label      { fill: var(--ink); }
+.legend         { fill: var(--ink-soft); }
+
+/* ===== Media panels / images ===== */
+.media-panel    { background: var(--tile); padding: 10px; }
+.media-panel img { background: transparent; }
+.caption {
+  border-top: 1px solid var(--line-strong);
+  color: var(--muted);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  padding: 8px 4px 0;
+}
+
+/* ===== Raw dataset showcase ===== */
+.raw-card { background: var(--tile); padding: 6px; border-top: 4px solid var(--axis-color); }
+.raw-card img { border: 1px solid var(--line-strong); background: var(--tile); }
+.raw-card figcaption {
+  color: var(--muted);
+  font-family: var(--serif);
+  font-style: italic;
+}
+.raw-card figcaption strong { color: var(--ink); font-style: normal; font-family: Inter, sans-serif; }
+.raw-axis-label { background: var(--tile); border-left: 6px solid var(--axis-color); border-radius: 0; padding: 14px 16px; }
+.raw-axis-label strong { font-family: var(--serif); font-weight: 620; color: var(--axis-color); }
+.raw-axis-label span   { color: var(--muted); }
+
+/* ===== Videos: dark frame on cream, with editorial label ===== */
+.video-panel {
+  background: #181410;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+}
+.video-panel video { background: #181410; }
+.video-label {
+  background: rgba(28, 26, 23, 0.85);
+  color: #ffffff;
+  border-radius: 4px;
+  font-family: Inter, sans-serif;
+  letter-spacing: 0.1em;
+}
+.video-panel.danger  .video-label { background: rgba(168, 51, 43, 0.92); }
+.video-panel.success .video-label { background: rgba(52, 93, 62, 0.92); }
+
+/* ===== Grids breathe more ===== */
+.two-col          { gap: 28px; }
+.two-col.wide     { gap: 32px; }
+.three-grid       { gap: 22px; }
+.metric-grid      { gap: 16px; }
+.metric-grid.four { gap: 14px; }
+.policy-layout    { gap: 26px; }
+.method-grid      { gap: 18px; }
+.eval-layout      { gap: 22px; }
+.claim-list       { gap: 22px; }
+.equation-layout  { gap: 22px; }
+.composition-bottom { gap: 18px; }
+.axis-video-grid  { gap: 16px; }
+
+/* ===== Progress / controls / hints ===== */
+.progress div { background: var(--accent); }
+.controls { color: var(--muted); }
+.controls button {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+.controls button:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.hint { color: var(--muted); }
+.hint kbd { background: var(--tile); border-color: var(--line-strong); color: var(--ink); }
+
+/* Transcript overlay (when shown) */
+.transcript {
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid var(--line-strong);
+  color: var(--ink-soft);
+}
+.transcript h3 { color: var(--accent); }
+
+/* =========================================================================
+   Slide 7 — Policy comparison (image-forward)
+   ========================================================================= */
+.policy-card {
+  justify-content: space-between;
+  gap: 18px;
+}
+.policy-head { display: grid; gap: 8px; }
+.policy-card h2 {
+  font-size: clamp(15px, 1.18vw, 20px);
+  line-height: 1.18;
+}
+.encoder-schema {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+}
+.schema-label {
+  color: var(--muted);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12px;
+}
+.schema-bar {
+  display: flex;
+  gap: 2px;
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 64px;
+  flex: 1;
+  font-family: Inter, sans-serif;
+}
+.schema-bar .seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-size: clamp(11px, 0.85vw, 14px);
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.schema-bar .seg.is-head { opacity: 0.88; }
+.policy-card.scratch .seg.is-trainable { background: var(--scratch); }
+.policy-card.frozen  .seg.is-trainable { background: var(--frozen); }
+.policy-card.partial .seg.is-trainable { background: var(--partial); }
+.seg.is-frozen { background: #8a8f96; }
+
+.policy-specs {
+  margin: 0;
+  display: grid;
+  gap: 9px;
+  font-family: Inter, sans-serif;
+}
+.policy-specs > div {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 10px;
+  font-size: clamp(12px, 0.95vw, 15px);
+  line-height: 1.32;
+}
+.policy-specs dt {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-top: 3px;
+}
+.policy-specs dd { margin: 0; color: var(--ink-soft); }
+
+.policy-pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  background: var(--tile);
+  border-radius: 6px;
+  padding: 14px 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.pp-node {
+  padding: 10px 14px;
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  font-family: Inter, sans-serif;
+  font-size: clamp(12px, 0.95vw, 15px);
+  color: var(--ink);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.pp-node-encoder { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+.pp-node-out     { background: var(--ink); color: #ffffff; border-color: var(--ink); }
+.pp-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: clamp(14px, 1.2vw, 18px);
+  padding: 0 4px;
+}
+.policy-shared {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.18vw, 19px);
+  color: var(--ink-soft);
+  font-style: italic;
+  text-align: center;
+}
+.policy-shared em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+
+/* =========================================================================
+   Slide 15 — Method bridge (4-step diagnostic flow)
+   ========================================================================= */
+.method-flow {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+.method-flow.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.flow-step {
+  background: var(--tile);
+  border-top: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.flow-step.danger { border-top-color: var(--danger); }
+.flow-num {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  display: grid;
+  place-items: center;
+  font-family: Inter, sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+}
+.flow-step.danger .flow-num { background: var(--danger); }
+.flow-kicker {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.flow-step.danger .flow-kicker { color: var(--danger); }
+.flow-tag {
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.18vw, 19px);
+  line-height: 1.24;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.flow-visual {
+  margin-top: auto;
+  background: var(--tile-2);
+  border-radius: 4px;
+  padding: 14px 12px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+}
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  font-family: Inter, sans-serif;
+  font-size: clamp(10px, 0.78vw, 12px);
+  font-weight: 700;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.chip.bad {
+  border-color: var(--danger);
+  color: var(--danger);
+  background: #fde8e6;
+}
+.chip.win {
+  border-color: var(--accent);
+  color: var(--paper);
+  background: var(--accent);
+}
+.chip-arrow {
+  font-family: Inter, sans-serif;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.method-equation {
+  background: var(--tile);
+  border-radius: 6px;
+  padding: 14px 18px;
+  display: grid;
+  gap: 10px;
+  border-left: 4px solid var(--accent);
+}
+.me-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 14px;
+  align-items: baseline;
+}
+.me-label {
+  color: var(--muted);
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.me-row code {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: clamp(13px, 1vw, 16px);
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* =========================================================================
+   Slide 18 — Class connection (canonical equation + concept-by-concept grid)
+   ========================================================================= */
+.class-equation {
+  background: var(--tile);
+  border-left: 4px solid var(--accent);
+  border-radius: 4px;
+  padding: 16px 24px;
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  text-align: center;
+}
+.class-equation .math-block {
+  font-size: clamp(15px, 1.4vw, 24px);
+  color: var(--ink);
+  margin: 0;
+}
+.class-equation mjx-container { margin: 0 !important; }
+.ce-caption {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: clamp(13px, 1vw, 16px);
+}
+
+.class-rubric {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto repeat(5, minmax(0, 1fr));
+  background: var(--tile);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.class-row {
+  display: grid;
+  grid-template-columns: 180px repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line-strong);
+}
+.class-row:first-child { border-top: 0; }
+.class-row > div {
+  padding: 14px 18px;
+  border-left: 1px solid var(--line-strong);
+  display: flex;
+  align-items: center;
+  font-family: Inter, sans-serif;
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.34;
+  color: var(--ink-soft);
+}
+.class-row > div:first-child { border-left: 0; }
+
+.class-row.class-head > div {
+  background: var(--paper);
+  padding: 11px 18px;
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.class-row.class-head .taught-head  { color: var(--scratch); }
+.class-row.class-head .applied-head { color: var(--frozen); }
+.class-row.class-head .beyond-head  { color: var(--partial); }
+
+.row-concept {
+  background: var(--tile-2);
+  font-family: var(--serif);
+  font-weight: 620;
+  color: var(--ink);
+  font-size: clamp(15px, 1.15vw, 19px);
+  letter-spacing: -0.005em;
+}
+
+/* =========================================================================
+   Presenter mode (toggle with P) — covers the screen with a transcript view
+   Two-window workflow: open the deck twice; press P on the presenter window,
+   keep the audience window normal. Both windows sync via localStorage.
+   ========================================================================= */
+.presenter-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 38px 64px 28px;
+  flex-direction: column;
+  gap: 18px;
+  overflow: hidden;
+}
+body.presenter-mode .presenter-overlay { display: flex; }
+body.presenter-mode .deck { visibility: hidden; }
+body.presenter-mode .progress,
+body.presenter-mode .hint,
+body.presenter-mode .controls { display: none; }
+
+.po-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.po-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--muted);
+}
+.po-counter { color: var(--accent); }
+.po-sep { color: var(--line-strong); }
+.po-kicker { color: var(--ink); }
+.po-timer {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.po-main {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: grid;
+  gap: 22px;
+  align-content: start;
+  padding: 4px 0;
+}
+.po-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(28px, 2.8vw, 48px);
+  font-weight: 620;
+  line-height: 1.06;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.po-transcript {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(22px, 1.85vw, 32px);
+  line-height: 1.44;
+  color: var(--ink-soft);
+  max-width: 1280px;
+}
+
+.po-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  gap: 20px;
+}
+.po-next {
+  flex: 1;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(14px, 1vw, 18px);
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.po-next strong {
+  color: var(--ink);
+  font-style: normal;
+  font-weight: 620;
+}
+.po-nav {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.po-nav button {
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 18px;
+  cursor: pointer;
+}
+.po-nav button:hover { background: var(--accent); }
+
+</style>
+</head>
+<body>
+<div class="progress"><div id="bar"></div></div>
+<main class="deck">
+<section class="slide title-slide">
+  <div class="kicker">Course project</div>
+  <h1>What Visual Diversity Matters for Closed-Loop Behavior Cloning Under Distribution Shift?</h1>
+  <div class="slide-body">
+            <div class="simple-title">
+              <p class="subtitle">A Controlled Study of Pixel-Based Robot Manipulation Under Distribution Shift</p>
+              <div class="title-meta">
+                <div>
+                  <span>Students</span>
+                  <strong>Aninditaa Chauhan &middot; Jai Kumar Sharma &middot; Manas Ganti &middot; Shakir Farhan Mohammed</strong>
+                </div>
+                <div>
+                  <span>Subject</span>
+                  <strong>Human-Robot Algorithmic Interaction</strong>
+                </div>
+              </div>
+            </div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Good afternoon. This is our course project on visual diversity in closed-loop behavior cloning under distribution shift. I'm Jai, presenting work with my teammates Aninditaa, Manas, and Shakir. Over the next ten minutes or so, we will walk you through the benchmark we built, the bottleneck we identified in pixel-based behavior cloning, and the structured intervention we designed to address it.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Problem statement</div>
+  <h1>Pixel imitation policies must work when the robot sees a different world than the demonstrations.</h1>
+  <div class="slide-body">
+            <div class="method-flow three">
+              <div class="flow-step">
+                <div class="flow-num">1</div>
+                <div class="flow-kicker">Setting</div>
+                <div class="flow-tag">A human demonstrates; the robot must execute under new scenes.</div>
+                <div class="flow-visual">
+                  <div class="chip-row">
+                    <span class="chip">Panda + dual RGB</span>
+                    <span class="chip">Reach + obstacle-aware</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step danger">
+                <div class="flow-num">2</div>
+                <div class="flow-kicker">Gap</div>
+                <div class="flow-tag">Pixel BC can fit demos but fail under closed-loop visual shift.</div>
+                <div class="flow-visual">
+                  <div class="chip-row">
+                    <span class="chip">Offline fit &ne; closed-loop control</span>
+                    <span class="chip">Sim pixels &ne; ImageNet</span>
+                    <span class="chip">Axis interactions hidden</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-num">3</div>
+                <div class="flow-kicker">Question</div>
+                <div class="flow-tag">Which visual diversity matters for OOD closed-loop manipulation?</div>
+                <div class="flow-visual">
+                  <div class="chip-row">
+                    <span class="chip">Color</span>
+                    <span class="chip">Spatial</span>
+                    <span class="chip">Camera</span>
+                    <span class="chip">Lighting</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="method-equation">
+              <div class="me-row">
+                <span class="me-label">Policy</span>
+                <code>a<sub>t</sub> = &pi;<sub>&theta;</sub>(I<sup>ext</sup><sub>t</sub>, I<sup>wrist</sup><sub>t</sub>, x<sup>ee</sup><sub>t</sub>)</code>
+              </div>
+              <div class="me-row">
+                <span class="me-label">Success</span>
+                <code>S@r = <b>1</b>[ min<sub>t</sub> ||x<sup>ee</sup><sub>t</sub> &minus; x<sub>goal</sub>|| &le; r ], r &isin; {1, 2, 5} cm</code>
+              </div>
+            </div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> So here's the setup. A human shows the robot how to do something &mdash; reach for a cube, or route around an obstacle. The robot then has to do the same task later, but the scene is different. Different colors, different camera angle, different lighting, maybe the cube is in a totally different spot. Now, behavior cloning fits the demonstrations really cleanly. But in closed loop, the policy can drift. It can hover. It can just stop. And the obvious fix &mdash; use a pretrained encoder like ResNet &mdash; well, that's not obvious either, because sim pixels aren't ImageNet. So what we wanted to figure out is: which visual axis is actually the one that breaks control?</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Dataset composition</div>
+  <h1>The benchmark is an axis-isolated visual imitation dataset.</h1>
+  <div class="slide-body">
+    <div class="composition-layout">
+      <div class="metric-grid four composition-cards"><div class=" metric"><div class="metric-label">Visual axes</div><div class="metric-value">4</div><div class="metric-caption">color, spatial, camera, lighting</div></div><div class=" metric"><div class="metric-label">Tasks</div><div class="metric-value">2</div><div class="metric-caption">direct reach and obstacle-aware reach</div></div><div class=" metric"><div class="metric-label">Train configs</div><div class="metric-value">16</div><div class="metric-caption">4 axes x 2 variants x 2 tasks</div></div><div class=" metric"><div class="metric-label">Primary train set</div><div class="metric-value">144</div><div class="metric-caption">budgets 5/20/50 x seeds 0/1/2</div></div><div class=" metric"><div class="metric-label">High-budget extension</div><div class="metric-value">+32</div><div class="metric-caption">budgets 100/200, seed 0</div></div><div class=" metric"><div class="metric-label">Train images</div><div class="metric-value">1,894,858</div><div class="metric-caption">947,429 timesteps x 2 cameras</div></div><div class=" metric"><div class="metric-label">ID eval datasets</div><div class="metric-value">48</div><div class="metric-caption">same distributions, held-out seeds 200/201/202</div></div><div class=" metric"><div class="metric-label">OOD eval datasets</div><div class="metric-value">24</div><div class="metric-caption">held-out variants, seeds 100/101/102</div></div></div>
+      <div class="collection-pipeline">
+        <div class="pipeline-title">Dataset collection pipeline</div>
+        <div class="pipeline-steps">
+        <div class="pipeline-step">
+          <div class="pipeline-num">1</div>
+          <strong>Choose config</strong>
+          <span>task, visual axis, variant, budget, seed, and train/ID/OOD split</span>
+        </div>
+        
+        <div class="pipeline-step">
+          <div class="pipeline-num">2</div>
+          <strong>Sample scene</strong>
+          <span>cube/obstacle placement plus color, camera, spatial, or light parameters</span>
+        </div>
+        
+        <div class="pipeline-step">
+          <div class="pipeline-num">3</div>
+          <strong>Roll out expert</strong>
+          <span>PyBullet expert moves from sampled start state through reach or obstacle-aware reach</span>
+        </div>
+        
+        <div class="pipeline-step">
+          <div class="pipeline-num">4</div>
+          <strong>Save demo</strong>
+          <span>actions, robot state, scene metadata, external RGB, and wrist RGB at each timestep</span>
+        </div>
+        </div>
+      </div>
+      <div class="composition-bottom">
+        <div class="callout"><strong>Observation:</strong> 128 x 128 RGB from two cameras: external view plus wrist/end-effector view. Each recorded timestep contributes two raw image frames.</div>
+        <div class="callout"><strong>Closed-loop evaluation:</strong> 400-step rollout horizon, precision reported as success@1/2/5 cm from the closest approach to the cube.</div>
+        <div class="callout"><strong>Eval image pool:</strong> 72 held-out scene datasets, 405,377 timesteps, 810,754 dual-camera RGB images.</div>
+      </div>
+    </div>
+    </div>
+  <aside class="transcript"><strong>Transcript.</strong> To answer that, you really need a controlled grid. So we built one. Four visual axes &mdash; color, spatial, camera, lighting. Two tasks &mdash; direct reach, and obstacle-aware reach, where the robot has to navigate around something. For each, we collect sixteen training configurations across different demonstration budgets and seeds. That gives us 176 training datasets in total. Almost 1.9 million RGB images. Plus 72 evaluation datasets &mdash; half are in-distribution, half are out-of-distribution on one specific axis. The pipeline at the bottom is the per-episode loop: pick a config, sample a scene, roll out the expert, save the demo.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Dataset evidence 1/3</div>
+  <h1>The collected obstacle-aware dataset visibly varies each visual axis.</h1>
+  <div class="slide-body">
+            <div class="raw-slide">
+              <div class="raw-dataset-grid">
+            <div class="raw-axis-row" style="--axis-color:#2c4669">
+              <div class="raw-axis-label">
+                <strong>Color Diversity</strong>
+                <span>cube color changes</span>
+              </div>
+              <div class="raw-strip raw-cols-4">
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/color/color__ep000__step265__eef_rgb.png" alt="Color Diversity episode 000">
+                  <figcaption><strong>episode 000</strong><span>yellow</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/color/color__ep002__step265__eef_rgb.png" alt="Color Diversity episode 002">
+                  <figcaption><strong>episode 002</strong><span>red</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/color/color__ep005__step265__eef_rgb.png" alt="Color Diversity episode 005">
+                  <figcaption><strong>episode 005</strong><span>blue</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/color/color__ep006__step293__eef_rgb.png" alt="Color Diversity episode 006">
+                  <figcaption><strong>episode 006</strong><span>green</span></figcaption>
+                </figure>
+                
+              </div>
+            </div>
+            
+            <div class="raw-axis-row" style="--axis-color:#345d3e">
+              <div class="raw-axis-label">
+                <strong>Camera View Diversity</strong>
+                <span>external viewpoint changes</span>
+              </div>
+              <div class="raw-strip raw-cols-4">
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/camera/camera__ep033__step162__external_rgb.png" alt="Camera View Diversity episode 033">
+                  <figcaption><strong>episode 033</strong><span>yaw 61, pitch -45, dist 1.28</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/camera/camera__ep007__step162__external_rgb.png" alt="Camera View Diversity episode 007">
+                  <figcaption><strong>episode 007</strong><span>yaw 119, pitch -24, dist 1.88</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/camera/camera__ep015__step162__external_rgb.png" alt="Camera View Diversity episode 015">
+                  <figcaption><strong>episode 015</strong><span>yaw 79, pitch -21, dist 1.81</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/camera/camera__ep036__step162__external_rgb.png" alt="Camera View Diversity episode 036">
+                  <figcaption><strong>episode 036</strong><span>yaw 109, pitch -46, dist 1.36</span></figcaption>
+                </figure>
+                
+              </div>
+            </div>
+            
+            <div class="raw-axis-row" style="--axis-color:#a8332b">
+              <div class="raw-axis-label">
+                <strong>Spatial Diversity</strong>
+                <span>target location changes</span>
+              </div>
+              <div class="raw-strip raw-cols-4">
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/spatial/spatial__ep188__step143__external_rgb.png" alt="Spatial Diversity episode 188">
+                  <figcaption><strong>episode 188</strong><span>target x=0.65, y=-0.17</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/spatial/spatial__ep176__step168__external_rgb.png" alt="Spatial Diversity episode 176">
+                  <figcaption><strong>episode 176</strong><span>target x=0.37, y=0.17</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/spatial/spatial__ep067__step168__external_rgb.png" alt="Spatial Diversity episode 067">
+                  <figcaption><strong>episode 067</strong><span>target x=0.37, y=-0.15</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/spatial/spatial__ep089__step149__external_rgb.png" alt="Spatial Diversity episode 089">
+                  <figcaption><strong>episode 089</strong><span>target x=0.64, y=0.11</span></figcaption>
+                </figure>
+                
+              </div>
+            </div>
+            
+            <div class="raw-axis-row" style="--axis-color:#864524">
+              <div class="raw-axis-label">
+                <strong>Lighting Diversity</strong>
+                <span>light direction and intensity change</span>
+              </div>
+              <div class="raw-strip raw-cols-4">
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/lighting/lighting__ep010__step162__external_rgb.png" alt="Lighting Diversity episode 010">
+                  <figcaption><strong>episode 010</strong><span>dir [1.0,0.0,-1.0], a=0.20, d=0.45</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/lighting/lighting__ep001__step162__external_rgb.png" alt="Lighting Diversity episode 001">
+                  <figcaption><strong>episode 001</strong><span>dir [-1.0,0.0,-1.0], a=0.50, d=0.95</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/lighting/lighting__ep013__step162__external_rgb.png" alt="Lighting Diversity episode 013">
+                  <figcaption><strong>episode 013</strong><span>dir [1.0,0.0,-1.0], a=0.50, d=0.95</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/overview/lighting/lighting__ep015__step162__external_rgb.png" alt="Lighting Diversity episode 015">
+                  <figcaption><strong>episode 015</strong><span>dir [-1.0,0.0,-1.0], a=0.20, d=0.45</span></figcaption>
+                </figure>
+                
+              </div>
+            </div>
+            </div>
+            </div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Quick visual sanity check before we move on. Four rows, one per visual axis. The narrow training condition is on the left &mdash; the axis is fixed. The diverse condition is on the right &mdash; the axis is varied. So you can see color changing per episode, the cube and obstacle moving around the workspace, the camera swinging, the lighting shifting. Each axis varies independently. That's what makes the comparison clean later when we look at the results.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Dataset evidence 2/3</div>
+  <h1>Full obstacle-aware trajectories from the external camera.</h1>
+  <div class="slide-body">
+            <div class="raw-slide">
+              <div class="raw-dataset-grid">
+            <div class="raw-axis-row" style="--axis-color:#2c4669">
+              <div class="raw-axis-label">
+                <strong>Color Diversity</strong>
+                <span>cube color changes</span>
+              </div>
+              <div class="raw-strip raw-cols-8">
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/color/color__ep005__frame00__step000__external_rgb.png" alt="Color Diversity start">
+                  <figcaption><strong>start</strong><span>step 0</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/color/color__ep005__frame01__step042__external_rgb.png" alt="Color Diversity step 42">
+                  <figcaption><strong>step 42</strong><span>frame 2</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/color/color__ep005__frame02__step084__external_rgb.png" alt="Color Diversity step 84">
+                  <figcaption><strong>step 84</strong><span>frame 3</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/color/color__ep005__frame03__step126__external_rgb.png" alt="Color Diversity step 126">
+                  <figcaption><strong>step 126</strong><span>frame 4</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/color/color__ep005__frame04__step168__external_rgb.png" alt="Color Diversity step 168">
+                  <figcaption><strong>step 168</strong><span>frame 5</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/color/color__ep005__frame05__step210__external_rgb.png" alt="Color Diversity step 210">
+                  <figcaption><strong>step 210</strong><span>frame 6</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/color/color__ep005__frame06__step252__external_rgb.png" alt="Color Diversity step 252">
+                  <figcaption><strong>step 252</strong><span>frame 7</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/color/color__ep005__frame07__step294__external_rgb.png" alt="Color Diversity end">
+                  <figcaption><strong>end</strong><span>step 294</span></figcaption>
+                </figure>
+                
+              </div>
+            </div>
+            
+            <div class="raw-axis-row" style="--axis-color:#345d3e">
+              <div class="raw-axis-label">
+                <strong>Camera View Diversity</strong>
+                <span>external viewpoint changes</span>
+              </div>
+              <div class="raw-strip raw-cols-8">
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/camera/camera__ep033__frame00__step000__external_rgb.png" alt="Camera View Diversity start">
+                  <figcaption><strong>start</strong><span>step 0</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/camera/camera__ep033__frame01__step042__external_rgb.png" alt="Camera View Diversity step 42">
+                  <figcaption><strong>step 42</strong><span>frame 2</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/camera/camera__ep033__frame02__step084__external_rgb.png" alt="Camera View Diversity step 84">
+                  <figcaption><strong>step 84</strong><span>frame 3</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/camera/camera__ep033__frame03__step126__external_rgb.png" alt="Camera View Diversity step 126">
+                  <figcaption><strong>step 126</strong><span>frame 4</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/camera/camera__ep033__frame04__step168__external_rgb.png" alt="Camera View Diversity step 168">
+                  <figcaption><strong>step 168</strong><span>frame 5</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/camera/camera__ep033__frame05__step210__external_rgb.png" alt="Camera View Diversity step 210">
+                  <figcaption><strong>step 210</strong><span>frame 6</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/camera/camera__ep033__frame06__step252__external_rgb.png" alt="Camera View Diversity step 252">
+                  <figcaption><strong>step 252</strong><span>frame 7</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/camera/camera__ep033__frame07__step294__external_rgb.png" alt="Camera View Diversity end">
+                  <figcaption><strong>end</strong><span>step 294</span></figcaption>
+                </figure>
+                
+              </div>
+            </div>
+            
+            <div class="raw-axis-row" style="--axis-color:#a8332b">
+              <div class="raw-axis-label">
+                <strong>Spatial Diversity</strong>
+                <span>target location changes</span>
+              </div>
+              <div class="raw-strip raw-cols-8">
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/spatial/spatial__ep188__frame00__step000__external_rgb.png" alt="Spatial Diversity start">
+                  <figcaption><strong>start</strong><span>step 0</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/spatial/spatial__ep188__frame01__step037__external_rgb.png" alt="Spatial Diversity step 37">
+                  <figcaption><strong>step 37</strong><span>frame 2</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/spatial/spatial__ep188__frame02__step074__external_rgb.png" alt="Spatial Diversity step 74">
+                  <figcaption><strong>step 74</strong><span>frame 3</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/spatial/spatial__ep188__frame03__step111__external_rgb.png" alt="Spatial Diversity step 111">
+                  <figcaption><strong>step 111</strong><span>frame 4</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/spatial/spatial__ep188__frame04__step149__external_rgb.png" alt="Spatial Diversity step 149">
+                  <figcaption><strong>step 149</strong><span>frame 5</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/spatial/spatial__ep188__frame05__step186__external_rgb.png" alt="Spatial Diversity step 186">
+                  <figcaption><strong>step 186</strong><span>frame 6</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/spatial/spatial__ep188__frame06__step223__external_rgb.png" alt="Spatial Diversity step 223">
+                  <figcaption><strong>step 223</strong><span>frame 7</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/spatial/spatial__ep188__frame07__step260__external_rgb.png" alt="Spatial Diversity end">
+                  <figcaption><strong>end</strong><span>step 260</span></figcaption>
+                </figure>
+                
+              </div>
+            </div>
+            
+            <div class="raw-axis-row" style="--axis-color:#864524">
+              <div class="raw-axis-label">
+                <strong>Lighting Diversity</strong>
+                <span>light direction and intensity change</span>
+              </div>
+              <div class="raw-strip raw-cols-8">
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/lighting/lighting__ep010__frame00__step000__external_rgb.png" alt="Lighting Diversity start">
+                  <figcaption><strong>start</strong><span>step 0</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/lighting/lighting__ep010__frame01__step042__external_rgb.png" alt="Lighting Diversity step 42">
+                  <figcaption><strong>step 42</strong><span>frame 2</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/lighting/lighting__ep010__frame02__step084__external_rgb.png" alt="Lighting Diversity step 84">
+                  <figcaption><strong>step 84</strong><span>frame 3</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/lighting/lighting__ep010__frame03__step126__external_rgb.png" alt="Lighting Diversity step 126">
+                  <figcaption><strong>step 126</strong><span>frame 4</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/lighting/lighting__ep010__frame04__step168__external_rgb.png" alt="Lighting Diversity step 168">
+                  <figcaption><strong>step 168</strong><span>frame 5</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/lighting/lighting__ep010__frame05__step210__external_rgb.png" alt="Lighting Diversity step 210">
+                  <figcaption><strong>step 210</strong><span>frame 6</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/lighting/lighting__ep010__frame06__step252__external_rgb.png" alt="Lighting Diversity step 252">
+                  <figcaption><strong>step 252</strong><span>frame 7</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_external_rgb/lighting/lighting__ep010__frame07__step294__external_rgb.png" alt="Lighting Diversity end">
+                  <figcaption><strong>end</strong><span>step 294</span></figcaption>
+                </figure>
+                
+              </div>
+            </div>
+            </div>
+            </div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Same data, but now you're seeing full trajectories from the external camera. Eight frames per episode, four axes. This is what the policy sees from the third-person view. Watch the color shift, the cube moving across the workspace, the camera angle swinging across episodes, the lighting changing &mdash; all of this is happening while the expert is quietly doing its job in the background.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Dataset evidence 3/3</div>
+  <h1>The same trajectories from the wrist camera used by the policy.</h1>
+  <div class="slide-body">
+            <div class="raw-slide">
+              <div class="raw-dataset-grid">
+            <div class="raw-axis-row" style="--axis-color:#2c4669">
+              <div class="raw-axis-label">
+                <strong>Color Diversity</strong>
+                <span>cube color changes</span>
+              </div>
+              <div class="raw-strip raw-cols-8">
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/color/color__ep005__frame00__step000__eef_rgb.png" alt="Color Diversity start">
+                  <figcaption><strong>start</strong><span>step 0</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/color/color__ep005__frame01__step042__eef_rgb.png" alt="Color Diversity step 42">
+                  <figcaption><strong>step 42</strong><span>frame 2</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/color/color__ep005__frame02__step084__eef_rgb.png" alt="Color Diversity step 84">
+                  <figcaption><strong>step 84</strong><span>frame 3</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/color/color__ep005__frame03__step126__eef_rgb.png" alt="Color Diversity step 126">
+                  <figcaption><strong>step 126</strong><span>frame 4</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/color/color__ep005__frame04__step168__eef_rgb.png" alt="Color Diversity step 168">
+                  <figcaption><strong>step 168</strong><span>frame 5</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/color/color__ep005__frame05__step210__eef_rgb.png" alt="Color Diversity step 210">
+                  <figcaption><strong>step 210</strong><span>frame 6</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/color/color__ep005__frame06__step252__eef_rgb.png" alt="Color Diversity step 252">
+                  <figcaption><strong>step 252</strong><span>frame 7</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/color/color__ep005__frame07__step294__eef_rgb.png" alt="Color Diversity end">
+                  <figcaption><strong>end</strong><span>step 294</span></figcaption>
+                </figure>
+                
+              </div>
+            </div>
+            
+            <div class="raw-axis-row" style="--axis-color:#345d3e">
+              <div class="raw-axis-label">
+                <strong>Camera View Diversity</strong>
+                <span>external viewpoint changes</span>
+              </div>
+              <div class="raw-strip raw-cols-8">
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/camera/camera__ep033__frame00__step000__eef_rgb.png" alt="Camera View Diversity start">
+                  <figcaption><strong>start</strong><span>step 0</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/camera/camera__ep033__frame01__step042__eef_rgb.png" alt="Camera View Diversity step 42">
+                  <figcaption><strong>step 42</strong><span>frame 2</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/camera/camera__ep033__frame02__step084__eef_rgb.png" alt="Camera View Diversity step 84">
+                  <figcaption><strong>step 84</strong><span>frame 3</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/camera/camera__ep033__frame03__step126__eef_rgb.png" alt="Camera View Diversity step 126">
+                  <figcaption><strong>step 126</strong><span>frame 4</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/camera/camera__ep033__frame04__step168__eef_rgb.png" alt="Camera View Diversity step 168">
+                  <figcaption><strong>step 168</strong><span>frame 5</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/camera/camera__ep033__frame05__step210__eef_rgb.png" alt="Camera View Diversity step 210">
+                  <figcaption><strong>step 210</strong><span>frame 6</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/camera/camera__ep033__frame06__step252__eef_rgb.png" alt="Camera View Diversity step 252">
+                  <figcaption><strong>step 252</strong><span>frame 7</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/camera/camera__ep033__frame07__step294__eef_rgb.png" alt="Camera View Diversity end">
+                  <figcaption><strong>end</strong><span>step 294</span></figcaption>
+                </figure>
+                
+              </div>
+            </div>
+            
+            <div class="raw-axis-row" style="--axis-color:#a8332b">
+              <div class="raw-axis-label">
+                <strong>Spatial Diversity</strong>
+                <span>target location changes</span>
+              </div>
+              <div class="raw-strip raw-cols-8">
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/spatial/spatial__ep188__frame00__step000__eef_rgb.png" alt="Spatial Diversity start">
+                  <figcaption><strong>start</strong><span>step 0</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/spatial/spatial__ep188__frame01__step037__eef_rgb.png" alt="Spatial Diversity step 37">
+                  <figcaption><strong>step 37</strong><span>frame 2</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/spatial/spatial__ep188__frame02__step074__eef_rgb.png" alt="Spatial Diversity step 74">
+                  <figcaption><strong>step 74</strong><span>frame 3</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/spatial/spatial__ep188__frame03__step111__eef_rgb.png" alt="Spatial Diversity step 111">
+                  <figcaption><strong>step 111</strong><span>frame 4</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/spatial/spatial__ep188__frame04__step149__eef_rgb.png" alt="Spatial Diversity step 149">
+                  <figcaption><strong>step 149</strong><span>frame 5</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/spatial/spatial__ep188__frame05__step186__eef_rgb.png" alt="Spatial Diversity step 186">
+                  <figcaption><strong>step 186</strong><span>frame 6</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/spatial/spatial__ep188__frame06__step223__eef_rgb.png" alt="Spatial Diversity step 223">
+                  <figcaption><strong>step 223</strong><span>frame 7</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/spatial/spatial__ep188__frame07__step260__eef_rgb.png" alt="Spatial Diversity end">
+                  <figcaption><strong>end</strong><span>step 260</span></figcaption>
+                </figure>
+                
+              </div>
+            </div>
+            
+            <div class="raw-axis-row" style="--axis-color:#864524">
+              <div class="raw-axis-label">
+                <strong>Lighting Diversity</strong>
+                <span>light direction and intensity change</span>
+              </div>
+              <div class="raw-strip raw-cols-8">
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/lighting/lighting__ep010__frame00__step000__eef_rgb.png" alt="Lighting Diversity start">
+                  <figcaption><strong>start</strong><span>step 0</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/lighting/lighting__ep010__frame01__step042__eef_rgb.png" alt="Lighting Diversity step 42">
+                  <figcaption><strong>step 42</strong><span>frame 2</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/lighting/lighting__ep010__frame02__step084__eef_rgb.png" alt="Lighting Diversity step 84">
+                  <figcaption><strong>step 84</strong><span>frame 3</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/lighting/lighting__ep010__frame03__step126__eef_rgb.png" alt="Lighting Diversity step 126">
+                  <figcaption><strong>step 126</strong><span>frame 4</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/lighting/lighting__ep010__frame04__step168__eef_rgb.png" alt="Lighting Diversity step 168">
+                  <figcaption><strong>step 168</strong><span>frame 5</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/lighting/lighting__ep010__frame05__step210__eef_rgb.png" alt="Lighting Diversity step 210">
+                  <figcaption><strong>step 210</strong><span>frame 6</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/lighting/lighting__ep010__frame06__step252__eef_rgb.png" alt="Lighting Diversity step 252">
+                  <figcaption><strong>step 252</strong><span>frame 7</span></figcaption>
+                </figure>
+                
+                <figure class="raw-card">
+                  <img src="dataset_slides/raw_images/trajectories_eef_rgb/lighting/lighting__ep010__frame07__step294__eef_rgb.png" alt="Lighting Diversity end">
+                  <figcaption><strong>end</strong><span>step 294</span></figcaption>
+                </figure>
+                
+              </div>
+            </div>
+            </div>
+            </div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Same trajectories, but now from the wrist camera. This is the second observation the policy receives. The wrist view tracks the gripper, right, so it looks nearly identical regardless of where the external camera is pointing. But it does pick up color and lighting changes really vividly, which matters for the appearance axes later on.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Model policies</div>
+  <h1>We compare three visual behavior-cloning policies.</h1>
+  <div class="slide-body">
+            <div class="policy-layout">
+              <div class="policy-card scratch">
+                <div class="policy-head">
+                  <div class="policy-kicker">Scratch CNN</div>
+                  <h2>Encoder learned from simulation pixels.</h2>
+                </div>
+                <div class="encoder-schema">
+                  <div class="schema-label">visual encoder</div>
+                  <div class="schema-bar">
+                    <span class="seg is-trainable" style="flex: 6">trainable CNN</span>
+                    <span class="seg is-trainable is-head" style="flex: 1">head</span>
+                  </div>
+                </div>
+                <dl class="policy-specs">
+                  <div><dt>Pretrained</dt><dd>No</dd></div>
+                  <div><dt>Trainable</dt><dd>All weights, end-to-end</dd></div>
+                  <div><dt>Why include</dt><dd>Baseline &mdash; is the dataset alone enough?</dd></div>
+                </dl>
+              </div>
+              <div class="policy-card frozen">
+                <div class="policy-head">
+                  <div class="policy-kicker">Frozen ResNet-18</div>
+                  <h2>ImageNet features used without backbone updates.</h2>
+                </div>
+                <div class="encoder-schema">
+                  <div class="schema-label">visual encoder</div>
+                  <div class="schema-bar">
+                    <span class="seg is-frozen" style="flex: 6">&#10052; frozen ResNet-18</span>
+                    <span class="seg is-trainable is-head" style="flex: 1">head</span>
+                  </div>
+                </div>
+                <dl class="policy-specs">
+                  <div><dt>Pretrained</dt><dd>Yes &mdash; ImageNet</dd></div>
+                  <div><dt>Trainable</dt><dd>Projection + policy head</dd></div>
+                  <div><dt>Why include</dt><dd>Do pretrained features transfer to sim control?</dd></div>
+                </dl>
+              </div>
+              <div class="policy-card partial">
+                <div class="policy-head">
+                  <div class="policy-kicker">Partial ResNet-18</div>
+                  <h2>Late layers fine-tuned to the simulated task.</h2>
+                </div>
+                <div class="encoder-schema">
+                  <div class="schema-label">visual encoder</div>
+                  <div class="schema-bar">
+                    <span class="seg is-frozen" style="flex: 4">&#10052; early frozen</span>
+                    <span class="seg is-trainable" style="flex: 2">late tuned</span>
+                    <span class="seg is-trainable is-head" style="flex: 1">head</span>
+                  </div>
+                </div>
+                <dl class="policy-specs">
+                  <div><dt>Pretrained</dt><dd>Yes &mdash; ImageNet</dd></div>
+                  <div><dt>Trainable</dt><dd>Late residual blocks + head</dd></div>
+                  <div><dt>Why include</dt><dd>Middle ground between scratch and frozen.</dd></div>
+                </dl>
+              </div>
+            </div>
+            <div class="policy-pipeline">
+              <div class="pp-node">RGB ext + wrist</div>
+              <div class="pp-arrow">&rarr;</div>
+              <div class="pp-node pp-node-encoder">visual encoder</div>
+              <div class="pp-arrow">&oplus;</div>
+              <div class="pp-node">robot state</div>
+              <div class="pp-arrow">&rarr;</div>
+              <div class="pp-node">MLP head</div>
+              <div class="pp-arrow">&rarr;</div>
+              <div class="pp-node pp-node-out">action</div>
+            </div>
+            <p class="policy-shared"><em>Only the encoder differs</em> &mdash; every policy plugs into the same shared pipeline above.</p>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Alright, so let me walk you through the three vision encoders. Everything else is held constant. First, scratch CNN &mdash; a small encoder, trained end-to-end on simulation pixels, no pretraining at all. This is our baseline. The question it answers is: is the dataset alone enough? Second, frozen ResNet-18 &mdash; ImageNet features, the backbone never updates, only the policy head trains on our data. And third, partial ResNet-18 &mdash; early layers stay frozen, late blocks fine-tune to our task. The middle ground between the first two. Only the encoder differs across these three. The BC loss, the inputs, the 400-step closed-loop evaluation &mdash; all identical. So whatever effect we see downstream, it is the encoder's fault.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Evaluation protocol</div>
+  <h1>We evaluate whether the closed-loop policy reaches the cube under held-out scenes.</h1>
+  <div class="slide-body">
+            <div class="method-flow three">
+              <div class="flow-step">
+                <div class="flow-num">1</div>
+                <div class="flow-kicker">Rollout</div>
+                <div class="flow-tag">Closed-loop control, not offline prediction.</div>
+                <div class="flow-visual">
+                  <div class="chip-row">
+                    <span class="chip">Reset scene</span>
+                    <span class="chip-arrow">&rarr;</span>
+                    <span class="chip">400 control steps</span>
+                    <span class="chip-arrow">&rarr;</span>
+                    <span class="chip">Log min distance</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-num">2</div>
+                <div class="flow-kicker">Splits</div>
+                <div class="flow-tag">ID tests memorized distributions; OOD tests visual shift.</div>
+                <div class="flow-visual">
+                  <div class="chip-row">
+                    <span class="chip">ID &mdash; same dist, new seeds</span>
+                    <span class="chip">OOD &mdash; held-out variants</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-num">3</div>
+                <div class="flow-kicker">Success</div>
+                <div class="flow-tag">Thresholded by closest approach to the cube.</div>
+                <div class="flow-visual">
+                  <div class="chip-row">
+                    <span class="chip win">S@1 cm &mdash; strict</span>
+                    <span class="chip">S@2 cm &mdash; medium</span>
+                    <span class="chip">S@5 cm &mdash; broad</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="method-equation">
+              <div class="me-row">
+                <span class="me-label">Closest</span>
+                <code>d<sub>best</sub> = min<sub>t</sub> ||ee<sub>t</sub> &minus; target||</code>
+              </div>
+              <div class="me-row">
+                <span class="me-label">Success</span>
+                <code>S@r = <b>1</b>[ d<sub>best</sub> &le; r ], r &isin; {1, 2, 5} cm</code>
+              </div>
+            </div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Quick note on how we evaluate. This is closed-loop, not offline prediction. We reset PyBullet to a held-out scene, run the policy for up to 400 control steps, and we log the minimum distance to the cube across the rollout. Two splits to talk about. In-distribution &mdash; that's the same training distribution with fresh seeds &mdash; tests whether the policy memorized. Out-of-distribution &mdash; that's held-out variants on a specific axis &mdash; tests whether the policy actually generalized. And then we report three thresholds: 1 centimeter, 2, and 5. The 1-centimeter strict precision is our headline metric. The looser ones, we report them to make a point that you'll see on the next slide.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Result 1 - Visual axes over demos</div>
+  <h1>OOD success changes differently across visual axes as the demo budget increases.</h1>
+  <div class="slide-body">
+            <div class="small-multiple-grid four"><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="Color">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">Color</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="48.0" y="289.0" text-anchor="middle" class="x-label small">20</text>
+<text x="170.7" y="289.0" text-anchor="middle" class="x-label small">50</text>
+<text x="293.3" y="289.0" text-anchor="middle" class="x-label small">100</text>
+<text x="416.0" y="289.0" text-anchor="middle" class="x-label small">200</text>
+<polyline points="48.0,205.5 170.7,171.7 293.3,153.0 416.0,113.8" fill="none" stroke="#2c4669" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="48.0" cy="205.5" r="4" fill="#2c4669" />
+<circle cx="170.7" cy="171.7" r="4" fill="#2c4669" />
+<circle cx="293.3" cy="153.0" r="4" fill="#2c4669" />
+<circle cx="416.0" cy="113.8" r="4" fill="#2c4669" />
+<polyline points="48.0,48.0 170.7,48.0 293.3,48.0 416.0,48.0" fill="none" stroke="#2c4669" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" />
+<circle cx="48.0" cy="48.0" r="4" fill="#2c4669" />
+<circle cx="170.7" cy="48.0" r="4" fill="#2c4669" />
+<circle cx="293.3" cy="48.0" r="4" fill="#2c4669" />
+<circle cx="416.0" cy="48.0" r="4" fill="#2c4669" />
+<polyline points="48.0,230.7 170.7,240.6 293.3,192.2 416.0,140.1" fill="none" stroke="#345d3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="48.0" cy="230.7" r="4" fill="#345d3e" />
+<circle cx="170.7" cy="240.6" r="4" fill="#345d3e" />
+<circle cx="293.3" cy="192.2" r="4" fill="#345d3e" />
+<circle cx="416.0" cy="140.1" r="4" fill="#345d3e" />
+<polyline points="48.0,65.5 170.7,52.9 293.3,48.0 416.0,48.0" fill="none" stroke="#345d3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" />
+<circle cx="48.0" cy="65.5" r="4" fill="#345d3e" />
+<circle cx="170.7" cy="52.9" r="4" fill="#345d3e" />
+<circle cx="293.3" cy="48.0" r="4" fill="#345d3e" />
+<circle cx="416.0" cy="48.0" r="4" fill="#345d3e" />
+<polyline points="48.0,258.0 170.7,240.0 293.3,258.0 416.0,128.5" fill="none" stroke="#864524" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="48.0" cy="258.0" r="4" fill="#864524" />
+<circle cx="170.7" cy="240.0" r="4" fill="#864524" />
+<circle cx="293.3" cy="258.0" r="4" fill="#864524" />
+<circle cx="416.0" cy="128.5" r="4" fill="#864524" />
+<polyline points="48.0,181.0 170.7,134.3 293.3,61.6 416.0,48.0" fill="none" stroke="#864524" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" />
+<circle cx="48.0" cy="181.0" r="4" fill="#864524" />
+<circle cx="170.7" cy="134.3" r="4" fill="#864524" />
+<circle cx="293.3" cy="61.6" r="4" fill="#864524" />
+<circle cx="416.0" cy="48.0" r="4" fill="#864524" />
+<line x1="438" x2="454" y1="61" y2="61" stroke="#2c4669" stroke-width="3" />
+<circle cx="446" cy="61" r="3.5" fill="#2c4669" />
+<text x="461.0" y="65.0" text-anchor="start" class="legend small">Scratch @1</text>
+<line x1="438" x2="454" y1="82" y2="82" stroke="#2c4669" stroke-width="3" stroke-dasharray="6 5" />
+<circle cx="446" cy="82" r="3.5" fill="#2c4669" />
+<text x="461.0" y="86.0" text-anchor="start" class="legend small">Scratch @5</text>
+<line x1="438" x2="454" y1="103" y2="103" stroke="#345d3e" stroke-width="3" />
+<circle cx="446" cy="103" r="3.5" fill="#345d3e" />
+<text x="461.0" y="107.0" text-anchor="start" class="legend small">Frozen @1</text>
+<line x1="438" x2="454" y1="124" y2="124" stroke="#345d3e" stroke-width="3" stroke-dasharray="6 5" />
+<circle cx="446" cy="124" r="3.5" fill="#345d3e" />
+<text x="461.0" y="128.0" text-anchor="start" class="legend small">Frozen @5</text>
+<line x1="438" x2="454" y1="145" y2="145" stroke="#864524" stroke-width="3" />
+<circle cx="446" cy="145" r="3.5" fill="#864524" />
+<text x="461.0" y="149.0" text-anchor="start" class="legend small">Partial @1</text>
+<line x1="438" x2="454" y1="166" y2="166" stroke="#864524" stroke-width="3" stroke-dasharray="6 5" />
+<circle cx="446" cy="166" r="3.5" fill="#864524" />
+<text x="461.0" y="170.0" text-anchor="start" class="legend small">Partial @5</text>
+</svg></div><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="Camera">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">Camera</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="48.0" y="289.0" text-anchor="middle" class="x-label small">20</text>
+<text x="170.7" y="289.0" text-anchor="middle" class="x-label small">50</text>
+<text x="293.3" y="289.0" text-anchor="middle" class="x-label small">100</text>
+<text x="416.0" y="289.0" text-anchor="middle" class="x-label small">200</text>
+<polyline points="48.0,141.1 170.7,136.3 293.3,153.0 416.0,100.5" fill="none" stroke="#2c4669" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="48.0" cy="141.1" r="4" fill="#2c4669" />
+<circle cx="170.7" cy="136.3" r="4" fill="#2c4669" />
+<circle cx="293.3" cy="153.0" r="4" fill="#2c4669" />
+<circle cx="416.0" cy="100.5" r="4" fill="#2c4669" />
+<polyline points="48.0,48.0 170.7,65.8 293.3,48.3 416.0,48.0" fill="none" stroke="#2c4669" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" />
+<circle cx="48.0" cy="48.0" r="4" fill="#2c4669" />
+<circle cx="170.7" cy="65.8" r="4" fill="#2c4669" />
+<circle cx="293.3" cy="48.3" r="4" fill="#2c4669" />
+<circle cx="416.0" cy="48.0" r="4" fill="#2c4669" />
+<polyline points="48.0,248.9 170.7,239.1 293.3,230.3 416.0,181.7" fill="none" stroke="#345d3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="48.0" cy="248.9" r="4" fill="#345d3e" />
+<circle cx="170.7" cy="239.1" r="4" fill="#345d3e" />
+<circle cx="293.3" cy="230.3" r="4" fill="#345d3e" />
+<circle cx="416.0" cy="181.7" r="4" fill="#345d3e" />
+<polyline points="48.0,102.8 170.7,78.2 293.3,57.5 416.0,50.8" fill="none" stroke="#345d3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" />
+<circle cx="48.0" cy="102.8" r="4" fill="#345d3e" />
+<circle cx="170.7" cy="78.2" r="4" fill="#345d3e" />
+<circle cx="293.3" cy="57.5" r="4" fill="#345d3e" />
+<circle cx="416.0" cy="50.8" r="4" fill="#345d3e" />
+<polyline points="48.0,252.6 170.7,248.1 293.3,225.8 416.0,258.0" fill="none" stroke="#864524" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="48.0" cy="252.6" r="4" fill="#864524" />
+<circle cx="170.7" cy="248.1" r="4" fill="#864524" />
+<circle cx="293.3" cy="225.8" r="4" fill="#864524" />
+<circle cx="416.0" cy="258.0" r="4" fill="#864524" />
+<polyline points="48.0,184.4 170.7,140.4 293.3,175.4 416.0,100.8" fill="none" stroke="#864524" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" />
+<circle cx="48.0" cy="184.4" r="4" fill="#864524" />
+<circle cx="170.7" cy="140.4" r="4" fill="#864524" />
+<circle cx="293.3" cy="175.4" r="4" fill="#864524" />
+<circle cx="416.0" cy="100.8" r="4" fill="#864524" />
+<line x1="438" x2="454" y1="61" y2="61" stroke="#2c4669" stroke-width="3" />
+<circle cx="446" cy="61" r="3.5" fill="#2c4669" />
+<text x="461.0" y="65.0" text-anchor="start" class="legend small">Scratch @1</text>
+<line x1="438" x2="454" y1="82" y2="82" stroke="#2c4669" stroke-width="3" stroke-dasharray="6 5" />
+<circle cx="446" cy="82" r="3.5" fill="#2c4669" />
+<text x="461.0" y="86.0" text-anchor="start" class="legend small">Scratch @5</text>
+<line x1="438" x2="454" y1="103" y2="103" stroke="#345d3e" stroke-width="3" />
+<circle cx="446" cy="103" r="3.5" fill="#345d3e" />
+<text x="461.0" y="107.0" text-anchor="start" class="legend small">Frozen @1</text>
+<line x1="438" x2="454" y1="124" y2="124" stroke="#345d3e" stroke-width="3" stroke-dasharray="6 5" />
+<circle cx="446" cy="124" r="3.5" fill="#345d3e" />
+<text x="461.0" y="128.0" text-anchor="start" class="legend small">Frozen @5</text>
+<line x1="438" x2="454" y1="145" y2="145" stroke="#864524" stroke-width="3" />
+<circle cx="446" cy="145" r="3.5" fill="#864524" />
+<text x="461.0" y="149.0" text-anchor="start" class="legend small">Partial @1</text>
+<line x1="438" x2="454" y1="166" y2="166" stroke="#864524" stroke-width="3" stroke-dasharray="6 5" />
+<circle cx="446" cy="166" r="3.5" fill="#864524" />
+<text x="461.0" y="170.0" text-anchor="start" class="legend small">Partial @5</text>
+</svg></div><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="Lighting">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">Lighting</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="48.0" y="289.0" text-anchor="middle" class="x-label small">20</text>
+<text x="170.7" y="289.0" text-anchor="middle" class="x-label small">50</text>
+<text x="293.3" y="289.0" text-anchor="middle" class="x-label small">100</text>
+<text x="416.0" y="289.0" text-anchor="middle" class="x-label small">200</text>
+<polyline points="48.0,212.7 170.7,214.8 293.3,224.4 416.0,74.9" fill="none" stroke="#2c4669" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="48.0" cy="212.7" r="4" fill="#2c4669" />
+<circle cx="170.7" cy="214.8" r="4" fill="#2c4669" />
+<circle cx="293.3" cy="224.4" r="4" fill="#2c4669" />
+<circle cx="416.0" cy="74.9" r="4" fill="#2c4669" />
+<polyline points="48.0,59.0 170.7,66.6 293.3,104.3 416.0,48.0" fill="none" stroke="#2c4669" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" />
+<circle cx="48.0" cy="59.0" r="4" fill="#2c4669" />
+<circle cx="170.7" cy="66.6" r="4" fill="#2c4669" />
+<circle cx="293.3" cy="104.3" r="4" fill="#2c4669" />
+<circle cx="416.0" cy="48.0" r="4" fill="#2c4669" />
+<polyline points="48.0,258.0 170.7,238.6 293.3,258.0 416.0,258.0" fill="none" stroke="#345d3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="48.0" cy="258.0" r="4" fill="#345d3e" />
+<circle cx="170.7" cy="238.6" r="4" fill="#345d3e" />
+<circle cx="293.3" cy="258.0" r="4" fill="#345d3e" />
+<circle cx="416.0" cy="258.0" r="4" fill="#345d3e" />
+<polyline points="48.0,122.0 170.7,118.9 293.3,95.2 416.0,108.9" fill="none" stroke="#345d3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" />
+<circle cx="48.0" cy="122.0" r="4" fill="#345d3e" />
+<circle cx="170.7" cy="118.9" r="4" fill="#345d3e" />
+<circle cx="293.3" cy="95.2" r="4" fill="#345d3e" />
+<circle cx="416.0" cy="108.9" r="4" fill="#345d3e" />
+<polyline points="48.0,253.3 170.7,254.0 293.3,222.3 416.0,190.8" fill="none" stroke="#864524" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="48.0" cy="253.3" r="4" fill="#864524" />
+<circle cx="170.7" cy="254.0" r="4" fill="#864524" />
+<circle cx="293.3" cy="222.3" r="4" fill="#864524" />
+<circle cx="416.0" cy="190.8" r="4" fill="#864524" />
+<polyline points="48.0,169.4 170.7,129.9 293.3,93.5 416.0,73.6" fill="none" stroke="#864524" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" />
+<circle cx="48.0" cy="169.4" r="4" fill="#864524" />
+<circle cx="170.7" cy="129.9" r="4" fill="#864524" />
+<circle cx="293.3" cy="93.5" r="4" fill="#864524" />
+<circle cx="416.0" cy="73.6" r="4" fill="#864524" />
+<line x1="438" x2="454" y1="61" y2="61" stroke="#2c4669" stroke-width="3" />
+<circle cx="446" cy="61" r="3.5" fill="#2c4669" />
+<text x="461.0" y="65.0" text-anchor="start" class="legend small">Scratch @1</text>
+<line x1="438" x2="454" y1="82" y2="82" stroke="#2c4669" stroke-width="3" stroke-dasharray="6 5" />
+<circle cx="446" cy="82" r="3.5" fill="#2c4669" />
+<text x="461.0" y="86.0" text-anchor="start" class="legend small">Scratch @5</text>
+<line x1="438" x2="454" y1="103" y2="103" stroke="#345d3e" stroke-width="3" />
+<circle cx="446" cy="103" r="3.5" fill="#345d3e" />
+<text x="461.0" y="107.0" text-anchor="start" class="legend small">Frozen @1</text>
+<line x1="438" x2="454" y1="124" y2="124" stroke="#345d3e" stroke-width="3" stroke-dasharray="6 5" />
+<circle cx="446" cy="124" r="3.5" fill="#345d3e" />
+<text x="461.0" y="128.0" text-anchor="start" class="legend small">Frozen @5</text>
+<line x1="438" x2="454" y1="145" y2="145" stroke="#864524" stroke-width="3" />
+<circle cx="446" cy="145" r="3.5" fill="#864524" />
+<text x="461.0" y="149.0" text-anchor="start" class="legend small">Partial @1</text>
+<line x1="438" x2="454" y1="166" y2="166" stroke="#864524" stroke-width="3" stroke-dasharray="6 5" />
+<circle cx="446" cy="166" r="3.5" fill="#864524" />
+<text x="461.0" y="170.0" text-anchor="start" class="legend small">Partial @5</text>
+</svg></div><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="Spatial">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">Spatial</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="48.0" y="289.0" text-anchor="middle" class="x-label small">20</text>
+<text x="170.7" y="289.0" text-anchor="middle" class="x-label small">50</text>
+<text x="293.3" y="289.0" text-anchor="middle" class="x-label small">100</text>
+<text x="416.0" y="289.0" text-anchor="middle" class="x-label small">200</text>
+<polyline points="48.0,253.2 170.7,251.9 293.3,237.0 416.0,238.1" fill="none" stroke="#2c4669" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="48.0" cy="253.2" r="4" fill="#2c4669" />
+<circle cx="170.7" cy="251.9" r="4" fill="#2c4669" />
+<circle cx="293.3" cy="237.0" r="4" fill="#2c4669" />
+<circle cx="416.0" cy="238.1" r="4" fill="#2c4669" />
+<polyline points="48.0,205.3 170.7,192.1 293.3,177.9 416.0,158.6" fill="none" stroke="#2c4669" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" />
+<circle cx="48.0" cy="205.3" r="4" fill="#2c4669" />
+<circle cx="170.7" cy="192.1" r="4" fill="#2c4669" />
+<circle cx="293.3" cy="177.9" r="4" fill="#2c4669" />
+<circle cx="416.0" cy="158.6" r="4" fill="#2c4669" />
+<polyline points="48.0,253.9 170.7,242.4 293.3,243.3 416.0,227.9" fill="none" stroke="#345d3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="48.0" cy="253.9" r="4" fill="#345d3e" />
+<circle cx="170.7" cy="242.4" r="4" fill="#345d3e" />
+<circle cx="293.3" cy="243.3" r="4" fill="#345d3e" />
+<circle cx="416.0" cy="227.9" r="4" fill="#345d3e" />
+<polyline points="48.0,197.8 170.7,164.0 293.3,175.1 416.0,153.3" fill="none" stroke="#345d3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" />
+<circle cx="48.0" cy="197.8" r="4" fill="#345d3e" />
+<circle cx="170.7" cy="164.0" r="4" fill="#345d3e" />
+<circle cx="293.3" cy="175.1" r="4" fill="#345d3e" />
+<circle cx="416.0" cy="153.3" r="4" fill="#345d3e" />
+<polyline points="48.0,256.7 170.7,250.9 293.3,252.8 416.0,231.1" fill="none" stroke="#864524" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="48.0" cy="256.7" r="4" fill="#864524" />
+<circle cx="170.7" cy="250.9" r="4" fill="#864524" />
+<circle cx="293.3" cy="252.8" r="4" fill="#864524" />
+<circle cx="416.0" cy="231.1" r="4" fill="#864524" />
+<polyline points="48.0,219.7 170.7,191.1 293.3,184.8 416.0,154.4" fill="none" stroke="#864524" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 5" />
+<circle cx="48.0" cy="219.7" r="4" fill="#864524" />
+<circle cx="170.7" cy="191.1" r="4" fill="#864524" />
+<circle cx="293.3" cy="184.8" r="4" fill="#864524" />
+<circle cx="416.0" cy="154.4" r="4" fill="#864524" />
+<line x1="438" x2="454" y1="61" y2="61" stroke="#2c4669" stroke-width="3" />
+<circle cx="446" cy="61" r="3.5" fill="#2c4669" />
+<text x="461.0" y="65.0" text-anchor="start" class="legend small">Scratch @1</text>
+<line x1="438" x2="454" y1="82" y2="82" stroke="#2c4669" stroke-width="3" stroke-dasharray="6 5" />
+<circle cx="446" cy="82" r="3.5" fill="#2c4669" />
+<text x="461.0" y="86.0" text-anchor="start" class="legend small">Scratch @5</text>
+<line x1="438" x2="454" y1="103" y2="103" stroke="#345d3e" stroke-width="3" />
+<circle cx="446" cy="103" r="3.5" fill="#345d3e" />
+<text x="461.0" y="107.0" text-anchor="start" class="legend small">Frozen @1</text>
+<line x1="438" x2="454" y1="124" y2="124" stroke="#345d3e" stroke-width="3" stroke-dasharray="6 5" />
+<circle cx="446" cy="124" r="3.5" fill="#345d3e" />
+<text x="461.0" y="128.0" text-anchor="start" class="legend small">Frozen @5</text>
+<line x1="438" x2="454" y1="145" y2="145" stroke="#864524" stroke-width="3" />
+<circle cx="446" cy="145" r="3.5" fill="#864524" />
+<text x="461.0" y="149.0" text-anchor="start" class="legend small">Partial @1</text>
+<line x1="438" x2="454" y1="166" y2="166" stroke="#864524" stroke-width="3" stroke-dasharray="6 5" />
+<circle cx="446" cy="166" r="3.5" fill="#864524" />
+<text x="461.0" y="170.0" text-anchor="start" class="legend small">Partial @5</text>
+</svg></div></div>
+            <div class="callout">OOD, aggregated across reach and obstacle-aware tasks. Each panel is one visual axis; x-axis is demo budget 20, 50, 100, 200. Solid lines are S@1 cm; dotted lines are S@5 cm. Budget-200 obstacle-aware values use the final phase-precise avoid metrics.</div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Okay, so this is our first result. It's how out-of-distribution success scales with demonstration budget, broken out by axis. Each panel here is one visual axis. The solid lines are strict 1-centimeter success. The dotted lines are the looser 5-centimeter version. If you look at color, camera, and lighting &mdash; they all climb steadily as we add more data. The pretrained encoders particularly help on camera shifts, which is interesting. But then look at spatial. Even at 200 demonstrations, every single encoder family stays low at strict precision. So more demonstrations clearly fix appearance OOD. But they do not fix spatial OOD. That was surprising to us when we first saw it.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Result 2 - Visual axes by precision threshold</div>
+  <h1>The same axis can look solved at 5 cm while still failing at 1 cm.</h1>
+  <div class="slide-body">
+            <div class="small-multiple-grid four"><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="Color">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">Color</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="109.3" y="289.0" text-anchor="middle" class="x-label small">S@1</text>
+<rect x="73.3" y="113.8" width="22.0" height="144.2" rx="3" fill="#2c4669" />
+<rect x="98.3" y="140.1" width="22.0" height="118.0" rx="3" fill="#345d3e" />
+<rect x="123.3" y="128.5" width="22.0" height="129.5" rx="3" fill="#864524" />
+<text x="232.0" y="289.0" text-anchor="middle" class="x-label small">S@2</text>
+<rect x="196.0" y="48.0" width="22.0" height="210.0" rx="3" fill="#2c4669" />
+<rect x="221.0" y="48.0" width="22.0" height="210.0" rx="3" fill="#345d3e" />
+<rect x="246.0" y="87.2" width="22.0" height="170.8" rx="3" fill="#864524" />
+<text x="354.7" y="289.0" text-anchor="middle" class="x-label small">S@5</text>
+<rect x="318.7" y="48.0" width="22.0" height="210.0" rx="3" fill="#2c4669" />
+<rect x="343.7" y="48.0" width="22.0" height="210.0" rx="3" fill="#345d3e" />
+<rect x="368.7" y="48.0" width="22.0" height="210.0" rx="3" fill="#864524" />
+<rect x="434" y="52" width="11" height="11" rx="2" fill="#2c4669" />
+<text x="451.0" y="62.0" text-anchor="start" class="legend small">Scratch</text>
+<rect x="434" y="71" width="11" height="11" rx="2" fill="#345d3e" />
+<text x="451.0" y="81.0" text-anchor="start" class="legend small">Frozen</text>
+<rect x="434" y="90" width="11" height="11" rx="2" fill="#864524" />
+<text x="451.0" y="100.0" text-anchor="start" class="legend small">Partial</text>
+</svg></div><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="Camera">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">Camera</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="109.3" y="289.0" text-anchor="middle" class="x-label small">S@1</text>
+<rect x="73.3" y="100.5" width="22.0" height="157.5" rx="3" fill="#2c4669" />
+<rect x="98.3" y="181.7" width="22.0" height="76.3" rx="3" fill="#345d3e" />
+<rect x="123.3" y="258.0" width="22.0" height="0.0" rx="3" fill="#864524" />
+<text x="232.0" y="289.0" text-anchor="middle" class="x-label small">S@2</text>
+<rect x="196.0" y="48.0" width="22.0" height="210.0" rx="3" fill="#2c4669" />
+<rect x="221.0" y="106.1" width="22.0" height="151.9" rx="3" fill="#345d3e" />
+<rect x="246.0" y="212.8" width="22.0" height="45.1" rx="3" fill="#864524" />
+<text x="354.7" y="289.0" text-anchor="middle" class="x-label small">S@5</text>
+<rect x="318.7" y="48.0" width="22.0" height="210.0" rx="3" fill="#2c4669" />
+<rect x="343.7" y="50.8" width="22.0" height="207.2" rx="3" fill="#345d3e" />
+<rect x="368.7" y="100.8" width="22.0" height="157.2" rx="3" fill="#864524" />
+<rect x="434" y="52" width="11" height="11" rx="2" fill="#2c4669" />
+<text x="451.0" y="62.0" text-anchor="start" class="legend small">Scratch</text>
+<rect x="434" y="71" width="11" height="11" rx="2" fill="#345d3e" />
+<text x="451.0" y="81.0" text-anchor="start" class="legend small">Frozen</text>
+<rect x="434" y="90" width="11" height="11" rx="2" fill="#864524" />
+<text x="451.0" y="100.0" text-anchor="start" class="legend small">Partial</text>
+</svg></div><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="Lighting">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">Lighting</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="109.3" y="289.0" text-anchor="middle" class="x-label small">S@1</text>
+<rect x="73.3" y="74.9" width="22.0" height="183.1" rx="3" fill="#2c4669" />
+<rect x="98.3" y="258.0" width="22.0" height="0.0" rx="3" fill="#345d3e" />
+<rect x="123.3" y="190.8" width="22.0" height="67.2" rx="3" fill="#864524" />
+<text x="232.0" y="289.0" text-anchor="middle" class="x-label small">S@2</text>
+<rect x="196.0" y="60.2" width="22.0" height="197.8" rx="3" fill="#2c4669" />
+<rect x="221.0" y="212.5" width="22.0" height="45.5" rx="3" fill="#345d3e" />
+<rect x="246.0" y="137.9" width="22.0" height="120.0" rx="3" fill="#864524" />
+<text x="354.7" y="289.0" text-anchor="middle" class="x-label small">S@5</text>
+<rect x="318.7" y="48.0" width="22.0" height="210.0" rx="3" fill="#2c4669" />
+<rect x="343.7" y="108.9" width="22.0" height="149.1" rx="3" fill="#345d3e" />
+<rect x="368.7" y="73.6" width="22.0" height="184.4" rx="3" fill="#864524" />
+<rect x="434" y="52" width="11" height="11" rx="2" fill="#2c4669" />
+<text x="451.0" y="62.0" text-anchor="start" class="legend small">Scratch</text>
+<rect x="434" y="71" width="11" height="11" rx="2" fill="#345d3e" />
+<text x="451.0" y="81.0" text-anchor="start" class="legend small">Frozen</text>
+<rect x="434" y="90" width="11" height="11" rx="2" fill="#864524" />
+<text x="451.0" y="100.0" text-anchor="start" class="legend small">Partial</text>
+</svg></div><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="Spatial">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">Spatial</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="109.3" y="289.0" text-anchor="middle" class="x-label small">S@1</text>
+<rect x="73.3" y="238.1" width="22.0" height="19.9" rx="3" fill="#2c4669" />
+<rect x="98.3" y="227.9" width="22.0" height="30.1" rx="3" fill="#345d3e" />
+<rect x="123.3" y="231.1" width="22.0" height="27.0" rx="3" fill="#864524" />
+<text x="232.0" y="289.0" text-anchor="middle" class="x-label small">S@2</text>
+<rect x="196.0" y="204.8" width="22.0" height="53.2" rx="3" fill="#2c4669" />
+<rect x="221.0" y="198.8" width="22.0" height="59.1" rx="3" fill="#345d3e" />
+<rect x="246.0" y="198.8" width="22.0" height="59.1" rx="3" fill="#864524" />
+<text x="354.7" y="289.0" text-anchor="middle" class="x-label small">S@5</text>
+<rect x="318.7" y="158.6" width="22.0" height="99.4" rx="3" fill="#2c4669" />
+<rect x="343.7" y="153.3" width="22.0" height="104.7" rx="3" fill="#345d3e" />
+<rect x="368.7" y="154.4" width="22.0" height="103.6" rx="3" fill="#864524" />
+<rect x="434" y="52" width="11" height="11" rx="2" fill="#2c4669" />
+<text x="451.0" y="62.0" text-anchor="start" class="legend small">Scratch</text>
+<rect x="434" y="71" width="11" height="11" rx="2" fill="#345d3e" />
+<text x="451.0" y="81.0" text-anchor="start" class="legend small">Frozen</text>
+<rect x="434" y="90" width="11" height="11" rx="2" fill="#864524" />
+<text x="451.0" y="100.0" text-anchor="start" class="legend small">Partial</text>
+</svg></div></div>
+            <div class="callout">OOD, budget 200, aggregated across both tasks. The obstacle-aware side uses the final phase-precise avoid metrics; bars compare Scratch CNN, Frozen ResNet, and Partial ResNet.</div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Same models, same data, but now I'm slicing it by precision threshold instead of by budget. So three bars per axis: 1 centimeter, 2, and 5. And I want you to watch the gap between the strict bars and the loose bars. For color, camera, and lighting &mdash; the 5-centimeter bars look near perfect. But the 1-centimeter bars are much lower. That gap right there is what precision looks like when it's hiding behind a loose threshold. If we only reported 5-centimeter success here, we'd basically be telling you the problem is solved. But it's not. And on spatial? The bars stay low across all three thresholds. That's not imprecision. That's real failure.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Result 3 - ID versus OOD by visual axis</div>
+  <h1>The ID/OOD gap is strongest where visual variation changes control geometry.</h1>
+  <div class="slide-body">
+            <div class="small-multiple-grid three"><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="S@1">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">S@1</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="94.0" y="289.0" text-anchor="middle" class="x-label small">Color</text>
+<rect x="56.0" y="48.0" width="10.2" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="69.2" y="113.8" width="10.2" height="144.2" rx="3" fill="#2c4669" />
+<rect x="82.3" y="48.0" width="10.2" height="210.0" rx="3" fill="#8aa593" />
+<rect x="95.5" y="140.1" width="10.2" height="118.0" rx="3" fill="#345d3e" />
+<rect x="108.7" y="100.5" width="10.2" height="157.5" rx="3" fill="#b89172" />
+<rect x="121.8" y="128.5" width="10.2" height="129.5" rx="3" fill="#864524" />
+<text x="186.0" y="289.0" text-anchor="middle" class="x-label small">Camera</text>
+<rect x="148.0" y="100.5" width="10.2" height="157.5" rx="3" fill="#8a9bb6" />
+<rect x="161.2" y="100.5" width="10.2" height="157.5" rx="3" fill="#2c4669" />
+<rect x="174.3" y="92.4" width="10.2" height="165.6" rx="3" fill="#8aa593" />
+<rect x="187.5" y="181.7" width="10.2" height="76.3" rx="3" fill="#345d3e" />
+<rect x="200.7" y="153.0" width="10.2" height="105.0" rx="3" fill="#b89172" />
+<rect x="213.8" y="258.0" width="10.2" height="0.0" rx="3" fill="#864524" />
+<text x="278.0" y="289.0" text-anchor="middle" class="x-label small">Lighting</text>
+<rect x="240.0" y="48.0" width="10.2" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="253.2" y="74.9" width="10.2" height="183.1" rx="3" fill="#2c4669" />
+<rect x="266.3" y="91.4" width="10.2" height="166.6" rx="3" fill="#8aa593" />
+<rect x="279.5" y="258.0" width="10.2" height="0.0" rx="3" fill="#345d3e" />
+<rect x="292.7" y="100.5" width="10.2" height="157.5" rx="3" fill="#b89172" />
+<rect x="305.8" y="190.8" width="10.2" height="67.2" rx="3" fill="#864524" />
+<text x="370.0" y="289.0" text-anchor="middle" class="x-label small">Spatial</text>
+<rect x="332.0" y="179.6" width="10.2" height="78.4" rx="3" fill="#8a9bb6" />
+<rect x="345.2" y="238.1" width="10.2" height="19.9" rx="3" fill="#2c4669" />
+<rect x="358.3" y="176.8" width="10.2" height="81.2" rx="3" fill="#8aa593" />
+<rect x="371.5" y="227.9" width="10.2" height="30.1" rx="3" fill="#345d3e" />
+<rect x="384.7" y="208.7" width="10.2" height="49.3" rx="3" fill="#b89172" />
+<rect x="397.8" y="231.1" width="10.2" height="27.0" rx="3" fill="#864524" />
+<rect x="434" y="52" width="11" height="11" rx="2" fill="#8a9bb6" />
+<text x="451.0" y="62.0" text-anchor="start" class="legend small">S ID</text>
+<rect x="434" y="71" width="11" height="11" rx="2" fill="#2c4669" />
+<text x="451.0" y="81.0" text-anchor="start" class="legend small">S OOD</text>
+<rect x="434" y="90" width="11" height="11" rx="2" fill="#8aa593" />
+<text x="451.0" y="100.0" text-anchor="start" class="legend small">F ID</text>
+<rect x="434" y="109" width="11" height="11" rx="2" fill="#345d3e" />
+<text x="451.0" y="119.0" text-anchor="start" class="legend small">F OOD</text>
+<rect x="434" y="128" width="11" height="11" rx="2" fill="#b89172" />
+<text x="451.0" y="138.0" text-anchor="start" class="legend small">P ID</text>
+<rect x="434" y="147" width="11" height="11" rx="2" fill="#864524" />
+<text x="451.0" y="157.0" text-anchor="start" class="legend small">P OOD</text>
+</svg></div><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="S@2">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">S@2</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="94.0" y="289.0" text-anchor="middle" class="x-label small">Color</text>
+<rect x="56.0" y="48.0" width="10.2" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="69.2" y="48.0" width="10.2" height="210.0" rx="3" fill="#2c4669" />
+<rect x="82.3" y="48.0" width="10.2" height="210.0" rx="3" fill="#8aa593" />
+<rect x="95.5" y="48.0" width="10.2" height="210.0" rx="3" fill="#345d3e" />
+<rect x="108.7" y="90.0" width="10.2" height="168.0" rx="3" fill="#b89172" />
+<rect x="121.8" y="87.2" width="10.2" height="170.8" rx="3" fill="#864524" />
+<text x="186.0" y="289.0" text-anchor="middle" class="x-label small">Camera</text>
+<rect x="148.0" y="48.0" width="10.2" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="161.2" y="48.0" width="10.2" height="210.0" rx="3" fill="#2c4669" />
+<rect x="174.3" y="48.0" width="10.2" height="210.0" rx="3" fill="#8aa593" />
+<rect x="187.5" y="106.1" width="10.2" height="151.9" rx="3" fill="#345d3e" />
+<rect x="200.7" y="100.5" width="10.2" height="157.5" rx="3" fill="#b89172" />
+<rect x="213.8" y="212.8" width="10.2" height="45.1" rx="3" fill="#864524" />
+<text x="278.0" y="289.0" text-anchor="middle" class="x-label small">Lighting</text>
+<rect x="240.0" y="48.0" width="10.2" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="253.2" y="60.2" width="10.2" height="197.8" rx="3" fill="#2c4669" />
+<rect x="266.3" y="50.5" width="10.2" height="207.5" rx="3" fill="#8aa593" />
+<rect x="279.5" y="212.5" width="10.2" height="45.5" rx="3" fill="#345d3e" />
+<rect x="292.7" y="48.0" width="10.2" height="210.0" rx="3" fill="#b89172" />
+<rect x="305.8" y="137.9" width="10.2" height="120.0" rx="3" fill="#864524" />
+<text x="370.0" y="289.0" text-anchor="middle" class="x-label small">Spatial</text>
+<rect x="332.0" y="134.4" width="10.2" height="123.6" rx="3" fill="#8a9bb6" />
+<rect x="345.2" y="204.8" width="10.2" height="53.2" rx="3" fill="#2c4669" />
+<rect x="358.3" y="136.6" width="10.2" height="121.5" rx="3" fill="#8aa593" />
+<rect x="371.5" y="198.8" width="10.2" height="59.1" rx="3" fill="#345d3e" />
+<rect x="384.7" y="141.4" width="10.2" height="116.6" rx="3" fill="#b89172" />
+<rect x="397.8" y="198.8" width="10.2" height="59.1" rx="3" fill="#864524" />
+<rect x="434" y="52" width="11" height="11" rx="2" fill="#8a9bb6" />
+<text x="451.0" y="62.0" text-anchor="start" class="legend small">S ID</text>
+<rect x="434" y="71" width="11" height="11" rx="2" fill="#2c4669" />
+<text x="451.0" y="81.0" text-anchor="start" class="legend small">S OOD</text>
+<rect x="434" y="90" width="11" height="11" rx="2" fill="#8aa593" />
+<text x="451.0" y="100.0" text-anchor="start" class="legend small">F ID</text>
+<rect x="434" y="109" width="11" height="11" rx="2" fill="#345d3e" />
+<text x="451.0" y="119.0" text-anchor="start" class="legend small">F OOD</text>
+<rect x="434" y="128" width="11" height="11" rx="2" fill="#b89172" />
+<text x="451.0" y="138.0" text-anchor="start" class="legend small">P ID</text>
+<rect x="434" y="147" width="11" height="11" rx="2" fill="#864524" />
+<text x="451.0" y="157.0" text-anchor="start" class="legend small">P OOD</text>
+</svg></div><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="S@5">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">S@5</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="94.0" y="289.0" text-anchor="middle" class="x-label small">Color</text>
+<rect x="56.0" y="48.0" width="10.2" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="69.2" y="48.0" width="10.2" height="210.0" rx="3" fill="#2c4669" />
+<rect x="82.3" y="48.0" width="10.2" height="210.0" rx="3" fill="#8aa593" />
+<rect x="95.5" y="48.0" width="10.2" height="210.0" rx="3" fill="#345d3e" />
+<rect x="108.7" y="48.0" width="10.2" height="210.0" rx="3" fill="#b89172" />
+<rect x="121.8" y="48.0" width="10.2" height="210.0" rx="3" fill="#864524" />
+<text x="186.0" y="289.0" text-anchor="middle" class="x-label small">Camera</text>
+<rect x="148.0" y="48.0" width="10.2" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="161.2" y="48.0" width="10.2" height="210.0" rx="3" fill="#2c4669" />
+<rect x="174.3" y="48.0" width="10.2" height="210.0" rx="3" fill="#8aa593" />
+<rect x="187.5" y="50.8" width="10.2" height="207.2" rx="3" fill="#345d3e" />
+<rect x="200.7" y="100.5" width="10.2" height="157.5" rx="3" fill="#b89172" />
+<rect x="213.8" y="100.8" width="10.2" height="157.2" rx="3" fill="#864524" />
+<text x="278.0" y="289.0" text-anchor="middle" class="x-label small">Lighting</text>
+<rect x="240.0" y="48.0" width="10.2" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="253.2" y="48.0" width="10.2" height="210.0" rx="3" fill="#2c4669" />
+<rect x="266.3" y="48.0" width="10.2" height="210.0" rx="3" fill="#8aa593" />
+<rect x="279.5" y="108.9" width="10.2" height="149.1" rx="3" fill="#345d3e" />
+<rect x="292.7" y="48.0" width="10.2" height="210.0" rx="3" fill="#b89172" />
+<rect x="305.8" y="73.6" width="10.2" height="184.4" rx="3" fill="#864524" />
+<text x="370.0" y="289.0" text-anchor="middle" class="x-label small">Spatial</text>
+<rect x="332.0" y="87.5" width="10.2" height="170.5" rx="3" fill="#8a9bb6" />
+<rect x="345.2" y="158.6" width="10.2" height="99.4" rx="3" fill="#2c4669" />
+<rect x="358.3" y="79.9" width="10.2" height="178.1" rx="3" fill="#8aa593" />
+<rect x="371.5" y="153.3" width="10.2" height="104.7" rx="3" fill="#345d3e" />
+<rect x="384.7" y="84.8" width="10.2" height="173.2" rx="3" fill="#b89172" />
+<rect x="397.8" y="154.4" width="10.2" height="103.6" rx="3" fill="#864524" />
+<rect x="434" y="52" width="11" height="11" rx="2" fill="#8a9bb6" />
+<text x="451.0" y="62.0" text-anchor="start" class="legend small">S ID</text>
+<rect x="434" y="71" width="11" height="11" rx="2" fill="#2c4669" />
+<text x="451.0" y="81.0" text-anchor="start" class="legend small">S OOD</text>
+<rect x="434" y="90" width="11" height="11" rx="2" fill="#8aa593" />
+<text x="451.0" y="100.0" text-anchor="start" class="legend small">F ID</text>
+<rect x="434" y="109" width="11" height="11" rx="2" fill="#345d3e" />
+<text x="451.0" y="119.0" text-anchor="start" class="legend small">F OOD</text>
+<rect x="434" y="128" width="11" height="11" rx="2" fill="#b89172" />
+<text x="451.0" y="138.0" text-anchor="start" class="legend small">P ID</text>
+<rect x="434" y="147" width="11" height="11" rx="2" fill="#864524" />
+<text x="451.0" y="157.0" text-anchor="start" class="legend small">P OOD</text>
+</svg></div></div>
+            <div class="callout">Budget 200, aggregated across both tasks. The obstacle-aware side uses the final phase-precise avoid metrics. S/F/P denote Scratch CNN, Frozen ResNet, and Partial ResNet; lighter bars are ID and darker bars are OOD.</div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Now I want to show you the ID-versus-OOD gap directly. The light bars are in-distribution. The dark bars are out-of-distribution. Where they match, the policy generalizes well. For color, lighting, and camera &mdash; the gap is acceptable, at least at the looser thresholds. Spatial is just different. Even the in-distribution success barely clears the floor here. So it's not just that the policy fails out-of-distribution &mdash; it's actually struggling inside the training distribution itself. The gap is biggest exactly where visual variation changes control geometry. And that, of course, is the spatial axis.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Result 4 - Task split by visual axis</div>
+  <h1>Obstacle-aware reaching is the task where spatial variation becomes the hardest.</h1>
+  <div class="slide-body">
+            <div class="small-multiple-grid four"><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="Color">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">Color</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="109.3" y="289.0" text-anchor="middle" class="x-label small">S@1</text>
+<rect x="56.0" y="48.0" width="15.3" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="74.3" y="179.6" width="15.3" height="78.4" rx="3" fill="#2c4669" />
+<rect x="92.6" y="202.7" width="15.3" height="55.3" rx="3" fill="#8aa593" />
+<rect x="110.8" y="77.4" width="15.3" height="180.6" rx="3" fill="#345d3e" />
+<rect x="129.1" y="74.6" width="15.3" height="183.4" rx="3" fill="#b89172" />
+<rect x="147.4" y="182.4" width="15.3" height="75.6" rx="3" fill="#864524" />
+<text x="232.0" y="289.0" text-anchor="middle" class="x-label small">S@2</text>
+<rect x="178.7" y="48.0" width="15.3" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="196.9" y="48.0" width="15.3" height="210.0" rx="3" fill="#2c4669" />
+<rect x="215.2" y="48.0" width="15.3" height="210.0" rx="3" fill="#8aa593" />
+<rect x="233.5" y="48.0" width="15.3" height="210.0" rx="3" fill="#345d3e" />
+<rect x="251.8" y="74.6" width="15.3" height="183.4" rx="3" fill="#b89172" />
+<rect x="270.1" y="99.8" width="15.3" height="158.2" rx="3" fill="#864524" />
+<text x="354.7" y="289.0" text-anchor="middle" class="x-label small">S@5</text>
+<rect x="301.3" y="48.0" width="15.3" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="319.6" y="48.0" width="15.3" height="210.0" rx="3" fill="#2c4669" />
+<rect x="337.9" y="48.0" width="15.3" height="210.0" rx="3" fill="#8aa593" />
+<rect x="356.2" y="48.0" width="15.3" height="210.0" rx="3" fill="#345d3e" />
+<rect x="374.4" y="48.0" width="15.3" height="210.0" rx="3" fill="#b89172" />
+<rect x="392.7" y="48.0" width="15.3" height="210.0" rx="3" fill="#864524" />
+<rect x="434" y="52" width="11" height="11" rx="2" fill="#8a9bb6" />
+<text x="451.0" y="62.0" text-anchor="start" class="legend small">S reach</text>
+<rect x="434" y="71" width="11" height="11" rx="2" fill="#2c4669" />
+<text x="451.0" y="81.0" text-anchor="start" class="legend small">S obs</text>
+<rect x="434" y="90" width="11" height="11" rx="2" fill="#8aa593" />
+<text x="451.0" y="100.0" text-anchor="start" class="legend small">F reach</text>
+<rect x="434" y="109" width="11" height="11" rx="2" fill="#345d3e" />
+<text x="451.0" y="119.0" text-anchor="start" class="legend small">F obs</text>
+<rect x="434" y="128" width="11" height="11" rx="2" fill="#b89172" />
+<text x="451.0" y="138.0" text-anchor="start" class="legend small">P reach</text>
+<rect x="434" y="147" width="11" height="11" rx="2" fill="#864524" />
+<text x="451.0" y="157.0" text-anchor="start" class="legend small">P obs</text>
+</svg></div><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="Camera">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">Camera</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="109.3" y="289.0" text-anchor="middle" class="x-label small">S@1</text>
+<rect x="56.0" y="48.0" width="15.3" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="74.3" y="153.0" width="15.3" height="105.0" rx="3" fill="#2c4669" />
+<rect x="92.6" y="146.0" width="15.3" height="112.0" rx="3" fill="#8aa593" />
+<rect x="110.8" y="217.4" width="15.3" height="40.6" rx="3" fill="#345d3e" />
+<rect x="129.1" y="258.0" width="15.3" height="0.0" rx="3" fill="#b89172" />
+<rect x="147.4" y="258.0" width="15.3" height="0.0" rx="3" fill="#864524" />
+<text x="232.0" y="289.0" text-anchor="middle" class="x-label small">S@2</text>
+<rect x="178.7" y="48.0" width="15.3" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="196.9" y="48.0" width="15.3" height="210.0" rx="3" fill="#2c4669" />
+<rect x="215.2" y="114.5" width="15.3" height="143.5" rx="3" fill="#8aa593" />
+<rect x="233.5" y="97.7" width="15.3" height="160.3" rx="3" fill="#345d3e" />
+<rect x="251.8" y="182.4" width="15.3" height="75.6" rx="3" fill="#b89172" />
+<rect x="270.1" y="243.3" width="15.3" height="14.7" rx="3" fill="#864524" />
+<text x="354.7" y="289.0" text-anchor="middle" class="x-label small">S@5</text>
+<rect x="301.3" y="48.0" width="15.3" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="319.6" y="48.0" width="15.3" height="210.0" rx="3" fill="#2c4669" />
+<rect x="337.9" y="52.9" width="15.3" height="205.1" rx="3" fill="#8aa593" />
+<rect x="356.2" y="48.7" width="15.3" height="209.3" rx="3" fill="#345d3e" />
+<rect x="374.4" y="48.0" width="15.3" height="210.0" rx="3" fill="#b89172" />
+<rect x="392.7" y="153.7" width="15.3" height="104.3" rx="3" fill="#864524" />
+<rect x="434" y="52" width="11" height="11" rx="2" fill="#8a9bb6" />
+<text x="451.0" y="62.0" text-anchor="start" class="legend small">S reach</text>
+<rect x="434" y="71" width="11" height="11" rx="2" fill="#2c4669" />
+<text x="451.0" y="81.0" text-anchor="start" class="legend small">S obs</text>
+<rect x="434" y="90" width="11" height="11" rx="2" fill="#8aa593" />
+<text x="451.0" y="100.0" text-anchor="start" class="legend small">F reach</text>
+<rect x="434" y="109" width="11" height="11" rx="2" fill="#345d3e" />
+<text x="451.0" y="119.0" text-anchor="start" class="legend small">F obs</text>
+<rect x="434" y="128" width="11" height="11" rx="2" fill="#b89172" />
+<text x="451.0" y="138.0" text-anchor="start" class="legend small">P reach</text>
+<rect x="434" y="147" width="11" height="11" rx="2" fill="#864524" />
+<text x="451.0" y="157.0" text-anchor="start" class="legend small">P obs</text>
+</svg></div><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="Lighting">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">Lighting</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="109.3" y="289.0" text-anchor="middle" class="x-label small">S@1</text>
+<rect x="56.0" y="48.0" width="15.3" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="74.3" y="101.9" width="15.3" height="156.1" rx="3" fill="#2c4669" />
+<rect x="92.6" y="258.0" width="15.3" height="0.0" rx="3" fill="#8aa593" />
+<rect x="110.8" y="258.0" width="15.3" height="0.0" rx="3" fill="#345d3e" />
+<rect x="129.1" y="153.0" width="15.3" height="105.0" rx="3" fill="#b89172" />
+<rect x="147.4" y="228.6" width="15.3" height="29.4" rx="3" fill="#864524" />
+<text x="232.0" y="289.0" text-anchor="middle" class="x-label small">S@2</text>
+<rect x="178.7" y="48.0" width="15.3" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="196.9" y="72.5" width="15.3" height="185.5" rx="3" fill="#2c4669" />
+<rect x="215.2" y="196.4" width="15.3" height="61.6" rx="3" fill="#8aa593" />
+<rect x="233.5" y="228.6" width="15.3" height="29.4" rx="3" fill="#345d3e" />
+<rect x="251.8" y="101.2" width="15.3" height="156.8" rx="3" fill="#b89172" />
+<rect x="270.1" y="174.7" width="15.3" height="83.3" rx="3" fill="#864524" />
+<text x="354.7" y="289.0" text-anchor="middle" class="x-label small">S@5</text>
+<rect x="301.3" y="48.0" width="15.3" height="210.0" rx="3" fill="#8a9bb6" />
+<rect x="319.6" y="48.0" width="15.3" height="210.0" rx="3" fill="#2c4669" />
+<rect x="337.9" y="67.6" width="15.3" height="190.4" rx="3" fill="#8aa593" />
+<rect x="356.2" y="150.2" width="15.3" height="107.8" rx="3" fill="#345d3e" />
+<rect x="374.4" y="48.0" width="15.3" height="210.0" rx="3" fill="#b89172" />
+<rect x="392.7" y="99.1" width="15.3" height="158.9" rx="3" fill="#864524" />
+<rect x="434" y="52" width="11" height="11" rx="2" fill="#8a9bb6" />
+<text x="451.0" y="62.0" text-anchor="start" class="legend small">S reach</text>
+<rect x="434" y="71" width="11" height="11" rx="2" fill="#2c4669" />
+<text x="451.0" y="81.0" text-anchor="start" class="legend small">S obs</text>
+<rect x="434" y="90" width="11" height="11" rx="2" fill="#8aa593" />
+<text x="451.0" y="100.0" text-anchor="start" class="legend small">F reach</text>
+<rect x="434" y="109" width="11" height="11" rx="2" fill="#345d3e" />
+<text x="451.0" y="119.0" text-anchor="start" class="legend small">F obs</text>
+<rect x="434" y="128" width="11" height="11" rx="2" fill="#b89172" />
+<text x="451.0" y="138.0" text-anchor="start" class="legend small">P reach</text>
+<rect x="434" y="147" width="11" height="11" rx="2" fill="#864524" />
+<text x="451.0" y="157.0" text-anchor="start" class="legend small">P obs</text>
+</svg></div><div class="small-chart-card"><svg class="small-chart-svg" viewBox="0 0 520 310" role="img" aria-label="Spatial">
+<text x="16.0" y="26.0" text-anchor="start" class="chart-title small">Spatial</text>
+<line class="grid" x1="48" x2="416" y1="258.0" y2="258.0" />
+<text x="40.0" y="262.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="48" x2="416" y1="205.5" y2="205.5" />
+<text x="40.0" y="209.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="48" x2="416" y1="153.0" y2="153.0" />
+<text x="40.0" y="157.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="48" x2="416" y1="100.5" y2="100.5" />
+<text x="40.0" y="104.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="48" x2="416" y1="48.0" y2="48.0" />
+<text x="40.0" y="52.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="48" x2="416" y1="258" y2="258" />
+<line class="axis" x1="48" x2="48" y1="48" y2="258" />
+<text x="109.3" y="289.0" text-anchor="middle" class="x-label small">S@1</text>
+<rect x="56.0" y="237.7" width="15.3" height="20.3" rx="3" fill="#8a9bb6" />
+<rect x="74.3" y="238.4" width="15.3" height="19.6" rx="3" fill="#2c4669" />
+<rect x="92.6" y="202.0" width="15.3" height="56.0" rx="3" fill="#8aa593" />
+<rect x="110.8" y="253.8" width="15.3" height="4.2" rx="3" fill="#345d3e" />
+<rect x="129.1" y="233.5" width="15.3" height="24.5" rx="3" fill="#b89172" />
+<rect x="147.4" y="228.6" width="15.3" height="29.4" rx="3" fill="#864524" />
+<text x="232.0" y="289.0" text-anchor="middle" class="x-label small">S@2</text>
+<rect x="178.7" y="204.1" width="15.3" height="53.9" rx="3" fill="#8a9bb6" />
+<rect x="196.9" y="205.5" width="15.3" height="52.5" rx="3" fill="#2c4669" />
+<rect x="215.2" y="168.4" width="15.3" height="89.6" rx="3" fill="#8aa593" />
+<rect x="233.5" y="229.3" width="15.3" height="28.7" rx="3" fill="#345d3e" />
+<rect x="251.8" y="195.0" width="15.3" height="63.0" rx="3" fill="#b89172" />
+<rect x="270.1" y="202.7" width="15.3" height="55.3" rx="3" fill="#864524" />
+<text x="354.7" y="289.0" text-anchor="middle" class="x-label small">S@5</text>
+<rect x="301.3" y="163.5" width="15.3" height="94.5" rx="3" fill="#8a9bb6" />
+<rect x="319.6" y="153.7" width="15.3" height="104.3" rx="3" fill="#2c4669" />
+<rect x="337.9" y="130.6" width="15.3" height="127.4" rx="3" fill="#8aa593" />
+<rect x="356.2" y="176.1" width="15.3" height="81.9" rx="3" fill="#345d3e" />
+<rect x="374.4" y="139.0" width="15.3" height="119.0" rx="3" fill="#b89172" />
+<rect x="392.7" y="169.8" width="15.3" height="88.2" rx="3" fill="#864524" />
+<rect x="434" y="52" width="11" height="11" rx="2" fill="#8a9bb6" />
+<text x="451.0" y="62.0" text-anchor="start" class="legend small">S reach</text>
+<rect x="434" y="71" width="11" height="11" rx="2" fill="#2c4669" />
+<text x="451.0" y="81.0" text-anchor="start" class="legend small">S obs</text>
+<rect x="434" y="90" width="11" height="11" rx="2" fill="#8aa593" />
+<text x="451.0" y="100.0" text-anchor="start" class="legend small">F reach</text>
+<rect x="434" y="109" width="11" height="11" rx="2" fill="#345d3e" />
+<text x="451.0" y="119.0" text-anchor="start" class="legend small">F obs</text>
+<rect x="434" y="128" width="11" height="11" rx="2" fill="#b89172" />
+<text x="451.0" y="138.0" text-anchor="start" class="legend small">P reach</text>
+<rect x="434" y="147" width="11" height="11" rx="2" fill="#864524" />
+<text x="451.0" y="157.0" text-anchor="start" class="legend small">P obs</text>
+</svg></div></div>
+            <div class="callout">OOD, budget 200. Reach bars use the all-budget aggregate; obstacle-aware bars use the final phase-precise avoid evaluation metrics for each model family.</div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Now let me split this by task. So reach is the simple version &mdash; the robot just goes and grabs the cube. Obstacle-aware reach is the version where the policy has to plan a route around something before it can get to the cube. And look at how the obstacle bars are systematically lower than the reach bars on every single axis. And the spatial axis widens that gap even more. So the hardest subset of our benchmark &mdash; the real bottleneck &mdash; is obstacle-aware spatial reaching. Visual diversity alone doesn't teach a route. And that, right there, is the diagnosis.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Obstacle-aware OOD examples</div>
+  <h1>Successful rollouts across all four visual diversity axes.</h1>
+  <div class="slide-body">
+            <div class="axis-video-grid">
+              <figure class=" video-panel success"><div class="video-label">Color shift success - S@1 cm</div><video controls muted playsinline preload="metadata" src="slide_videos/axis_success_720p/avoid_color_success_720p_h264.mp4"></video></figure>
+              <figure class=" video-panel success"><div class="video-label">Spatial shift success - S@1 cm</div><video controls muted playsinline preload="metadata" src="slide_videos/axis_success_720p/avoid_spatial_success_720p_h264.mp4"></video></figure>
+              <figure class=" video-panel success"><div class="video-label">Camera shift success - S@2 cm</div><video controls muted playsinline preload="metadata" src="slide_videos/axis_success_720p/avoid_camera_success_720p_h264.mp4"></video></figure>
+              <figure class=" video-panel success"><div class="video-label">Lighting shift success - S@1 cm</div><video controls muted playsinline preload="metadata" src="slide_videos/axis_success_720p/avoid_lighting_success_720p_h264.mp4"></video></figure>
+            </div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Quick check before we get to the fix. These are four obstacle-aware OOD rollouts where the policy does succeed &mdash; one per visual axis. Color, spatial, camera, lighting &mdash; all of them are reaching the cube cleanly at strict 1 or 2 centimeter precision. So when the policy works, it really works. That's worth establishing. Now the question is: why doesn't it always work?</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Result 5 - Axis ranking at 50 and 200 demos</div>
+  <h1>Higher budget helps appearance axes, but spatial remains hard.</h1>
+  <div class="slide-body">
+            <div class="two-col wide">
+              <div class="chart-card"><svg class="chart-svg" viewBox="0 0 1040 500" role="img" aria-label="OOD axis comparison at budget 50">
+<text x="18.0" y="28.0" text-anchor="start" class="chart-title">OOD axis comparison at budget 50</text>
+<text x="18.0" y="51.0" text-anchor="start" class="chart-subtitle">Success at 1 cm by visual diversity axis</text>
+<line class="grid" x1="82" x2="855" y1="414.0" y2="414.0" />
+<text x="72.0" y="418.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="82" x2="855" y1="316.9" y2="316.9" />
+<text x="72.0" y="320.9" text-anchor="end" class="axis-tick">20%</text>
+<line class="grid" x1="82" x2="855" y1="219.7" y2="219.7" />
+<text x="72.0" y="223.7" text-anchor="end" class="axis-tick">40%</text>
+<line class="grid" x1="82" x2="855" y1="122.6" y2="122.6" />
+<text x="72.0" y="126.6" text-anchor="end" class="axis-tick">60%</text>
+<line class="grid" x1="82" x2="855" y1="74.0" y2="74.0" />
+<text x="72.0" y="78.0" text-anchor="end" class="axis-tick">70%</text>
+<line class="axis" x1="82" x2="855" y1="414" y2="414" />
+<line class="axis" x1="82" x2="82" y1="74" y2="414" />
+<text x="178.6" y="448.0" text-anchor="middle" class="x-label">Color</text>
+<rect x="120.6" y="214.3" width="34.0" height="199.7" rx="4" fill="#2c4669" />
+<text x="137.6" y="207.3" text-anchor="middle" class="bar-label">41</text>
+<rect x="161.6" y="373.8" width="34.0" height="40.2" rx="4" fill="#345d3e" />
+<text x="178.6" y="366.8" text-anchor="middle" class="bar-label">8.3</text>
+<rect x="202.6" y="372.4" width="34.0" height="41.6" rx="4" fill="#864524" />
+<text x="219.6" y="365.4" text-anchor="middle" class="bar-label">8.6</text>
+<text x="371.9" y="448.0" text-anchor="middle" class="x-label">Camera</text>
+<rect x="313.9" y="132.6" width="34.0" height="281.4" rx="4" fill="#2c4669" />
+<text x="330.9" y="125.6" text-anchor="middle" class="bar-label">58</text>
+<rect x="354.9" y="370.3" width="34.0" height="43.7" rx="4" fill="#345d3e" />
+<text x="371.9" y="363.3" text-anchor="middle" class="bar-label">9.0</text>
+<rect x="395.9" y="391.1" width="34.0" height="22.9" rx="4" fill="#864524" />
+<text x="412.9" y="384.1" text-anchor="middle" class="bar-label">4.7</text>
+<text x="565.1" y="448.0" text-anchor="middle" class="x-label">Lighting</text>
+<rect x="507.1" y="314.2" width="34.0" height="99.8" rx="4" fill="#2c4669" />
+<text x="524.1" y="307.2" text-anchor="middle" class="bar-label">21</text>
+<rect x="548.1" y="369.2" width="34.0" height="44.8" rx="4" fill="#345d3e" />
+<text x="565.1" y="362.2" text-anchor="middle" class="bar-label">9.2</text>
+<rect x="589.1" y="404.8" width="34.0" height="9.2" rx="4" fill="#864524" />
+<text x="606.1" y="397.8" text-anchor="middle" class="bar-label">1.9</text>
+<text x="758.4" y="448.0" text-anchor="middle" class="x-label">Spatial</text>
+<rect x="700.4" y="400.0" width="34.0" height="14.0" rx="4" fill="#2c4669" />
+<text x="717.4" y="393.0" text-anchor="middle" class="bar-label">2.9</text>
+<rect x="741.4" y="377.8" width="34.0" height="36.2" rx="4" fill="#345d3e" />
+<text x="758.4" y="370.8" text-anchor="middle" class="bar-label">7.4</text>
+<rect x="782.4" y="397.5" width="34.0" height="16.5" rx="4" fill="#864524" />
+<text x="799.4" y="390.5" text-anchor="middle" class="bar-label">3.4</text>
+<rect x="883" y="82" width="13" height="13" rx="3" fill="#2c4669" />
+<text x="904.0" y="93.0" text-anchor="start" class="legend">Scratch CNN</text>
+<rect x="883" y="108" width="13" height="13" rx="3" fill="#345d3e" />
+<text x="904.0" y="119.0" text-anchor="start" class="legend">Frozen ResNet-18</text>
+<rect x="883" y="134" width="13" height="13" rx="3" fill="#864524" />
+<text x="904.0" y="145.0" text-anchor="start" class="legend">Partial ResNet-18</text>
+</svg></div>
+              <div class="chart-card"><svg class="chart-svg" viewBox="0 0 1040 500" role="img" aria-label="OOD axis comparison at budget 200">
+<text x="18.0" y="28.0" text-anchor="start" class="chart-title">OOD axis comparison at budget 200</text>
+<text x="18.0" y="51.0" text-anchor="start" class="chart-subtitle">Success at 1 cm by visual diversity axis</text>
+<line class="grid" x1="82" x2="855" y1="414.0" y2="414.0" />
+<text x="72.0" y="418.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="82" x2="855" y1="316.5" y2="316.5" />
+<text x="72.0" y="320.5" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="82" x2="855" y1="219.0" y2="219.0" />
+<text x="72.0" y="223.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="82" x2="855" y1="121.5" y2="121.5" />
+<text x="72.0" y="125.5" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="82" x2="855" y1="74.0" y2="74.0" />
+<text x="72.0" y="78.0" text-anchor="end" class="axis-tick">87%</text>
+<line class="axis" x1="82" x2="855" y1="414" y2="414" />
+<line class="axis" x1="82" x2="82" y1="74" y2="414" />
+<text x="178.6" y="448.0" text-anchor="middle" class="x-label">Color</text>
+<rect x="120.6" y="146.2" width="34.0" height="267.8" rx="4" fill="#2c4669" />
+<text x="137.6" y="139.2" text-anchor="middle" class="bar-label">69</text>
+<rect x="161.6" y="194.9" width="34.0" height="219.1" rx="4" fill="#345d3e" />
+<text x="178.6" y="187.9" text-anchor="middle" class="bar-label">56</text>
+<rect x="202.6" y="173.5" width="34.0" height="240.5" rx="4" fill="#864524" />
+<text x="219.6" y="166.5" text-anchor="middle" class="bar-label">62</text>
+<text x="371.9" y="448.0" text-anchor="middle" class="x-label">Camera</text>
+<rect x="313.9" y="121.5" width="34.0" height="292.5" rx="4" fill="#2c4669" />
+<text x="330.9" y="114.5" text-anchor="middle" class="bar-label">75</text>
+<rect x="354.9" y="272.3" width="34.0" height="141.7" rx="4" fill="#345d3e" />
+<text x="371.9" y="265.3" text-anchor="middle" class="bar-label">36</text>
+<rect x="395.9" y="414.0" width="34.0" height="0.0" rx="4" fill="#864524" />
+<text x="412.9" y="407.0" text-anchor="middle" class="bar-label">0.0</text>
+<text x="565.1" y="448.0" text-anchor="middle" class="x-label">Lighting</text>
+<rect x="507.1" y="74.0" width="34.0" height="340.0" rx="4" fill="#2c4669" />
+<text x="524.1" y="86.0" text-anchor="middle" class="bar-label">87</text>
+<rect x="548.1" y="414.0" width="34.0" height="0.0" rx="4" fill="#345d3e" />
+<text x="565.1" y="407.0" text-anchor="middle" class="bar-label">0.0</text>
+<rect x="589.1" y="289.2" width="34.0" height="124.8" rx="4" fill="#864524" />
+<text x="606.1" y="282.2" text-anchor="middle" class="bar-label">32</text>
+<text x="758.4" y="448.0" text-anchor="middle" class="x-label">Spatial</text>
+<rect x="700.4" y="376.9" width="34.0" height="37.1" rx="4" fill="#2c4669" />
+<text x="717.4" y="369.9" text-anchor="middle" class="bar-label">9.5</text>
+<rect x="741.4" y="358.1" width="34.0" height="55.9" rx="4" fill="#345d3e" />
+<text x="758.4" y="351.1" text-anchor="middle" class="bar-label">14</text>
+<rect x="782.4" y="363.9" width="34.0" height="50.1" rx="4" fill="#864524" />
+<text x="799.4" y="356.9" text-anchor="middle" class="bar-label">13</text>
+<rect x="883" y="82" width="13" height="13" rx="3" fill="#2c4669" />
+<text x="904.0" y="93.0" text-anchor="start" class="legend">Scratch CNN</text>
+<rect x="883" y="108" width="13" height="13" rx="3" fill="#345d3e" />
+<text x="904.0" y="119.0" text-anchor="start" class="legend">Frozen ResNet-18</text>
+<rect x="883" y="134" width="13" height="13" rx="3" fill="#864524" />
+<text x="904.0" y="145.0" text-anchor="start" class="legend">Partial ResNet-18</text>
+</svg></div>
+            </div>
+            <div class="callout">At 50 demos, spatial OOD is only 2.9% at 1 cm for scratch CNN. At 200 demos, color, camera, and lighting improve, but spatial remains low at 9.5%.</div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Two budget regimes, side by side. The left chart is 50 demos. The right chart is 200. More data clearly helps the appearance axes. Color jumps from 41 percent to 69. Camera goes from 58 to 75. Lighting from 21 all the way up to 87. Three big jumps with more data. But spatial? 2.9 percent at 50 demos. 9.5 percent at 200. So we quadrupled the data, and it barely moved the needle. At this point, we've basically confirmed it. This is not a data problem. More demonstrations are not the answer. We need something else.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Method bridge</div>
+  <h1>To address spatial OOD, we add phase + geometry to the visual BC policy.</h1>
+  <div class="slide-body">
+            <div class="method-flow">
+              <div class="flow-step danger">
+                <div class="flow-num">1</div>
+                <div class="flow-kicker">Diagnose</div>
+                <div class="flow-tag">Spatial OOD is a routing problem, not an image problem.</div>
+                <div class="flow-visual">
+                  <div class="chip-row">
+                    <span class="chip">Color</span>
+                    <span class="chip">Camera</span>
+                    <span class="chip">Lighting</span>
+                    <span class="chip bad">Spatial &mdash; 2.9% S@1</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-num">2</div>
+                <div class="flow-kicker">Add phase</div>
+                <div class="flow-tag">Expose which part of the route is being executed.</div>
+                <div class="flow-visual">
+                  <div class="chip-row">
+                    <span class="chip">side_align</span>
+                    <span class="chip-arrow">&rarr;</span>
+                    <span class="chip">cube_hover</span>
+                    <span class="chip-arrow">&rarr;</span>
+                    <span class="chip">final_descent</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-num">3</div>
+                <div class="flow-kicker">Add geometry</div>
+                <div class="flow-tag">Expose the spatial relations the pixels weren't providing.</div>
+                <div class="flow-visual">
+                  <div class="chip-row">
+                    <span class="chip">target xyz</span>
+                    <span class="chip">obstacle xyz</span>
+                    <span class="chip">obstacle size</span>
+                    <span class="chip">&Delta; ee&rarr;tgt</span>
+                    <span class="chip">&Delta; obs&rarr;tgt</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-num">4</div>
+                <div class="flow-kicker">Compare</div>
+                <div class="flow-tag">Same BC loss and RGB stream &mdash; only the added state varies.</div>
+                <div class="flow-visual">
+                  <div class="chip-row">
+                    <span class="chip">visual</span>
+                    <span class="chip">+phase</span>
+                    <span class="chip">+target</span>
+                    <span class="chip">+geom</span>
+                    <span class="chip win">+phase+geom</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="method-equation">
+              <div class="me-row">
+                <span class="me-label">Policy</span>
+                <code>a<sub>t</sub> = &pi;(I<sup>ext</sup>, I<sup>wrist</sup>, q<sub>t</sub>, z<sub>struct</sub>)</code>
+              </div>
+              <div class="me-row">
+                <span class="me-label">z<sub>struct</sub></span>
+                <code>[phase<sub>3</sub>, target<sub>3</sub>, obs_center<sub>3</sub>, obs_size<sub>3</sub>, &Delta;<sub>ee&rarr;tgt</sub>, &Delta;<sub>obs&rarr;tgt</sub>] &mdash; 18D</code>
+              </div>
+            </div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> So here's our hypothesis. Spatial OOD isn't an image problem. It's a routing problem. So we keep the visual BC setup completely fixed, and we add structure to the input. Step one here is the diagnosis we just walked through. Step two: we add phase labels. Each timestep gets one of three labels &mdash; side_align, cube_hover, or final_descent &mdash; describing what part of the route the expert is currently executing. Step three: we add geometry &mdash; an 18-dimensional vector with target position, obstacle position, the obstacle's size, and the relative deltas between things. Step four: we compare ablations. Same loss, same RGB stream, same evaluation protocol. Only the added state varies.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Result 6 - Spatial diagnostic and phase+geometry gain</div>
+  <h1>Phase + geometry improves the hardest spatial obstacle-aware cases.</h1>
+  <div class="slide-body">
+            <div class="two-col wide">
+              <div class="chart-card"><svg class="chart-svg" viewBox="0 0 1040 500" role="img" aria-label="OOD spatial buckets, scratch policy">
+<text x="18.0" y="28.0" text-anchor="start" class="chart-title">OOD spatial buckets, scratch policy</text>
+<text x="18.0" y="51.0" text-anchor="start" class="chart-subtitle">Success at 1 cm by target region</text>
+<line class="grid" x1="82" x2="855" y1="414.0" y2="414.0" />
+<text x="72.0" y="418.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="82" x2="855" y1="329.0" y2="329.0" />
+<text x="72.0" y="333.0" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="82" x2="855" y1="244.0" y2="244.0" />
+<text x="72.0" y="248.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="82" x2="855" y1="159.0" y2="159.0" />
+<text x="72.0" y="163.0" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="82" x2="855" y1="74.0" y2="74.0" />
+<text x="72.0" y="78.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="82" x2="855" y1="414" y2="414" />
+<line class="axis" x1="82" x2="82" y1="74" y2="414" />
+<text x="210.8" y="448.0" text-anchor="middle" class="x-label">Corners</text>
+<rect x="173.3" y="414.0" width="34.0" height="0.0" rx="4" fill="#a8332b" />
+<text x="190.3" y="407.0" text-anchor="middle" class="bar-label">0.0</text>
+<rect x="214.3" y="134.0" width="34.0" height="280.0" rx="4" fill="#345d3e" />
+<text x="231.3" y="127.0" text-anchor="middle" class="bar-label">82</text>
+<text x="468.5" y="448.0" text-anchor="middle" class="x-label">Edges</text>
+<rect x="431.0" y="408.7" width="34.0" height="5.3" rx="4" fill="#a8332b" />
+<text x="448.0" y="401.7" text-anchor="middle" class="bar-label">1.6</text>
+<rect x="472.0" y="201.5" width="34.0" height="212.5" rx="4" fill="#345d3e" />
+<text x="489.0" y="194.5" text-anchor="middle" class="bar-label">62</text>
+<text x="726.2" y="448.0" text-anchor="middle" class="x-label">Interior</text>
+<rect x="688.7" y="409.1" width="34.0" height="4.9" rx="4" fill="#a8332b" />
+<text x="705.7" y="402.1" text-anchor="middle" class="bar-label">1.4</text>
+<rect x="729.7" y="285.9" width="34.0" height="128.1" rx="4" fill="#345d3e" />
+<text x="746.7" y="278.9" text-anchor="middle" class="bar-label">38</text>
+<rect x="883" y="82" width="13" height="13" rx="3" fill="#a8332b" />
+<text x="904.0" y="93.0" text-anchor="start" class="legend">Visual-only S@1</text>
+<rect x="883" y="108" width="13" height="13" rx="3" fill="#345d3e" />
+<text x="904.0" y="119.0" text-anchor="start" class="legend">Phase+geometry S@1</text>
+</svg></div>
+              <div class="chart-card"><svg class="chart-svg" viewBox="0 0 1040 500" role="img" aria-label="Scratch obstacle-aware spatial OOD">
+<text x="18.0" y="28.0" text-anchor="start" class="chart-title">Scratch obstacle-aware spatial OOD</text>
+<text x="18.0" y="51.0" text-anchor="start" class="chart-subtitle">Edge-balanced visual-only versus phase + geometry</text>
+<line class="grid" x1="82" x2="855" y1="414.0" y2="414.0" />
+<text x="72.0" y="418.0" text-anchor="end" class="axis-tick">0%</text>
+<line class="grid" x1="82" x2="855" y1="329.0" y2="329.0" />
+<text x="72.0" y="333.0" text-anchor="end" class="axis-tick">25%</text>
+<line class="grid" x1="82" x2="855" y1="244.0" y2="244.0" />
+<text x="72.0" y="248.0" text-anchor="end" class="axis-tick">50%</text>
+<line class="grid" x1="82" x2="855" y1="159.0" y2="159.0" />
+<text x="72.0" y="163.0" text-anchor="end" class="axis-tick">75%</text>
+<line class="grid" x1="82" x2="855" y1="74.0" y2="74.0" />
+<text x="72.0" y="78.0" text-anchor="end" class="axis-tick">100%</text>
+<line class="axis" x1="82" x2="855" y1="414" y2="414" />
+<line class="axis" x1="82" x2="82" y1="74" y2="414" />
+<text x="210.8" y="448.0" text-anchor="middle" class="x-label">S@1</text>
+<rect x="173.3" y="409.5" width="34.0" height="4.5" rx="4" fill="#a8332b" />
+<text x="190.3" y="402.5" text-anchor="middle" class="bar-label">1.3</text>
+<rect x="214.3" y="232.7" width="34.0" height="181.3" rx="4" fill="#345d3e" />
+<text x="231.3" y="225.7" text-anchor="middle" class="bar-label">53</text>
+<text x="468.5" y="448.0" text-anchor="middle" class="x-label">S@2</text>
+<rect x="431.0" y="402.7" width="34.0" height="11.3" rx="4" fill="#a8332b" />
+<text x="448.0" y="395.7" text-anchor="middle" class="bar-label">3.3</text>
+<rect x="472.0" y="225.9" width="34.0" height="188.1" rx="4" fill="#345d3e" />
+<text x="489.0" y="218.9" text-anchor="middle" class="bar-label">55</text>
+<text x="726.2" y="448.0" text-anchor="middle" class="x-label">S@5</text>
+<rect x="688.7" y="364.1" width="34.0" height="49.9" rx="4" fill="#a8332b" />
+<text x="705.7" y="357.1" text-anchor="middle" class="bar-label">15</text>
+<rect x="729.7" y="214.5" width="34.0" height="199.5" rx="4" fill="#345d3e" />
+<text x="746.7" y="207.5" text-anchor="middle" class="bar-label">59</text>
+<rect x="883" y="82" width="13" height="13" rx="3" fill="#a8332b" />
+<text x="904.0" y="93.0" text-anchor="start" class="legend">Visual-only</text>
+<rect x="883" y="108" width="13" height="13" rx="3" fill="#345d3e" />
+<text x="904.0" y="119.0" text-anchor="start" class="legend">Phase+geometry</text>
+</svg></div>
+            </div>
+            <div class="callout">Left: visual-only fails across the edge-balanced spatial OOD buckets, while phase + geometry improves corners, edges, and interior targets. Right: with the same RGB stream and BC objective, adding phase + geometry raises OOD success from 1.3% to 53.3% at 1 cm.</div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> And here is what happens when you add phase and geometry. The left chart shows spatial OOD broken into target buckets &mdash; corners, edges, and interior. Visual-only is near zero across all three of these. Phase plus geometry recovers really strongly &mdash; 82 percent on corners, 62 percent on edges, and 38 percent on the harder interior cases. The right chart: same model, same RGB stream, but strict success on the edge-balanced spatial OOD jumps from 1.3 percent all the way up to 53.3. So the bottleneck wasn't pixels. It was state. The policy didn't need new images. It just needed to know where it was.</aside>
+</section>
+
+<section class="slide">
+  <div class="kicker">Result 7 - Rollout evidence</div>
+  <h1>Rollout examples.</h1>
+  <div class="slide-body">
+            <div class="two-col wide">
+              <figure class=" video-panel danger"><div class="video-label">Visual-only spatial OOD failure</div><video controls muted playsinline preload="metadata" src="slide_videos/slide15_visual_only_failure_h264.mp4"></video></figure>
+              <figure class=" video-panel success"><div class="video-label">Phase + geometry spatial OOD success</div><video controls muted playsinline preload="metadata" src="slide_videos/slide15_phase_geometry_success_h264.mp4"></video></figure>
+            </div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Same story, but now in video. On the left here is visual-only on a hard spatial case. Watch what happens &mdash; the policy hovers, it miscalculates the route, and it just never reaches the cube. On the right, same scene, same starting state, but the policy now has phase and geometry. And it routes around the obstacle correctly and reaches the cube. So the structured state literally changes the trajectory the policy executes.</aside>
+</section>
+
+<section class="slide equations-slide">
+  <div class="kicker">Class connection</div>
+  <h1>The project is behavior cloning from pixels, extended into a controlled OOD benchmark.</h1>
+  <div class="slide-body">
+            <div class="class-equation">
+              <div class="math-block">\[
+                \theta^* = \arg\min_\theta \;\frac{1}{N}\sum_t \lVert a_t^* - \pi_\theta(o_t) \rVert_2^2,
+                \qquad o_t = (I^{ext}, I^{wrist}, q_t)
+              \]</div>
+              <div class="ce-caption">The lecture BC objective &mdash; we apply it with dual RGB + state, and extend it with phase + geometry.</div>
+            </div>
+            <div class="class-rubric">
+              <div class="class-row class-head">
+                <div></div>
+                <div class="taught-head">Lecture taught</div>
+                <div class="applied-head">We applied</div>
+                <div class="beyond-head">We went beyond</div>
+              </div>
+              <div class="class-row">
+                <div class="row-concept">Policy</div>
+                <div>Parameterized control \(a = \pi_\theta(s)\)</div>
+                <div>Vision-to-action with RGB + state</div>
+                <div>Dual 128 px external + wrist cameras</div>
+              </div>
+              <div class="class-row">
+                <div class="row-concept">BC objective</div>
+                <div>Behavior cloning with MSE on expert pairs</div>
+                <div>Offline BC from scripted PyBullet experts</div>
+                <div>176 train + 72 OOD eval datasets, 947 k timesteps</div>
+              </div>
+              <div class="class-row">
+                <div class="row-concept">OOD</div>
+                <div>Covariate-shift framing for offline imitation</div>
+                <div>ID / OOD closed-loop splits, S@1/2/5 cm</div>
+                <div>4-axis factored benchmark, 158 k rollouts</div>
+              </div>
+              <div class="class-row">
+                <div class="row-concept">Encoders</div>
+                <div>Frozen and fine-tuned visual backbones</div>
+                <div>Scratch CNN, Frozen R-18, Partial R-18</div>
+                <div>Encoder &times; axis cross-comparison at scale</div>
+              </div>
+              <div class="class-row">
+                <div class="row-concept">Beyond pure BC</div>
+                <div>DAgger, RL / SAC, reward learning context</div>
+                <div>Strict closed-loop precision metrics</div>
+                <div>Phase + geometry diagnostic intervention</div>
+              </div>
+            </div>
+            </div>
+  <aside class="transcript"><strong>Transcript.</strong> Alright, to wrap up. The canonical BC objective is at the top of the slide &mdash; that's what we learned in lecture. We applied it with dual RGB plus state, three encoder families, in-distribution and out-of-distribution splits, and strict precision metrics. Where we went beyond: we built a four-axis OOD benchmark, ran 158,000 closed-loop rollouts, we diagnosed a spatial bottleneck that more data does not fix, and we showed that adding phase and geometry recovers it. So the takeaway, the one thing we want you to remember: visual diversity alone doesn't fix every OOD failure. Sometimes the answer isn't more pixels &mdash; it's the right state. Thank you. Happy to take questions.</aside>
+</section>
+</main>
+<div class="presenter-overlay" aria-hidden="true">
+  <header class="po-header">
+    <div class="po-meta">
+      <span class="po-counter">Slide <span id="po-cur">1</span> / <span id="po-total">1</span></span>
+      <span class="po-sep">&middot;</span>
+      <span class="po-kicker" id="po-kicker">&mdash;</span>
+    </div>
+    <div class="po-timer" id="po-timer">00:00</div>
+  </header>
+  <div class="po-main">
+    <h2 class="po-title" id="po-title">&mdash;</h2>
+    <p class="po-transcript" id="po-transcript">&mdash;</p>
+  </div>
+  <footer class="po-footer">
+    <div class="po-next">Next: <strong id="po-next-title">&mdash;</strong></div>
+    <div class="po-nav">
+      <button id="po-prev-btn">&larr; Prev</button>
+      <button id="po-next-btn">Next &rarr;</button>
+    </div>
+  </footer>
+</div>
+<div class="hint"><kbd>Left</kbd><kbd>Right</kbd> navigate &middot; <kbd>P</kbd> presenter &middot; <kbd>F</kbd> fullscreen &middot; <kbd>T</kbd> reset timer</div>
+<div class="controls">
+  <button id="prev" title="Previous">Prev</button>
+  <span class="counter"><span id="cur">1</span> / <span id="total">1</span></span>
+  <button id="next" title="Next">Next</button>
+  <button id="open-presenter" title="Open transcript in a second window">Transcript &#8599;</button>
+  <button id="fs" title="Fullscreen">Full</button>
+</div>
+<script>
+
+(function() {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  const cur = document.getElementById('cur');
+  const totalEl = document.getElementById('total');
+  const bar = document.getElementById('bar');
+  totalEl.textContent = total;
+  document.getElementById('po-total').textContent = total;
+  let index = 0;
+
+  const poKicker = document.getElementById('po-kicker');
+  const poCur = document.getElementById('po-cur');
+  const poTitle = document.getElementById('po-title');
+  const poTranscript = document.getElementById('po-transcript');
+  const poNextTitle = document.getElementById('po-next-title');
+  const poTimer = document.getElementById('po-timer');
+
+  function textOf(el, sel) {
+    const x = el && el.querySelector(sel);
+    return x ? x.textContent.trim() : '';
+  }
+  function transcriptOf(el) {
+    const x = el && el.querySelector('.transcript');
+    if (!x) return '';
+    const clone = x.cloneNode(true);
+    const strong = clone.querySelector('strong');
+    if (strong) strong.remove();
+    return clone.textContent.trim();
+  }
+  function updatePresenter() {
+    if (!document.body.classList.contains('presenter-mode')) return;
+    const slide = slides[index];
+    const next = slides[Math.min(total - 1, index + 1)];
+    poKicker.textContent = textOf(slide, '.kicker') || '—';
+    poCur.textContent = index + 1;
+    poTitle.textContent = textOf(slide, 'h1') || '—';
+    poTranscript.textContent = transcriptOf(slide) || '—';
+    poNextTitle.textContent = (index + 1 < total)
+      ? (textOf(next, 'h1') || '—')
+      : '— end —';
+  }
+
+  function show(next, silent) {
+    index = Math.max(0, Math.min(total - 1, next));
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+    cur.textContent = index + 1;
+    bar.style.width = (((index + 1) / total) * 100).toFixed(2) + '%';
+    history.replaceState(null, '', '#' + (index + 1));
+    document.querySelectorAll('video').forEach(video => {
+      const active = video.closest('.slide') === slides[index];
+      if (!active) {
+        try { video.pause(); } catch (e) {}
+      }
+    });
+    updatePresenter();
+    if (!silent) {
+      try { localStorage.setItem('deck-slide-index', String(index)); } catch (e) {}
+    }
+  }
+
+  function fromHash() {
+    const n = parseInt(location.hash.replace('#', ''), 10);
+    if (Number.isFinite(n)) show(n - 1);
+  }
+
+  let timerHandle = null;
+  let timerStart = 0;
+  function fmtTime(s) {
+    const mm = String(Math.floor(s / 60)).padStart(2, '0');
+    const ss = String(s % 60).padStart(2, '0');
+    return mm + ':' + ss;
+  }
+  function startTimer() {
+    if (timerHandle) return;
+    timerStart = Date.now();
+    poTimer.textContent = '00:00';
+    timerHandle = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - timerStart) / 1000);
+      poTimer.textContent = fmtTime(elapsed);
+    }, 500);
+  }
+  function stopTimer() {
+    if (timerHandle) { clearInterval(timerHandle); timerHandle = null; }
+  }
+  function resetTimer() { stopTimer(); startTimer(); }
+
+  function togglePresenter() {
+    const enabled = document.body.classList.toggle('presenter-mode');
+    if (enabled) { updatePresenter(); startTimer(); } else { stopTimer(); }
+  }
+
+  document.getElementById('prev').addEventListener('click', () => show(index - 1));
+  document.getElementById('next').addEventListener('click', () => show(index + 1));
+  document.getElementById('fs').addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {});
+    else document.exitFullscreen().catch(() => {});
+  });
+  document.getElementById('po-prev-btn').addEventListener('click', () => show(index - 1));
+  document.getElementById('po-next-btn').addEventListener('click', () => show(index + 1));
+
+  document.getElementById('open-presenter').addEventListener('click', () => {
+    const url = window.location.pathname + '?presenter=1' + (window.location.hash || '#1');
+    window.open(url, 'deck-transcript', 'width=1280,height=820');
+  });
+
+  // If this window was opened with ?presenter=1, auto-enter presenter mode
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('presenter') === '1') {
+    document.body.classList.add('presenter-mode');
+    updatePresenter();
+    startTimer();
+  }
+
+  document.addEventListener('keydown', event => {
+    const tag = event.target && event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    if (event.key === 'ArrowRight' || event.key === ' ' || event.key === 'PageDown') show(index + 1);
+    else if (event.key === 'ArrowLeft' || event.key === 'PageUp') show(index - 1);
+    else if (event.key === 'Home') show(0);
+    else if (event.key === 'End') show(total - 1);
+    else if (event.key.toLowerCase() === 'f') document.getElementById('fs').click();
+    else if (event.key.toLowerCase() === 'n') document.body.classList.toggle('show-notes');
+    else if (event.key.toLowerCase() === 'p') togglePresenter();
+    else if (event.key.toLowerCase() === 't') resetTimer();
+    else if (event.key === 'Escape' && document.body.classList.contains('presenter-mode')) togglePresenter();
+  });
+
+  window.addEventListener('storage', e => {
+    if (e.key === 'deck-slide-index' && e.newValue !== null) {
+      const n = parseInt(e.newValue, 10);
+      if (Number.isFinite(n) && n !== index) show(n, true);
+    }
+  });
+
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+  if (!document.querySelector('.slide.active')) show(0);
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,539 @@
+{
+  "version": "dataset_128px_v1",
+  "created_at": "2026-05-06T21:34:43.220263+00:00",
+  "config_path": "configs/dataset_128px_v1.yaml",
+  "output_dir": "results/eval_ood_128px_v1",
+  "expected_dataset_count": 24,
+  "completed_dataset_count": 24,
+  "missing_dataset_count": 0,
+  "unexpected_dataset_count": 0,
+  "budgets": [
+    50
+  ],
+  "seeds": [
+    100,
+    101,
+    102
+  ],
+  "train_configs": [
+    "color_ood_eval",
+    "avoid_color_ood_eval",
+    "spatial_edge_ood_eval",
+    "avoid_spatial_edge_ood_eval",
+    "camera_extreme_ood_eval",
+    "avoid_camera_extreme_ood_eval",
+    "lighting_extreme_ood_eval",
+    "avoid_lighting_extreme_ood_eval"
+  ],
+  "total_samples": 134931,
+  "all_quality_checks_passed": true,
+  "all_success_rates_are_one": true,
+  "missing": [],
+  "unexpected": [],
+  "records": [
+    {
+      "train_config": "color_ood_eval",
+      "task": "reach",
+      "axis": "color",
+      "variant": "ood_eval",
+      "budget": 50,
+      "seed": 100,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__color_ood_eval__budget050__seed100.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__color_ood_eval__budget050__seed100.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_ood_eval",
+      "task": "reach",
+      "axis": "color",
+      "variant": "ood_eval",
+      "budget": 50,
+      "seed": 101,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__color_ood_eval__budget050__seed101.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__color_ood_eval__budget050__seed101.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "color_ood_eval",
+      "task": "reach",
+      "axis": "color",
+      "variant": "ood_eval",
+      "budget": 50,
+      "seed": 102,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__color_ood_eval__budget050__seed102.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__color_ood_eval__budget050__seed102.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_ood_eval",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "ood_eval",
+      "budget": 50,
+      "seed": 100,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__avoid_color_ood_eval__budget050__seed100.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__avoid_color_ood_eval__budget050__seed100.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_ood_eval",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "ood_eval",
+      "budget": 50,
+      "seed": 101,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__avoid_color_ood_eval__budget050__seed101.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__avoid_color_ood_eval__budget050__seed101.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_color_ood_eval",
+      "task": "avoid_reach",
+      "axis": "color",
+      "variant": "ood_eval",
+      "budget": 50,
+      "seed": 102,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__avoid_color_ood_eval__budget050__seed102.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__avoid_color_ood_eval__budget050__seed102.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_edge_ood_eval",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "edge_ood_eval",
+      "budget": 50,
+      "seed": 100,
+      "num_samples": 4037,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__spatial_edge_ood_eval__budget050__seed100.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__spatial_edge_ood_eval__budget050__seed100.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_edge_ood_eval",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "edge_ood_eval",
+      "budget": 50,
+      "seed": 101,
+      "num_samples": 4030,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__spatial_edge_ood_eval__budget050__seed101.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__spatial_edge_ood_eval__budget050__seed101.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "spatial_edge_ood_eval",
+      "task": "reach",
+      "axis": "spatial_distribution",
+      "variant": "edge_ood_eval",
+      "budget": 50,
+      "seed": 102,
+      "num_samples": 4021,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__spatial_edge_ood_eval__budget050__seed102.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__spatial_edge_ood_eval__budget050__seed102.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_edge_ood_eval",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "edge_ood_eval",
+      "budget": 50,
+      "seed": 100,
+      "num_samples": 7002,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__avoid_spatial_edge_ood_eval__budget050__seed100.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__avoid_spatial_edge_ood_eval__budget050__seed100.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_edge_ood_eval",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "edge_ood_eval",
+      "budget": 50,
+      "seed": 101,
+      "num_samples": 6856,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__avoid_spatial_edge_ood_eval__budget050__seed101.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__avoid_spatial_edge_ood_eval__budget050__seed101.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_spatial_edge_ood_eval",
+      "task": "avoid_reach",
+      "axis": "spatial_distribution",
+      "variant": "edge_ood_eval",
+      "budget": 50,
+      "seed": 102,
+      "num_samples": 6835,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__avoid_spatial_edge_ood_eval__budget050__seed102.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__avoid_spatial_edge_ood_eval__budget050__seed102.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_extreme_ood_eval",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "extreme_ood_eval",
+      "budget": 50,
+      "seed": 100,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__camera_extreme_ood_eval__budget050__seed100.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__camera_extreme_ood_eval__budget050__seed100.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_extreme_ood_eval",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "extreme_ood_eval",
+      "budget": 50,
+      "seed": 101,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__camera_extreme_ood_eval__budget050__seed101.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__camera_extreme_ood_eval__budget050__seed101.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "camera_extreme_ood_eval",
+      "task": "reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "extreme_ood_eval",
+      "budget": 50,
+      "seed": 102,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__camera_extreme_ood_eval__budget050__seed102.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__camera_extreme_ood_eval__budget050__seed102.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_extreme_ood_eval",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "extreme_ood_eval",
+      "budget": 50,
+      "seed": 100,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__avoid_camera_extreme_ood_eval__budget050__seed100.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__avoid_camera_extreme_ood_eval__budget050__seed100.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_extreme_ood_eval",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "extreme_ood_eval",
+      "budget": 50,
+      "seed": 101,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__avoid_camera_extreme_ood_eval__budget050__seed101.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__avoid_camera_extreme_ood_eval__budget050__seed101.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_camera_extreme_ood_eval",
+      "task": "avoid_reach",
+      "axis": "camera_location_viewpoint",
+      "variant": "extreme_ood_eval",
+      "budget": 50,
+      "seed": 102,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__avoid_camera_extreme_ood_eval__budget050__seed102.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__avoid_camera_extreme_ood_eval__budget050__seed102.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_extreme_ood_eval",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "extreme_ood_eval",
+      "budget": 50,
+      "seed": 100,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__lighting_extreme_ood_eval__budget050__seed100.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__lighting_extreme_ood_eval__budget050__seed100.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_extreme_ood_eval",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "extreme_ood_eval",
+      "budget": 50,
+      "seed": 101,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__lighting_extreme_ood_eval__budget050__seed101.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__lighting_extreme_ood_eval__budget050__seed101.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "lighting_extreme_ood_eval",
+      "task": "reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "extreme_ood_eval",
+      "budget": 50,
+      "seed": 102,
+      "num_samples": 3950,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__lighting_extreme_ood_eval__budget050__seed102.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__lighting_extreme_ood_eval__budget050__seed102.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_extreme_ood_eval",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "extreme_ood_eval",
+      "budget": 50,
+      "seed": 100,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__avoid_lighting_extreme_ood_eval__budget050__seed100.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__avoid_lighting_extreme_ood_eval__budget050__seed100.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_extreme_ood_eval",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "extreme_ood_eval",
+      "budget": 50,
+      "seed": 101,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__avoid_lighting_extreme_ood_eval__budget050__seed101.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__avoid_lighting_extreme_ood_eval__budget050__seed101.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    },
+    {
+      "train_config": "avoid_lighting_extreme_ood_eval",
+      "task": "avoid_reach",
+      "axis": "lighting_direction_intensity",
+      "variant": "extreme_ood_eval",
+      "budget": 50,
+      "seed": 102,
+      "num_samples": 7400,
+      "num_episodes": 50,
+      "success_rate": 1.0,
+      "sample_file": "results/eval_ood_128px_v1/dataset__avoid_lighting_extreme_ood_eval__budget050__seed102.pkl",
+      "metadata_file": "results/eval_ood_128px_v1/dataset__avoid_lighting_extreme_ood_eval__budget050__seed102.json",
+      "quality_checks": {
+        "external_rgb_shape_ok": true,
+        "eef_rgb_shape_ok": true,
+        "external_rgb_nonblank": true,
+        "eef_rgb_nonblank": true,
+        "metadata_complete": true,
+        "sample_count_nonzero": true
+      }
+    }
+  ]
+}

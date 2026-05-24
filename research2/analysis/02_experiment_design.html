@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Experiment Design</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --ink: #18202b;
+      --muted: #5e6877;
+      --line: #d9dee7;
+      --accent: #156b75;
+      --accent-2: #7a4b00;
+      --good: #137548;
+      --bad: #a13232;
+      --code: #eef2f7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.52;
+      font-size: 16px;
+    }
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 26px 0 56px;
+    }
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 26px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .topnav a {
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 7px 10px;
+      border-radius: 7px;
+      font-size: 14px;
+    }
+    .topnav a.active {
+      border-color: var(--accent);
+      color: #ffffff;
+      background: var(--accent);
+    }
+    header {
+      margin-bottom: 24px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      max-width: 980px;
+    }
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 920px;
+    }
+    h2 {
+      margin: 34px 0 12px;
+      font-size: 25px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    p {
+      margin: 0 0 12px;
+      max-width: 980px;
+    }
+    a { color: var(--accent); }
+    code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: 0.92em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 14px;
+      margin: 16px 0 24px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .card h3 { margin-top: 0; }
+    .callout {
+      background: #f1f8f8;
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      margin: 18px 0;
+      max-width: 1000px;
+    }
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid var(--accent-2);
+      padding: 14px 16px;
+      margin: 18px 0;
+      max-width: 1000px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 14px 0 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #eef2f7;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    td.num, th.num { text-align: right; }
+    tr:last-child td { border-bottom: 0; }
+    .figure {
+      margin: 18px 0 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      background: #ffffff;
+    }
+    .figure figcaption {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 14px;
+      margin: 16px 0 24px;
+    }
+    video {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #000000;
+    }
+    ul, ol { max-width: 980px; }
+    li { margin: 5px 0; }
+    .metric {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .small {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .slide-jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 16px 0 24px;
+    }
+    .slide-jump a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 5px 8px;
+      font-size: 13px;
+    }
+    .deck {
+      display: grid;
+      gap: 28px;
+    }
+    .slide {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .slide-screen {
+      min-height: 560px;
+      padding: 34px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 20px;
+      background: #ffffff;
+    }
+    .slide-kicker {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 13px;
+    }
+    .slide-title {
+      font-size: clamp(30px, 4.5vw, 48px);
+      line-height: 1.04;
+      margin: 0;
+      max-width: 980px;
+    }
+    .slide-body {
+      align-self: center;
+      display: grid;
+      gap: 16px;
+    }
+    .slide-body.two-col {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+    }
+    .slide-body img,
+    .slide-body video {
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+    .big-points {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 24px;
+      line-height: 1.24;
+    }
+    .big-points li {
+      margin: 0;
+      padding: 14px 16px;
+      background: #f6f8fb;
+      border-left: 4px solid var(--accent);
+      border-radius: 7px;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .metric-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #f6f8fb;
+    }
+    .metric-box strong {
+      display: block;
+      font-size: 30px;
+      color: var(--accent);
+      line-height: 1.05;
+    }
+    .metric-box span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .equation {
+      font-size: 23px;
+      background: #f6f8fb;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+    }
+    .transcript {
+      border-top: 1px solid var(--line);
+      background: #fbfcfe;
+      padding: 18px 22px;
+    }
+    .transcript h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+    .transcript p {
+      max-width: none;
+    }
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+    @media (max-width: 760px) {
+      .slide-screen {
+        min-height: auto;
+        padding: 22px;
+      }
+      .slide-body.two-col {
+        grid-template-columns: 1fr;
+      }
+      .big-points {
+        font-size: 19px;
+      }
+      .equation {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <nav class="topnav"><a class="" href="index.html">Overview</a>
+<a class="" href="01_proposal_to_story.html">Proposal to Story</a>
+<a class="active" href="02_experiment_design.html">Experiment Design</a>
+<a class="" href="03_visual_diversity_results.html">Visual Diversity</a>
+<a class="" href="04_model_comparison.html">Model Comparison</a>
+<a class="" href="05_structured_diagnostic.html">Structured Diagnostic</a>
+<a class="" href="06_paper_story.html">Paper Story</a>
+<a class="" href="07_video_rubric_plan.html">Video Rubric Plan</a>
+<a class="" href="08_video_slides.html">Video Slides</a>
+<a class="" href="09_video_case_studies.html">Video Case Studies</a>
+<a class="" href="10_rubric_execution_plan.html">Rubric Execution</a></nav>
+    <header>
+      <h1>Experiment Design</h1>
+      <p class="subtitle">Tasks, diversity axes, datasets, model families, and precision rollout metrics.</p>
+    </header>
+    
+<h2>Tasks</h2>
+<div class="grid">
+  <section class="card">
+    <h3>Reach</h3>
+    <p>The robot moves the end effector to a cube target. This task isolates visual target localization and closed-loop servoing.</p>
+  </section>
+  <section class="card">
+    <h3>Obstacle-aware reach</h3>
+    <p>The robot must reach the same target while routing around a blocking obstacle. This introduces stage structure: hover, side alignment, and final descent.</p>
+  </section>
+</div>
+
+<h2>Visual Diversity Axes</h2>
+<div class="table-wrap"><table><thead><tr><th class="">Axis</th><th class="">Narrow condition</th><th class="">Diverse condition</th><th class="">OOD evaluation</th></tr></thead><tbody><tr><td class="">Color</td><td class="">Fixed cube color, primarily red</td><td class="">Multiple cube colors</td><td class="">Held-out color conditions</td></tr>
+<tr><td class="">Spatial distribution</td><td class="">Restricted target XY region</td><td class="">Wider target XY support</td><td class="">Held-out spatial edge/corner regions</td></tr>
+<tr><td class="">Camera location / viewpoint</td><td class="">Fixed external camera pose</td><td class="">Multiple external camera poses</td><td class="">Held-out camera pose</td></tr>
+<tr><td class="">Lighting direction + intensity</td><td class="">Default/fixed lighting</td><td class="">Explicit light direction and intensity variation</td><td class="">Held-out lighting conditions</td></tr></tbody></table></div>
+
+<h2>Dataset Structure</h2>
+<p>Datasets are 128px behavior-cloning demonstrations collected from scripted experts. Each demonstration contributes image/action samples along the trajectory, not only the start and end states. The primary observations are external RGB and wrist/end-effector RGB, with robot state included in the policy input.</p>
+<p>Budgets 5, 20, and 50 use seeds 0, 1, and 2. Budgets 100 and 200 use seed 0 only, so high-budget trends are directional rather than full multi-seed estimates.</p>
+<figure class="figure">
+  <img src="../results/previews_128px_v1/preview_contact_sheet_seed000.png" alt="Example 128px dataset previews across task and visual-axis conditions.">
+  <figcaption>Example 128px dataset previews across task and visual-axis conditions.</figcaption>
+</figure>
+
+<h2>Model Families</h2>
+<div class="table-wrap"><table><thead><tr><th class="">Model family</th><th class="">Purpose in the study</th></tr></thead><tbody><tr><td class="">Scratch CNN BC</td><td class="">Main pixel baseline trained end-to-end from 128px RGB observations plus robot state.</td></tr>
+<tr><td class="">Frozen ResNet-18 BC</td><td class="">Pretrained encoder frozen; BC head learns from visual features. Tests whether generic visual features help in sim.</td></tr>
+<tr><td class="">Partial ResNet-18 BC</td><td class="">Earlier ResNet layers frozen, later layers and policy head trainable. Tests whether adaptation improves over frozen features.</td></tr>
+<tr><td class="">Phase+geometry BC</td><td class="">Diagnostic model with RGB, robot state, phase one-hot, target geometry, obstacle geometry, and relative deltas.</td></tr></tbody></table></div>
+
+<h2>Evaluation Metrics</h2>
+<div class="table-wrap"><table><thead><tr><th class="">Metric</th><th class="">Interpretation</th></tr></thead><tbody><tr><td class="">S@0.5cm, S@1cm, S@2cm, S@5cm</td><td class="">Success thresholds computed from the closest distance reached during the rollout.</td></tr>
+<tr><td class="">Best distance</td><td class="">Closest end-effector-to-target distance ever reached. This measures whether the policy can get near the goal at all.</td></tr>
+<tr><td class="">Final distance</td><td class="">Distance at rollout end. This measures whether the policy stabilizes or drifts away after getting close.</td></tr>
+<tr><td class="">1mm stop threshold</td><td class="">Rollouts only terminate early at 0.001 m, so S@5cm does not clip final distance near 5 cm.</td></tr></tbody></table></div>
+
+    <footer>
+      Source artifacts are local to <code>research2/results</code>. Generated by <code>research2/code/build_html_analysis.py</code>.
+    </footer>
+  </main>
+</body>
+</html>

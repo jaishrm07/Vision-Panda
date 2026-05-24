@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dataset Slide Assets</title>
+<style>
+body { margin: 24px; font-family: Arial, sans-serif; background: #f6f8fb; color: #121721; }
+figure { margin: 0 0 28px; padding: 16px; background: white; border: 1px solid #dde3ec; border-radius: 8px; }
+img { width: 100%; height: auto; display: block; }
+figcaption { margin-top: 10px; color: #606a78; }
+pre { white-space: pre-wrap; background: white; border: 1px solid #dde3ec; padding: 14px; border-radius: 8px; }
+</style>
+</head>
+<body>
+<h1>Dataset Slide Assets</h1>
+<p>Generated from real budget-200 obstacle-aware 128px datasets on role-lab.</p>
+<figure><img src="01_axis_diversity_overview.png" alt="01_axis_diversity_overview.png"><figcaption>01_axis_diversity_overview.png</figcaption></figure>
+<figure><img src="02_obstacle_trajectories_external.png" alt="02_obstacle_trajectories_external.png"><figcaption>02_obstacle_trajectories_external.png</figcaption></figure>
+<figure><img src="03_obstacle_trajectories_wrist.png" alt="03_obstacle_trajectories_wrist.png"><figcaption>03_obstacle_trajectories_wrist.png</figcaption></figure>
+<h2>Manifest</h2>
+<pre>{
+  &quot;source_dataset_dir&quot;: &quot;/home/jaisharma/HW8/research2/results/datasets_128px_v1_phase_precise_avoid&quot;,
+  &quot;budget&quot;: 200,
+  &quot;seed&quot;: 0,
+  &quot;task&quot;: &quot;avoid_reach&quot;,
+  &quot;axes&quot;: {
+    &quot;color&quot;: {
+      &quot;label&quot;: &quot;Color Diversity&quot;,
+      &quot;train_config&quot;: &quot;avoid_color_multi&quot;,
+      &quot;overview_view&quot;: &quot;eef_rgb&quot;,
+      &quot;selected_overview_episodes&quot;: [
+        0,
+        2,
+        5,
+        6
+      ],
+      &quot;trajectory_episode&quot;: 5,
+      &quot;trajectory_descriptor&quot;: &quot;blue&quot;,
+      &quot;selected_descriptors&quot;: [
+        &quot;yellow&quot;,
+        &quot;red&quot;,
+        &quot;blue&quot;,
+        &quot;green&quot;
+      ],
+      &quot;sample_count&quot;: 59000,
+      &quot;episode_count&quot;: 200
+    },
+    &quot;camera&quot;: {
+      &quot;label&quot;: &quot;Camera View Diversity&quot;,
+      &quot;train_config&quot;: &quot;avoid_camera_multi_pose&quot;,
+      &quot;overview_view&quot;: &quot;external_rgb&quot;,
+      &quot;selected_overview_episodes&quot;: [
+        33,
+        7,
+        15,
+        36
+      ],
+      &quot;trajectory_episode&quot;: 33,
+      &quot;trajectory_descriptor&quot;: &quot;yaw 61, pitch -45, dist 1.28&quot;,
+      &quot;selected_descriptors&quot;: [
+        &quot;yaw 61, pitch -45, dist 1.28&quot;,
+        &quot;yaw 119, pitch -24, dist 1.88&quot;,
+        &quot;yaw 79, pitch -21, dist 1.81&quot;,
+        &quot;yaw 109, pitch -46, dist 1.36&quot;
+      ],
+      &quot;sample_count&quot;: 59000,
+      &quot;episode_count&quot;: 200
+    },
+    &quot;spatial&quot;: {
+      &quot;label&quot;: &quot;Spatial Diversity&quot;,
+      &quot;train_config&quot;: &quot;avoid_spatial_wide&quot;,
+      &quot;overview_view&quot;: &quot;external_rgb&quot;,
+      &quot;selected_overview_episodes&quot;: [
+        188,
+        176,
+        67,
+        89
+      ],
+      &quot;trajectory_episode&quot;: 188,
+      &quot;trajectory_descriptor&quot;: &quot;target x=0.65, y=-0.17&quot;,
+      &quot;selected_descriptors&quot;: [
+        &quot;target x=0.65, y=-0.17&quot;,
+        &quot;target x=0.37, y=0.17&quot;,
+        &quot;target x=0.37, y=-0.15&quot;,
+        &quot;target x=0.64, y=0.11&quot;
+      ],
+      &quot;sample_count&quot;: 64531,
+      &quot;episode_count&quot;: 200
+    },
+    &quot;lighting&quot;: {
+      &quot;label&quot;: &quot;Lighting Diversity&quot;,
+      &quot;train_config&quot;: &quot;avoid_lighting_diverse&quot;,
+      &quot;overview_view&quot;: &quot;external_rgb&quot;,
+      &quot;selected_overview_episodes&quot;: [
+        10,
+        1,
+        13,
+        15
+      ],
+      &quot;trajectory_episode&quot;: 10,
+      &quot;trajectory_descriptor&quot;: &quot;dir [1.0,0.0,-1.0], a=0.20, d=0.45&quot;,
+      &quot;selected_descriptors&quot;: [
+        &quot;dir [1.0,0.0,-1.0], a=0.20, d=0.45&quot;,
+        &quot;dir [-1.0,0.0,-1.0], a=0.50, d=0.95&quot;,
+        &quot;dir [1.0,0.0,-1.0], a=0.50, d=0.95&quot;,
+        &quot;dir [-1.0,0.0,-1.0], a=0.20, d=0.45&quot;
+      ],
+      &quot;sample_count&quot;: 59000,
+      &quot;episode_count&quot;: 200
+    }
+  }
+}</pre>
+</body>
+</html>

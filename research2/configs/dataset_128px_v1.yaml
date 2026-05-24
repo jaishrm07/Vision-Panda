@@ -1,0 +1,327 @@
+# 128px unified visual-diversity dataset contract.
+# Source of truth: /home/jaisharma/HW8/research2/dataset_plan.md
+
+version: dataset_128px_v1
+workspace: /home/jaisharma/HW8/research2
+python: /home/jaisharma/miniconda3/envs/pcb/bin/python
+
+outputs:
+  dataset_dir: results/datasets_128px_v1
+  preview_dir: results/previews_128px_v1
+  log_dir: logs
+
+collection:
+  resolution:
+    height: 128
+    width: 128
+  cameras:
+    - external_rgb
+    - eef_rgb
+  tasks:
+    - reach
+    - avoid_reach
+  budgets:
+    - 5
+    - 20
+    - 50
+  seeds:
+    - 0
+    - 1
+    - 2
+  max_steps_per_demo: 400
+  headless: true
+  expert_policy: scripted
+
+eval_collection:
+  resolution:
+    height: 128
+    width: 128
+  cameras:
+    - external_rgb
+    - eef_rgb
+  budget: 50
+  seeds:
+    - 100
+    - 101
+    - 102
+  max_steps_per_demo: 400
+  output_dir: results/eval_ood_128px_v1
+  purpose: held-out OOD visual-diversity expert datasets for evaluation
+
+obstacle_avoidance_reach:
+  presentation_name: Obstacle-Avoidance Reach
+  internal_name: avoid_reach
+  obstacle:
+    role: task_difficulty_not_visual_axis
+    shape: rectangular_wall
+    behavior: static
+    material: matte_neutral_gray
+    placement: between_robot_start_and_target_region
+
+visual_axes:
+  color:
+    question: Does target color diversity improve robustness to appearance shift?
+    varies:
+      - target_object_color
+    fixed_train:
+      colors:
+        red: [1.0, 0.0, 0.0, 1.0]
+    diverse_train:
+      colors:
+        red: [1.0, 0.0, 0.0, 1.0]
+        green: [0.0, 0.8, 0.1, 1.0]
+        blue: [0.0, 0.2, 1.0, 1.0]
+        yellow: [1.0, 0.9, 0.0, 1.0]
+    ood_eval:
+      colors:
+        cyan: [0.0, 0.9, 1.0, 1.0]
+        magenta: [1.0, 0.0, 0.9, 1.0]
+        purple: [0.55, 0.2, 0.9, 1.0]
+        orange: [1.0, 0.45, 0.0, 1.0]
+    held_fixed:
+      - target_shape
+      - target_size
+      - spatial_distribution
+      - camera
+      - lighting
+      - obstacle_geometry
+
+  spatial_distribution:
+    question: Does broader target-position support improve robustness under spatial shift?
+    varies:
+      - target_object_xy_position
+    narrow_train:
+      x_range: [0.45, 0.55]
+      y_range: [-0.08, 0.08]
+    wide_train:
+      x_range: [0.36, 0.66]
+      y_range: [-0.18, 0.18]
+    edge_balanced_train:
+      x_range: [0.34, 0.68]
+      y_range: [-0.24, 0.24]
+      interior_x_range: [0.40, 0.62]
+      interior_y_range: [-0.14, 0.14]
+      edge_width: 0.06
+      bucket_cycle:
+        - left_edge
+        - right_edge
+        - lower_edge
+        - upper_edge
+        - lower_left_corner
+        - lower_right_corner
+        - upper_left_corner
+        - upper_right_corner
+        - interior
+    edge_ood_eval:
+      x_range: [0.34, 0.68]
+      y_range: [-0.24, 0.24]
+    held_fixed:
+      - target_color
+      - target_shape
+      - target_size
+      - camera
+      - lighting
+      - obstacle_geometry
+
+  camera_location_viewpoint:
+    question: Does varying camera location/viewpoint improve robustness to viewpoint shift?
+    varies:
+      - external_camera_yaw
+      - external_camera_pitch
+      - external_camera_distance
+    fixed_train:
+      yaw: 90.0
+      pitch: -35.0
+      distance: 1.55
+      target_position: [0.50, 0.0, 0.08]
+    diverse_train:
+      yaw_range: [60.0, 120.0]
+      pitch_range: [-50.0, -20.0]
+      distance_range: [1.25, 1.90]
+      target_position: [0.50, 0.0, 0.08]
+    extreme_ood_eval:
+      yaw_ranges:
+        - [35.0, 55.0]
+        - [125.0, 145.0]
+      pitch_range: [-62.0, -12.0]
+      distance_range: [1.05, 2.15]
+      target_position: [0.50, 0.0, 0.08]
+    held_fixed:
+      - target_color
+      - spatial_distribution
+      - lighting
+      - obstacle_geometry
+
+  lighting_direction_intensity:
+    question: Does lighting diversity improve robustness to illumination shift?
+    baseline_rule: non_lighting_axes_use_pybullet_default_lighting
+    explicit_lighting_only_for_axis: lighting_direction_intensity
+    varies:
+      - light_direction
+      - light_intensity
+    fixed_train:
+      light_direction: [-0.4, -0.6, -1.0]
+      ambient: 0.35
+      diffuse: 0.70
+      specular: 0.20
+    diverse_train:
+      direction_presets:
+        front: [0.0, -1.0, -1.0]
+        back: [0.0, 1.0, -1.0]
+        left: [-1.0, 0.0, -1.0]
+        right: [1.0, 0.0, -1.0]
+        top_biased: [-0.2, -0.2, -1.0]
+      intensity_presets:
+        dim:
+          ambient: 0.20
+          diffuse: 0.45
+          specular: 0.10
+        medium:
+          ambient: 0.35
+          diffuse: 0.70
+          specular: 0.20
+        bright:
+          ambient: 0.50
+          diffuse: 0.95
+          specular: 0.30
+    extreme_ood_eval:
+      directions:
+        low_left: [-1.0, -0.6, -0.35]
+        low_right: [1.0, -0.6, -0.35]
+      intensity_presets:
+        very_dim:
+          ambient: 0.10
+          diffuse: 0.30
+          specular: 0.05
+        very_bright:
+          ambient: 0.65
+          diffuse: 1.10
+          specular: 0.40
+    held_fixed:
+      - target_color
+      - spatial_distribution
+      - camera
+      - obstacle_geometry
+
+train_configs:
+  - name: color_red_only
+    task: reach
+    axis: color
+    variant: fixed_train
+  - name: color_multi
+    task: reach
+    axis: color
+    variant: diverse_train
+  - name: avoid_color_red_only
+    task: avoid_reach
+    axis: color
+    variant: fixed_train
+  - name: avoid_color_multi
+    task: avoid_reach
+    axis: color
+    variant: diverse_train
+
+  - name: spatial_narrow
+    task: reach
+    axis: spatial_distribution
+    variant: narrow_train
+  - name: spatial_wide
+    task: reach
+    axis: spatial_distribution
+    variant: wide_train
+  - name: avoid_spatial_narrow
+    task: avoid_reach
+    axis: spatial_distribution
+    variant: narrow_train
+  - name: avoid_spatial_wide
+    task: avoid_reach
+    axis: spatial_distribution
+    variant: wide_train
+  - name: avoid_spatial_edge_balanced
+    task: avoid_reach
+    axis: spatial_distribution
+    variant: edge_balanced_train
+
+  - name: camera_fixed
+    task: reach
+    axis: camera_location_viewpoint
+    variant: fixed_train
+  - name: camera_multi_pose
+    task: reach
+    axis: camera_location_viewpoint
+    variant: diverse_train
+  - name: avoid_camera_fixed
+    task: avoid_reach
+    axis: camera_location_viewpoint
+    variant: fixed_train
+  - name: avoid_camera_multi_pose
+    task: avoid_reach
+    axis: camera_location_viewpoint
+    variant: diverse_train
+
+  - name: lighting_fixed
+    task: reach
+    axis: lighting_direction_intensity
+    variant: fixed_train
+  - name: lighting_diverse
+    task: reach
+    axis: lighting_direction_intensity
+    variant: diverse_train
+  - name: avoid_lighting_fixed
+    task: avoid_reach
+    axis: lighting_direction_intensity
+    variant: fixed_train
+  - name: avoid_lighting_diverse
+    task: avoid_reach
+    axis: lighting_direction_intensity
+    variant: diverse_train
+
+eval_configs:
+  - name: color_ood_eval
+    task: reach
+    axis: color
+    variant: ood_eval
+  - name: avoid_color_ood_eval
+    task: avoid_reach
+    axis: color
+    variant: ood_eval
+
+  - name: spatial_edge_ood_eval
+    task: reach
+    axis: spatial_distribution
+    variant: edge_ood_eval
+  - name: avoid_spatial_edge_ood_eval
+    task: avoid_reach
+    axis: spatial_distribution
+    variant: edge_ood_eval
+
+  - name: camera_extreme_ood_eval
+    task: reach
+    axis: camera_location_viewpoint
+    variant: extreme_ood_eval
+  - name: avoid_camera_extreme_ood_eval
+    task: avoid_reach
+    axis: camera_location_viewpoint
+    variant: extreme_ood_eval
+
+  - name: lighting_extreme_ood_eval
+    task: reach
+    axis: lighting_direction_intensity
+    variant: extreme_ood_eval
+  - name: avoid_lighting_extreme_ood_eval
+    task: avoid_reach
+    axis: lighting_direction_intensity
+    variant: extreme_ood_eval
+
+quality_gates:
+  preview:
+    required: true
+    output_dir: results/previews_128px_v1
+  smoke_collection:
+    required: true
+    budget: 1
+    seed: 0
+    max_steps_per_demo: 40
+  full_collection:
+    expected_dataset_count: 144
+    expected_metadata_count: 144

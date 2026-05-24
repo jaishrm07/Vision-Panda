@@ -1,0 +1,62 @@
+{
+  "created_at": "2026-05-07T18:45:37.306606+00:00",
+  "scope": "precision ID/OOD metrics only; excludes stale coarse early-stop Scratch CNN split",
+  "output_dir": "results/analysis_id_ood_all_budgets",
+  "metric_file_count": 1056,
+  "rollout_count": 158400,
+  "families": {
+    "scratch_cnn": "Scratch CNN",
+    "frozen_resnet18": "Frozen ResNet-18",
+    "partial_resnet18": "Partial ResNet-18"
+  },
+  "split_metric_file_counts": {
+    "scratch_cnn:id": 176,
+    "scratch_cnn:ood": 176,
+    "frozen_resnet18:id": 176,
+    "frozen_resnet18:ood": 176,
+    "partial_resnet18:id": 176,
+    "partial_resnet18:ood": 176
+  },
+  "budget_metric_file_counts": {
+    "scratch_cnn:id:budget5": 48,
+    "scratch_cnn:id:budget20": 48,
+    "scratch_cnn:id:budget50": 48,
+    "scratch_cnn:id:budget100": 16,
+    "scratch_cnn:id:budget200": 16,
+    "scratch_cnn:ood:budget5": 48,
+    "scratch_cnn:ood:budget20": 48,
+    "scratch_cnn:ood:budget50": 48,
+    "scratch_cnn:ood:budget100": 16,
+    "scratch_cnn:ood:budget200": 16,
+    "frozen_resnet18:id:budget5": 48,
+    "frozen_resnet18:id:budget20": 48,
+    "frozen_resnet18:id:budget50": 48,
+    "frozen_resnet18:id:budget100": 16,
+    "frozen_resnet18:id:budget200": 16,
+    "frozen_resnet18:ood:budget5": 48,
+    "frozen_resnet18:ood:budget20": 48,
+    "frozen_resnet18:ood:budget50": 48,
+    "frozen_resnet18:ood:budget100": 16,
+    "frozen_resnet18:ood:budget200": 16,
+    "partial_resnet18:id:budget5": 48,
+    "partial_resnet18:id:budget20": 48,
+    "partial_resnet18:id:budget50": 48,
+    "partial_resnet18:id:budget100": 16,
+    "partial_resnet18:id:budget200": 16,
+    "partial_resnet18:ood:budget5": 48,
+    "partial_resnet18:ood:budget20": 48,
+    "partial_resnet18:ood:budget50": 48,
+    "partial_resnet18:ood:budget100": 16,
+    "partial_resnet18:ood:budget200": 16
+  },
+  "tables": {
+    "per_model_metrics": 1056,
+    "overall_by_family_split_budget": 30,
+    "ood_axis_by_family_budget": 60,
+    "axis_by_family_split_budget": 120,
+    "ood_task_by_family_budget": 30,
+    "task_by_family_split_budget": 60,
+    "train_config_by_family_split_budget": 480,
+    "diversity_pair_gains_ood_by_family_budget": 120
+  }
+}
